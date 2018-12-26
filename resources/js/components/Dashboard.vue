@@ -1,7 +1,7 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <table class="table table-dark table-hover table-responsive">
+            <table class="table table-hover table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">Nome</th>
@@ -10,10 +10,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(person, index) in persons" :key="index">
+                    <tr v-for="(person, index) in persons.data" :key="index">
                         <td>{{ person.name }}</td>
-                        <td>{{ person.dateofbirth }}</td>
-                        <td>{{ person.id }}</td>
+                        <td>{{ person.dateofbirth | dateToBR }}</td>
+                        <td>{{ person.create_at | dateToBR }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -33,9 +33,11 @@
         },
         methods: {
             getPersons() {
+                this.$Progress.start();
                 axios.get('persons').then((res) => {
                     this.persons = res.data;
                 });
+                this.$Progress.finish()
             }
         },
         mounted() {

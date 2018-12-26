@@ -103,9 +103,9 @@
 </template>
 
 <script>
-import {TheMask} from 'vue-the-mask'
+import {mask} from 'vue-the-mask'
     export default {
-        components: {TheMask},
+        directives: {mask},
         data() {
             return {
                 title: "Cadastro de paroquianos",
@@ -128,10 +128,12 @@ import {TheMask} from 'vue-the-mask'
             createPerson () {
                 this.form.post('persons')
                 .then((res) => {
-                    console.log(res.data.name);
                     this.id = res.data.id;
                     if(this.id){
-                        alert('Entrou aqui');
+                        toast({
+                            type: 'success',
+                            title: 'Cadastro realizado com successo'
+                        });
                         this.$router.push(`/dependents/${this.id}`);
                     }
                     this.form.reset();

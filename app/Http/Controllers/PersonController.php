@@ -17,7 +17,7 @@ class PersonController extends Controller
      */
     public function index()
     {
-        return Response::json(['pessoas' => Person::all(),]);
+        return Person::latest('id')->paginate(10);
     }
 
     /**

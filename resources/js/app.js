@@ -9,29 +9,50 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import { Form, HasError, AlertError } from 'vform';
-import VueRouter from 'vue-router';
+import router from './router.js';
 import FullCalendar from 'vue-full-calendar';
+import VueProgressBar from 'vue-progressbar';
+import swal from 'sweetalert2';
+import moment from 'moment';
 
 window.Form = Form;
+window.swal = swal;
+
+const toast = swal.mixin({
+    toast: true,
+    position:'top-end',
+    ShowConfirmButton: false,
+    timer: 3000
+});
+window.toast = toast;
 
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
-Vue.use(FullCalendar);
-Vue.use(VueRouter);
-let routes = [
-    { path: '/', redirect: '/dashboard' },
-    { path: '/dashboard', component: require('./components/Dashboard.vue') },
-    { path: '/profile', component: require('./components/Profile.vue') },
-    { path: '/form', component: require('./components/FormCadastro.vue') },
-    { path: '/event', component: require('./components/Event.vue')},
-    { path: '/dependents/:id', component: require('./components/Dependents.vue')} 
-  ];
 
-const router = new VueRouter({
-    routes, // short for `routes: routes`
-    linkActiveClass: "active",
+Vue.use(FullCalendar);
+Vue.use(VueProgressBar,{
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '10px'   
 });
+
+Vue.filter('dateToBR', function (date) {
+    return moment(date).format('DD/MM/YYYY');
+});
+// let routes = [
+//     { path: '/', redirect: '/dashboard' },
+//     { path: '/dashboard', component: require('./components/Dashboard.vue') },
+//     { path: '/profile', component: require('./components/Profile.vue') },
+//     { path: '/form', component: require('./components/FormCadastro.vue') },
+//     { path: '/event', component: require('./components/Event.vue')},
+//     { path: '/dependents/:id', component: require('./components/Dependents.vue')} 
+//   ];
+
+//  const router = new VueRouter({
+//      routes, // short for `routes: routes`
+//      linkActiveClass: "active",
+//  });
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 // Vue.component('navbar-component', require('./components/Profile.vue'));
@@ -47,5 +68,5 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router
+    router: router
 });

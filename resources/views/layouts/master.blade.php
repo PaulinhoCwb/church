@@ -137,7 +137,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <router-link to="/dashboard" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-tachometer-alt text-blue"></i>
               <p>
                 Dashboard
               </p>
@@ -153,9 +153,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <li class="nav-item">
             <router-link to="/event" class="nav-link">
-              <i class="nav-icon fas fa-pen-nib"></i>
+              <i class="nav-icon fas fa-money-bill-alt text-cash"></i>
               <p>
-                Evento
+                Dizimo
               </p>
             </router-link >
           </li>
@@ -184,6 +184,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="container-fluid">
           <router-view></router-view>
+
+          <vue-progress-bar></vue-progress-bar>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
