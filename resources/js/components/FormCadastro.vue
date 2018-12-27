@@ -134,9 +134,14 @@ import {mask} from 'vue-the-mask'
                             type: 'success',
                             title: 'Cadastro realizado com successo'
                         });
+                        this.form.reset();
                         this.$router.push(`/dependents/${this.id}`);
+                    } else {
+                        toast({
+                            type: 'error',
+                            title: 'Operação não pode ser concluida'
+                        });
                     }
-                    this.form.reset();
                 });
             },
 

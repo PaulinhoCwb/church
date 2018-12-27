@@ -17,7 +17,7 @@ class CreateDependentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->date('dateofbirth');
-            $table->date('weddingdata');
+            $table->date('weddingdata')->nullable();
             $table->unsignedInteger('people_id');
             $table->char('type',1);
             $table->foreign('people_id')->references('id')->on('people')

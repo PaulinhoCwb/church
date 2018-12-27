@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use function GuzzleHttp\json_encode;
 use Illuminate\Support\Facades\Response;
 use App\Person;
+use Carbon\Carbon;
 
 class PersonController extends Controller
 {
@@ -26,8 +26,10 @@ class PersonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   $id = 16;
+        $person = Person::with(['dependents'
+        ])->where(['id' => $id])->first();
+        dd($person);
     }
 
     /**
@@ -47,8 +49,12 @@ class PersonController extends Controller
             'email' => 'required',
             'cellphone' => 'required',
         ]);
-        
-        $person = Person::create($request->all());
+        $data = $request->all();
+
+        $data['dateofbirth'] = dateToMySQL($request->dateofbirth);
+        $data['zipcode'] = str_replace('-','',$request->zipcode);
+
+        $person = Person::create($data);
         return Response::json($person);
     }
 
@@ -60,7 +66,8 @@ class PersonController extends Controller
      */
     public function show($id)
     {
-        Person::find();
+        $person = Person::with(['dependents'])->where(['id' => $id])->first();
+        return response()->json($person);
     }
 
     /**

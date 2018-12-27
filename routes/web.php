@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('persons', 'PersonController');
+Route::resource('dependents', 'DependentController');
 Route::post('/cep','PersonController@getCep');

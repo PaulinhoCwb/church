@@ -4,13 +4,15 @@
             <div class="card card-default">
                 <div class="card-header">{{ title }}</div>
                 <div class="card-body">
-                    <form action="">
+                    <form @submit.prevent="createDependent" method="POST">
                         <input type="hidden" v-model="form.people_id" name="people_id" >
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="">Nome</label>
-                                    <input type="text" v-model="form.name" name="name" autocomplete="off" class="form-control">
+                                    <input type="text" v-model="form.name" name="name" autocomplete="off" class="form-control"
+                                    :class="{ 'is-invalid': form.errors.has('name') }">
+                                    <has-error :form="form" field="name"></has-error>
                                 </div>
                             </div>
                         </div>
@@ -28,21 +30,25 @@
                             <div class="col-4">
                                 <div class="row">
                                     <div class="col-6 mt-3">
-                                        <div class="custom-control custom-checkbox mb-3 pt-3">
-                                            <input type="checkbox" v.v-model="form.type" value="F" class="custom-control-input" id="filho">
+                                        <div class="custom-control custom-radio mb-3 pt-3">
+                                            <input type="radio" v-model="form.type" value="F" name="type" class="custom-control-input" id="filho">
                                             <label class="custom-control-label" for="filho">Filho</label>
                                         </div>
                                     </div>
                                     <div class="col-6 mt-3 pt-3">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" v-model="form.type" value="E" class="custom-control-input" id="wife">
+                                        <div class="custom-control custom-radio mb-3">
+                                            <input type="radio" v-model="form.type" value="E" name="type" class="custom-control-input" id="wife">
                                             <label class="custom-control-label" for="wife">Cônjuge</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="btn btn-dark float-right" :disabled="form.busy" type="submit">Salvar</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -51,10 +57,10 @@
 </template>
 
 <script>
-import {TheMask} from 'vue-the-mask'
+import {mask} from 'vue-the-mask'
     export default {
         name: 'dependents',
-        components: {TheMask},
+        directives: {mask},
         data() {
             return {
                 title: "Cadastro de dependentes",
@@ -69,12 +75,22 @@ import {TheMask} from 'vue-the-mask'
         },
         methods: {
             createDependent () {
-                this.form.post()
+                this.form.post('dependents')
                 .then((res) => {
                     if(res.data.id){
                         this.form.name = '';
                         this.form.weddingdata = '';
                         this.form.dateofbirth = '';
+
+                        toast({
+                            type: 'success',
+                            title: 'Cadastro realizado com successo'
+                        });
+                    } else {
+                        toast({
+                            type: 'error',
+                            title: 'Operação não pode ser concluida'
+                        });
                     }
                 });
             }

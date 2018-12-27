@@ -22,8 +22,8 @@ class CreatePeopleTable extends Migration
             $table->string('address');
             $table->integer('number');
             $table->string('email');
-            $table->integer('tellphone');
-            $table->integer('cellphone');
+            $table->string('tellphone')->nullable();
+            $table->string('cellphone');
             $table->string('publicplace')->nullable();
             $table->timestamps();
         });

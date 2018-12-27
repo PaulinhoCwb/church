@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Dependent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class DependentController extends Controller
 {
@@ -23,7 +25,7 @@ class DependentController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +36,22 @@ class DependentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'type' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        if ($request->dateofbirth) {
+            $data['dateofbirth'] = dateToMySQL($request->dateofbirth); 
+        }
+        if ($request->weddingdata && $request->weddingdata !== null) {
+            $data['weddingdata'] = dateToMySQL($request->weddingdata); 
+        }
+
+        $dependent = Dependent::create($data);
+        return Response::json($dependent);
     }
 
     /**

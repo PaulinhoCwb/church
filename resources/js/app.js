@@ -32,13 +32,13 @@ Vue.component(AlertError.name, AlertError)
 
 Vue.use(FullCalendar);
 Vue.use(VueProgressBar,{
-    color: 'rgb(143, 255, 199)',
+    color: 'blue',
     failedColor: 'red',
     height: '10px'   
 });
 
 Vue.filter('dateToBR', function (date) {
-    return moment(date).format('DD/MM/YYYY');
+    return (date) ? moment(date).format('DD/MM/YYYY') : '-------';
 });
 // let routes = [
 //     { path: '/', redirect: '/dashboard' },
@@ -60,11 +60,6 @@ Vue.filter('dateToBR', function (date) {
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
 const app = new Vue({
     el: '#app',
