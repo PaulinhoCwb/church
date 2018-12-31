@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Route::resource('persons', 'PersonController');
 Route::resource('dependents', 'DependentController');
+Route::resource('tithes','TitheController');
 Route::post('/cep','PersonController@getCep');
+Route::get('/total/person','PersonController@getTotal')->name('total.person');
+Route::get('/person/one/{id}','PersonController@getOnePerson');

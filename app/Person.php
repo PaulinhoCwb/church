@@ -16,4 +16,9 @@ class Person extends Model
     {
         return $this->hasMany('App\Dependent','people_id');
     }
+
+    public function tithes()
+    {
+        return $this->hasMany('App\Tithe','people_id');
+    }
 }

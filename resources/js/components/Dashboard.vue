@@ -7,7 +7,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Paroquianos Cadastrados</span>
-                <span class="info-box-number">1000</span>
+                <span class="info-box-number">{{ totalPerson }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -57,7 +57,7 @@
                                     <a href="" class="btn btn-outline-danger btn-sm">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <router-link :to="{name: 'profile', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
+                                    <router-link :to="{name: 'tithe-single', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
                                         <i class="fas fa-money-bill-wave"></i>
                                     </router-link>
                                 </td>
@@ -76,7 +76,8 @@
         data: function () {
             return {
                 title: "Dashboard",
-                persons: []
+                persons: [],
+                totalPerson: '',
             }
         },
         methods: {
@@ -86,10 +87,20 @@
                     this.persons = res.data;
                 });
                 this.$Progress.finish()
+            },
+
+            getTotalPersons() {
+                axios.get('total/person').then((res) => {
+                    console.log(res);
+                    this.totalPerson = res.data; 
+                }).catch((res) => {
+                    console.log(res);
+                });
             }
         },
         mounted() {
-            this.getPersons()
+            this.getPersons();
+            this.getTotalPersons();
         }
     }
 

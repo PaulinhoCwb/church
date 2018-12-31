@@ -11,7 +11,10 @@ export default new VueRouter({
         { path: '/profile/:id', component: require('./components/Profile.vue'), name: 'profile' },
         { path: '/form', component: require('./components/FormCadastro.vue') },
         { path: '/event', component: require('./components/Event.vue')},
-        { path: '/dependents/:id', component: require('./components/Dependents.vue')} 
+        { path: '/dependents/:id', component: require('./components/Dependents.vue')}, 
+        { path: '/tithe', component: require('./components/Tithe.vue')},
+        { path: '/tithe/:id', component: require('./components/TitheSingle.vue'), name: 'tithe-single'},
+        { path: '/search', component: require('./components/Search.vue')},
       ], 
     linkActiveClass: "active",
 });

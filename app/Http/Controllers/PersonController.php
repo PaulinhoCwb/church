@@ -26,10 +26,8 @@ class PersonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $id = 16;
-        $person = Person::with(['dependents'
-        ])->where(['id' => $id])->first();
-        dd($person);
+    {   
+
     }
 
     /**
@@ -110,9 +108,25 @@ class PersonController extends Controller
         $endPoint = "https://viacep.com.br/ws/".$cep."/json/";
         #print_r($endPoint); die;
         $client = new Client();
-        $res = $client->request('GET', $endPoint);
+        $res = $client->request('GET', $endPoint,
+            [
+                'verify' => false
+            ]
+        );
         $data = json_decode($res->getBody());
         return Response::json($data);
     }
 
+    public function getTotal()
+    {
+        $personTotal = Person::all()->count();
+
+        return Response::json($personTotal);
+    }
+
+    public function getOnePerson($id)
+    {
+        $person = Person::find($id);
+        return Response::json($person);
+    }
 }

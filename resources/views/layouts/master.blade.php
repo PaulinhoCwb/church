@@ -152,10 +152,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link >
           </li>
           <li class="nav-item">
-            <router-link to="/event" class="nav-link">
+            <router-link to="/tithe" class="nav-link">
               <i class="nav-icon fas fa-money-bill-alt text-cash"></i>
               <p>
                 Dizimo
+              </p>
+            </router-link >
+          </li>
+          <li class="nav-item">
+            <router-link to="/search" class="nav-link">
+              <i class="nav-icon fas fa-search text-white"></i>
+              <p>
+                Pesquisas
               </p>
             </router-link >
           </li>

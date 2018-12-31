@@ -14,6 +14,7 @@ import FullCalendar from 'vue-full-calendar';
 import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
 import moment from 'moment';
+import vSelect from 'vue-select';
 
 window.Form = Form;
 window.swal = swal;
@@ -28,13 +29,14 @@ window.toast = toast;
 
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
+Vue.component('v-select',vSelect);
 
 
 Vue.use(FullCalendar);
 Vue.use(VueProgressBar,{
     color: 'blue',
     failedColor: 'red',
-    height: '10px'   
+    thickness: '5px'   
 });
 
 Vue.filter('dateToBR', function (date) {
@@ -63,5 +65,31 @@ Vue.filter('dateToBR', function (date) {
 
 const app = new Vue({
     el: '#app',
-    router: router
+    router: router,
+    mounted () {
+        //  [App.vue specific] When App.vue is finish loading finish the progress bar
+        this.$Progress.finish()
+      },
+      created () {
+        //  [App.vue specific] When App.vue is first loaded start the progress bar
+        this.$Progress.start()
+        //  hook the progress bar to start before we move router-view
+        this.$router.beforeEach((to, from, next) => {
+          //  does the page we want to go to have a meta.progress object
+          if (to.meta.progress !== undefined) {
+            let meta = to.meta.progress
+            // parse meta tags
+            this.$Progress.parseMeta(meta)
+          }
+          //  start the progress bar
+          this.$Progress.start()
+          //  continue to next page
+          next()
+        })
+        //  hook the progress bar to finish after we've finished moving router-view
+        this.$router.afterEach((to, from) => {
+          //  finish the progress bar
+          this.$Progress.finish()
+        })
+      }
 });
