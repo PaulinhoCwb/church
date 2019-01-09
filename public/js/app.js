@@ -42141,7 +42141,7 @@ var toast = __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default.a.mixin({
     toast: true,
     position: 'top-end',
     ShowConfirmButton: false,
-    timer: 3000
+    timer: 5000
 });
 window.toast = toast;
 
@@ -68248,6 +68248,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'dashboard',
@@ -68255,7 +68281,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             title: "Dashboard",
             persons: [],
-            totalPerson: ''
+            totalPerson: '',
+            dizimo: 0,
+            birthdays: 0
         };
     },
     methods: {
@@ -68277,11 +68305,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (res) {
                 console.log(res);
             });
+        },
+        getTotalTithe: function getTotalTithe() {
+            var _this3 = this;
+
+            axios.get('/tithe/total').then(function (res) {
+                console.log(res);
+                _this3.dizimo = res.data;
+            }).catch(function (res) {
+                console.log(res);
+            });
+        },
+        getBirthdays: function getBirthdays() {
+            var _this4 = this;
+
+            axios.get('person/birthdays').then(function (res) {
+                if (res) {
+                    _this4.birthdays = res.data;
+                } else {
+                    _this4.birthdays = 0;
+                }
+            }).catch(function (res) {});
         }
     },
     mounted: function mounted() {
         this.getPersons();
         this.getTotalPersons();
+        this.getTotalTithe();
+        this.getBirthdays();
     }
 });
 
@@ -68311,14 +68362,62 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [
+              _vm._v("Total Dizimo")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-box-number" }, [
+              _vm._v("R$ " + _vm._s(_vm.dizimo))
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [
+              _vm._v("Aniversariates do mês")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-box-text" }, [
+              _vm._v(_vm._s(_vm.birthdays))
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "info-box" }, [
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "info-box-content" }, [
+            _c("span", { staticClass: "info-box-text" }, [
+              _vm._v("Total Dizimo")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-box-number" }, [
+              _vm._v("R$ " + _vm._s(_vm.dizimo))
+            ])
+          ])
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "table-responsive" }, [
           _c("table", { staticClass: "table table-hover" }, [
-            _vm._m(2),
+            _vm._m(4),
             _vm._v(" "),
             _c(
               "tbody",
@@ -68348,9 +68447,9 @@ var render = function() {
                         [_c("i", { staticClass: "fas fa-info-circle" })]
                       ),
                       _vm._v(" "),
-                      _vm._m(3, true),
+                      _vm._m(5, true),
                       _vm._v(" "),
-                      _vm._m(4, true),
+                      _vm._m(6, true),
                       _vm._v(" "),
                       _c(
                         "router-link",
@@ -68390,20 +68489,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 col-sm-6 col-12" }, [
-      _c("div", { staticClass: "info-box" }, [
-        _c("span", { staticClass: "info-box-icon bg-success" }, [
-          _c("i", { staticClass: "fas fa-hand-holding-usd" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "info-box-content" }, [
-          _c("span", { staticClass: "info-box-text" }, [
-            _vm._v("Total Dizimo")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "info-box-number" }, [_vm._v("R$ 410")])
-        ])
-      ])
+    return _c("span", { staticClass: "info-box-icon bg-success" }, [
+      _c("i", { staticClass: "fas fa-hand-holding-usd" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "info-box-icon bg-danger-gradient" }, [
+      _c("i", { staticClass: "fas fa-birthday-cake" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "info-box-icon bg-warning-gradient" }, [
+      _c("i", { staticClass: "fas fa-birthday-cake" })
     ])
   },
   function() {
@@ -70567,7 +70670,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70578,6 +70681,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_the_mask__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_v_money__);
 //
 //
 //
@@ -70622,8 +70729,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 // import Autocomplete from 'vuejs-auto-complete'
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'tithe',
+    components: { Money: __WEBPACK_IMPORTED_MODULE_1_v_money__["Money"] },
+    directives: {
+        mask: __WEBPACK_IMPORTED_MODULE_0_vue_the_mask__["mask"]
+    },
     data: function data() {
         return {
             persons: [],
@@ -70646,7 +70759,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (res) {});
         },
         createTithe: function createTithe() {
-            this.form.post('tithe').then(function (res) {}).catch(function (res) {});
+            this.form.post('tithes').then(function (res) {
+                console.log(res);
+            }).catch(function (res) {});
         }
     },
     mounted: function mounted() {
@@ -70717,6 +70832,12 @@ var render = function() {
                       _c("input", {
                         directives: [
                           {
+                            name: "mask",
+                            rawName: "v-mask",
+                            value: "##/##/####",
+                            expression: "'##/##/####'"
+                          },
+                          {
                             name: "model",
                             rawName: "v-model",
                             value: _vm.form.paid_at,
@@ -70752,37 +70873,23 @@ var render = function() {
                     [
                       _c("label", { attrs: { for: "" } }, [_vm._v("Valor")]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.maney_value,
-                            expression: "form.maney_value"
-                          }
-                        ],
+                      _c("money", {
                         staticClass: "form-control",
                         class: {
-                          "is-invalid": _vm.form.errors.has("maney_value")
+                          "is-invalid": _vm.form.errors.has("money_value")
                         },
-                        attrs: { type: "text", name: "maney_value" },
-                        domProps: { value: _vm.form.maney_value },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form,
-                              "maney_value",
-                              $event.target.value
-                            )
-                          }
+                        attrs: { prefix: "R$ " },
+                        model: {
+                          value: _vm.form.money_value,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "money_value", $$v)
+                          },
+                          expression: "form.money_value"
                         }
                       }),
                       _vm._v(" "),
                       _c("has-error", {
-                        attrs: { form: _vm.form, field: "maney_value" }
+                        attrs: { form: _vm.form, field: "money_value" }
                       })
                     ],
                     1
@@ -70905,7 +71012,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70920,6 +71027,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_the_mask__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_v_money__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70973,7 +71085,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             form: new Form({
                 people_id: this.$route.params.id,
                 paid_at: '',
-                maney_value: 0
+                money_value: 0
             })
         };
     },
@@ -70984,6 +71096,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('person/one/' + this.form.people_id).then(function (res) {
                 _this.name = res.data.name;
+            }).catch(function (res) {});
+        },
+        createTithe: function createTithe() {
+            this.form.post('tithes').then(function (res) {
+                if (res.data.id) {
+                    toast({
+                        type: 'success',
+                        title: 'Cadastro realizado com successo'
+                    });
+                } else {
+                    toast({
+                        type: 'error',
+                        title: 'Operação não pode ser concluida'
+                    });
+                }
             }).catch(function (res) {});
         }
     },
@@ -71015,115 +71142,142 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
-          _c("form", { attrs: { action: "" } }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.people_id,
-                  expression: "form.people_id"
-                }
-              ],
-              attrs: { type: "hidden", name: "people_id" },
-              domProps: { value: _vm.form.people_id },
+          _c(
+            "form",
+            {
               on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "people_id", $event.target.value)
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.createTithe($event)
+                },
+                keydown: function($event) {
+                  _vm.form.onKeydown($event)
                 }
               }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-4" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "" } }, [_vm._v("Nome")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", name: "name" },
-                    domProps: { value: _vm.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.name = $event.target.value
-                      }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.people_id,
+                    expression: "form.people_id"
+                  }
+                ],
+                attrs: { type: "hidden", name: "people_id" },
+                domProps: { value: _vm.form.people_id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
                     }
-                  })
-                ])
-              ]),
+                    _vm.$set(_vm.form, "people_id", $event.target.value)
+                  }
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "col-4" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "" } }, [_vm._v("Data")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "mask",
-                        rawName: "v-mask",
-                        value: "##/##/####",
-                        expression: "'##/##/####'"
-                      },
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.paid_at,
-                        expression: "form.paid_at"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", name: "paid_at" },
-                    domProps: { value: _vm.form.paid_at },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "paid_at", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-4" }, [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", { attrs: { for: "" } }, [_vm._v("Valor")]),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-4" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Nome")]),
                     _vm._v(" "),
-                    _c("money", {
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.name,
+                          expression: "name"
+                        }
+                      ],
                       staticClass: "form-control",
-                      attrs: { prefix: "R$ " },
-                      model: {
-                        value: _vm.form.maney_value,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "maney_value", $$v)
-                        },
-                        expression: "form.maney_value"
+                      attrs: { type: "text", name: "name" },
+                      domProps: { value: _vm.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.name = $event.target.value
+                        }
                       }
                     })
-                  ],
-                  1
-                )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-4" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Data")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "mask",
+                          rawName: "v-mask",
+                          value: "##/##/####",
+                          expression: "'##/##/####'"
+                        },
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.paid_at,
+                          expression: "form.paid_at"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "paid_at" },
+                      domProps: { value: _vm.form.paid_at },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "paid_at", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-4" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", { attrs: { for: "" } }, [_vm._v("Valor")]),
+                      _vm._v(" "),
+                      _c("money", {
+                        staticClass: "form-control",
+                        attrs: { prefix: "R$ " },
+                        model: {
+                          value: _vm.form.money_value,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "money_value", $$v)
+                          },
+                          expression: "form.money_value"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-12" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-dark float-right",
+                      attrs: { disabled: _vm.form.busy, type: "submit" }
+                    },
+                    [_vm._v("Salvar")]
+                  )
+                ])
               ])
-            ])
-          ])
+            ]
+          )
         ])
       ])
     ])

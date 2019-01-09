@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tithe extends Model
 {
     public $fillable = [
-        'people_id','maney_value','paid_at'
+        'people_id','money_value','paid_at'
     ];
 
     public $timestamps = false;

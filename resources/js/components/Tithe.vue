@@ -15,15 +15,15 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="data">Data Pagamento</label>
-                                <input type="text" v-model="form.paid_at" name="paid_at" class="form-control" :class="{ 'is-invalid': form.errors.has('paid_at') }">
+                                <input type="text" v-mask="'##/##/####'" v-model="form.paid_at" name="paid_at" class="form-control" :class="{ 'is-invalid': form.errors.has('paid_at') }">
                                 <has-error :form="form" field="paid_at"></has-error>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="">Valor</label>
-                                <input type="text" name="maney_value" v-model="form.maney_value" class="form-control" :class="{ 'is-invalid': form.errors.has('maney_value') }">
-                                <has-error :form="form" field="maney_value"></has-error>
+                                <money v-model="form.money_value" prefix="R$ " class="form-control" :class="{ 'is-invalid': form.errors.has('money_value') }"></money>
+                                <has-error :form="form" field="money_value"></has-error>
                             </div>
                         </div>
                     </div>
@@ -42,8 +42,14 @@
 
 <script>
 // import Autocomplete from 'vuejs-auto-complete'
+import {mask} from 'vue-the-mask';
+import {Money} from 'v-money';
 export default {
     name: 'tithe',
+     components: {Money},
+    directives: {
+        mask
+    },
     data () {
         return {
             persons: [],
@@ -65,8 +71,8 @@ export default {
             });
         },
         createTithe() {
-            this.form.post('tithe').then((res) => {
-
+            this.form.post('tithes').then((res) => {
+                console.log(res);
             }).catch((res) => {
 
             });

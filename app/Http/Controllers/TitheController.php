@@ -28,7 +28,9 @@ class TitheController extends Controller
      */
     public function create()
     {
-        //
+        $tithes = Tithe::all();
+        $sum = $tithes->sum('money_value');
+        dd($sum);
     }
 
     /**
@@ -39,7 +41,18 @@ class TitheController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'paid_at'=> 'required',
+            'money_value'=> 'required'
+        ]);
+        dd($request);
+        $data = $request->all();
+        
+        $data['paid_at'] = dateToMySQL($request->paid_at);
+        // return Response::json($data);die;
+        $tithe = Tithe::create($data);
+
+        return Response::json($tithe); 
     }
 
     /**
@@ -85,5 +98,12 @@ class TitheController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getTotalTithe()
+    {
+        $tithes = Tithe::all();
+        $sum = number_format($tithes->sum('money_value'),2,',','.');
+        return Response::json($sum);
     }
 }

@@ -129,4 +129,13 @@ class PersonController extends Controller
         $person = Person::find($id);
         return Response::json($person);
     }
+
+    public function getBirthdays()
+    {
+        $month = date('m');
+
+        $persons = Person::whereMonth('dateofbirth',$month)->count();
+
+        return Response::json($persons);
+    }
 }

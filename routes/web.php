@@ -21,3 +21,5 @@ Route::resource('tithes','TitheController');
 Route::post('/cep','PersonController@getCep');
 Route::get('/total/person','PersonController@getTotal')->name('total.person');
 Route::get('/person/one/{id}','PersonController@getOnePerson');
+Route::get('/person/birthdays','PersonController@getBirthdays');
+Route::get('/tithe/total','TitheController@getTotalTithe');

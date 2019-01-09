@@ -20,13 +20,39 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Total Dizimo</span>
-                <span class="info-box-number">R$ 410</span>
+                <span class="info-box-number">R$ {{ dizimo }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+        </div>
+        <div class="row">
+             <div class="col-md-6 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-danger-gradient"><i class="fas fa-birthday-cake"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Aniversariates do mês</span>
+                <span class="info-box-text">{{ birthdays }}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+           <div class="col-md-6 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning-gradient"><i class="fas fa-birthday-cake"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Dizimo</span>
+                <span class="info-box-number">R$ {{ dizimo }}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -78,6 +104,8 @@
                 title: "Dashboard",
                 persons: [],
                 totalPerson: '',
+                dizimo: 0,
+                birthdays: 0,
             }
         },
         methods: {
@@ -96,12 +124,34 @@
                 }).catch((res) => {
                     console.log(res);
                 });
+            },
+
+            getTotalTithe() {
+                axios.get('/tithe/total').then((res) => {
+                    console.log(res);
+                    this.dizimo = res.data;
+                }).catch((res)=>{
+                    console.log(res);
+                });
+            },
+
+            getBirthdays(){
+                axios.get('person/birthdays').then((res) => {
+                    if (res) {
+                        this.birthdays = res.data;
+                    } else {
+                        this.birthdays = 0;
+                    }
+                }).catch((res) => {
+
+                });
             }
         },
         mounted() {
             this.getPersons();
             this.getTotalPersons();
+            this.getTotalTithe();
+            this.getBirthdays();
         }
     }
-
 </script>
