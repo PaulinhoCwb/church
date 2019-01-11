@@ -18,7 +18,7 @@ class CreateTithesTable extends Migration
             $table->date('paid_at');
             $table->decimal('money_value',8,2);
             $table->unsignedInteger('people_id');
-            $table->foreign('people_id')->reference('id')->on('people');
+            $table->foreign('people_id')->references('id')->on('people');
         });
     }
 

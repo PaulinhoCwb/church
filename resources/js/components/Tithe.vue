@@ -47,7 +47,7 @@ import {Money} from 'v-money';
 export default {
     name: 'tithe',
      components: {Money},
-    directives: {
+        directives: {
         mask
     },
     data () {

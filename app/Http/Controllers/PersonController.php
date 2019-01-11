@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use App\Person;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class PersonController extends Controller
 {
@@ -27,7 +28,7 @@ class PersonController extends Controller
      */
     public function create()
     {   
-
+        //
     }
 
     /**
@@ -76,7 +77,7 @@ class PersonController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -88,7 +89,7 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -106,7 +107,7 @@ class PersonController extends Controller
     {
         $cep = $request->get('zipcode');
         $endPoint = "https://viacep.com.br/ws/".$cep."/json/";
-        #print_r($endPoint); die;
+        
         $client = new Client();
         $res = $client->request('GET', $endPoint,
             [
@@ -133,9 +134,12 @@ class PersonController extends Controller
     public function getBirthdays()
     {
         $month = date('m');
-
-        $persons = Person::whereMonth('dateofbirth',$month)->count();
-
+        $sql = "SELECT name, dateofbirth FROM ";
+        $sql .= "(SELECT name,dateofbirth FROM people UNION SELECT name, dateofbirth FROM dependents) AS PESSOAS";
+        $sql .= " WHERE MONTH(dateofbirth) = ?";
+        
+        $res = DB::select($sql,[$month]);
+        $persons = count($res);
         return Response::json($persons);
     }
 }
