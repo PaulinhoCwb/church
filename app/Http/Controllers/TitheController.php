@@ -45,11 +45,15 @@ class TitheController extends Controller
             'paid_at'=> 'required',
             'money_value'=> 'required'
         ]);
-        dd($request);
+        
         $data = $request->all();
+
+        if ($data['people_id']['id']) {
+            $data['people_id'] = $data['people_id']['id'];
+        }
         
         $data['paid_at'] = dateToMySQL($request->paid_at);
-        // return Response::json($data);die;
+        
         $tithe = Tithe::create($data);
 
         return Response::json($tithe); 

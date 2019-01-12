@@ -8,28 +8,16 @@
                 <div class="card-body">
                     <form action="">
                         <div class="row">
-                            <div class="col-3">
-                                <div class="custom-control custom-checkbox mb-3 pt-3">
-                                    <input type="checkbox" v-model="form.name" id="name" name="name" value="name" class="custom-control-input">
-                                    <label for="name" class="custom-control-label">Busca por nome</label>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="custom-control custom-checkbox mb-3 pt-3">
-                                    <input type="checkbox" v-model="form.month" id="month" name="month" value="month" class="custom-control-input">
-                                    <label for="month" class="custom-control-label">Busca por mês</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input type="text" name="form.nome" id="nome" :disabled="form.month" class="form-control">
+                                    <label for="nome">Nome:</label>
+                                    <input type="text" v-model="form.nome" name="form.nome" id="nome" class="form-control">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <select :disabled="form.name" name="form.mes" id="mes" class="form-control">
+                                    <label for="mes">Mês</label>
+                                    <select name="form.mes" v-model="form.mes" id="mes" class="form-control">
                                         <option value="">----------</option>
                                         <option value="1">Janeiro</option>
                                         <option value="2">Fevereiro</option>
@@ -66,9 +54,14 @@ export default {
         return {
             title: 'Pesquisas',
             form: new Form({
-                month: false,
-                name: false,
+                month: '',
+                name: '',
             })
+        }
+    },
+    methods: {
+        search(){
+
         }
     }
 }

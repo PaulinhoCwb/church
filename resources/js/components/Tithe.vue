@@ -72,7 +72,17 @@ export default {
         },
         createTithe() {
             this.form.post('tithes').then((res) => {
-                console.log(res);
+                if (res.data.id) {
+                    toast({
+                        type: 'success',
+                        title: 'Cadastro realizado com successo'
+                    });
+                } else {
+                    toast({
+                        type: 'error',
+                        title: 'Operação não pode ser concluida'
+                    });
+                }
             }).catch((res) => {
 
             });
