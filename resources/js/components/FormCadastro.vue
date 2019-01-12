@@ -78,7 +78,7 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Telefone residencial</label>
-                                    <input autocomplete="off" type="text" v-model="form.tellphone" name="tellphone" class="form-control">
+                                    <input autocomplete="off" v-mask="'(##) ####-###'" type="text" v-model="form.tellphone" name="tellphone" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">

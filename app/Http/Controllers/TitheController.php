@@ -46,6 +46,7 @@ class TitheController extends Controller
             'money_value'=> 'required'
         ]);
         
+        // dd($request);
         $data = $request->all();
 
         if ($data['people_id']['id']) {
