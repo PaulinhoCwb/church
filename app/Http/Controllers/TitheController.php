@@ -28,9 +28,14 @@ class TitheController extends Controller
      */
     public function create()
     {
-        $tithes = Tithe::all();
-        $sum = $tithes->sum('money_value');
-        dd($sum);
+        $name = 'Lucas';
+        $sql = "SELECT name, dateofbirth FROM ";
+        $sql .= "(SELECT name,dateofbirth FROM people UNION SELECT name, dateofbirth FROM dependents) AS PESSOAS";
+        $sql .= " WHERE name LIKE '".$name."%'";
+        
+        $persons =  DB::select($sql);
+
+        dd($persons);
     }
 
     /**

@@ -42,6 +42,10 @@ Vue.use(VueProgressBar,{
 Vue.filter('dateToBR', function (date) {
     return (date) ? moment(date).format('DD/MM/YYYY') : '-------';
 });
+
+Vue.filter('sliceName', function (data) {
+  return data.slice(0,17);
+})
 // let routes = [
 //     { path: '/', redirect: '/dashboard' },
 //     { path: '/dashboard', component: require('./components/Dashboard.vue') },
