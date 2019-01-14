@@ -98,4 +98,12 @@ class DependentController extends Controller
     {
         //
     }
+
+    public function weedingBirthDay()
+    {
+        $month = date('m');
+        $dependents = Dependent::whereMonth('weddingdata',$month)->get();
+
+        return Response::json($dependents->count());
+    }
 }

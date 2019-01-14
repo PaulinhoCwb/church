@@ -46,13 +46,25 @@
               <span class="info-box-icon bg-warning-gradient"><i class="fas fa-birthday-cake"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Total Dizimo</span>
-                <span class="info-box-number">R$ {{ dizimo }}</span>
+                <span class="info-box-text">Casamentos do mês</span>
+                <span class="info-box-number">{{ weeding }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card card-success">
+                    <div class="card-header">
+                        Dizimo mensal
+                    </div>
+                    <div class="card-body">
+                         <graphic height="300"></graphic>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -97,8 +109,12 @@
 </template>
 
 <script>
+    import Graphic from './Graphic/Graphic';
     export default {
         name: 'dashboard',
+        components: {
+            Graphic
+        },
         data: function () {
             return {
                 title: "Dashboard",
@@ -106,6 +122,7 @@
                 totalPerson: '',
                 dizimo: 0,
                 birthdays: 0,
+                weeding: 0,
             }
         },
         methods: {
@@ -135,7 +152,7 @@
                 });
             },
 
-            getBirthdays(){
+            getBirthdays() {
                 axios.get('person/birthdays').then((res) => {
                     if (res) {
                         this.birthdays = res.data;
@@ -145,6 +162,14 @@
                 }).catch((res) => {
 
                 });
+            },
+
+            getWeedingDay() {
+                axios.get('weeding').then((res)=>{
+                    this.weeding = res.data;
+                }).catch((res)=>{
+                    console.log();
+                });
             }
         },
         mounted() {
@@ -152,6 +177,7 @@
             this.getTotalPersons();
             this.getTotalTithe();
             this.getBirthdays();
+            this.getWeedingDay();
         }
     }
 </script>
