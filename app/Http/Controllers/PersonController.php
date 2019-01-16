@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use App\Http\Resources\Person as PersonResource;
 
 class PersonController extends Controller
 {
@@ -18,7 +19,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        return Person::latest('id')->paginate(10);
+        $persons = Person::paginate(10);
+        return PersonResource::collection($persons);
     }
 
     /**

@@ -61,7 +61,7 @@
                         Dizimo mensal
                     </div>
                     <div class="card-body">
-                         <graphic height="300"></graphic>
+                         <graphic :chart-data="dataCollection"></graphic>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(person, index) in persons.data" :key="index">
+                            <tr v-for="(person, index) in persons" :key="index">
                                 <td>{{ person.name }}</td>
                                 <td>{{ person.dateofbirth | dateToBR }}</td>
                                 <td>{{ person.cellphone }}</td>
@@ -102,6 +102,15 @@
                             </tr>
                         </tbody>
                     </table>
+                     <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                             <li v-bind:class="[{disabled: !pagination.prev_page_url}]" class="page-item"><a class="page-link" href="#" @click="fetchArticles(pagination.prev_page_url)">Previous</a></li>
+
+                             <li class="page-item disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
+    
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link" href="#" @click="fetchArticles(pagination.next_page_url)">Next</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -123,20 +132,25 @@
                 dizimo: 0,
                 birthdays: 0,
                 weeding: 0,
+                pagination: {},
+                dataCollection: null
             }
         },
         methods: {
-            getPersons() {
-                this.$Progress.start();
-                axios.get('persons').then((res) => {
+            getPersons(pageUrl) {
+                let vm = this;
+                pageUrl = pageUrl || 'persons';
+
+                fetch(pageUrl)
+                .then(res => res.json())
+                .then(res => {
                     this.persons = res.data;
+                    vm.makePagination(res.meta, res.links);
                 });
-                this.$Progress.finish()
             },
 
             getTotalPersons() {
                 axios.get('total/person').then((res) => {
-                    console.log(res);
                     this.totalPerson = res.data; 
                 }).catch((res) => {
                     console.log(res);
@@ -145,7 +159,6 @@
 
             getTotalTithe() {
                 axios.get('/tithe/total').then((res) => {
-                    console.log(res);
                     this.dizimo = res.data;
                 }).catch((res)=>{
                     console.log(res);
@@ -170,6 +183,50 @@
                 }).catch((res)=>{
                     console.log();
                 });
+            },
+
+            makePagination(meta, links) {
+                let pagination = {
+                    current_page: meta.current_page,
+                    last_page: meta.last_page,
+                    next_page_url: links.next,
+                    prev_page_url: links.prev
+                };
+                this.pagination = pagination;
+            },
+
+            getDataGraphic() {
+                axios.get('tithe/graphic')
+                .then((res) => { 
+                    console.log(res.data);
+                    this.dataCollection = {
+                        labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"
+                            ,"Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
+                         datasets: [
+                            {
+                                label: 'Dizimo',
+                                data: res.data,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                ]
+                            }
+                        ]
+                    }
+                })
+                .catch(res => {
+
+                });
             }
         },
         mounted() {
@@ -178,6 +235,7 @@
             this.getTotalTithe();
             this.getBirthdays();
             this.getWeedingDay();
+            this.getDataGraphic();
         }
     }
 </script>

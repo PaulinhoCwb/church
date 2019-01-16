@@ -23,5 +23,7 @@ Route::get('/total/person','PersonController@getTotal')->name('total.person');
 Route::get('/person/one/{id}','PersonController@getOnePerson');
 Route::get('/person/birthdays','PersonController@getBirthdays');
 Route::get('/tithe/total','TitheController@getTotalTithe');
+Route::get('/tithe/graphic','TitheController@getDataGraphic');
+Route::get('/search','SearchController@search');
 Route::get('/search','SearchController@search');
 Route::get('/weeding','DependentController@weedingBirthDay');

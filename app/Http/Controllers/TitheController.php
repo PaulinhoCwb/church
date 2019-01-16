@@ -116,4 +116,24 @@ class TitheController extends Controller
         $sum = number_format($tithes->sum('money_value'),2,',','.');
         return Response::json($sum);
     }
+
+    public function getDataGraphic()
+    {
+        $tithes = DB::table('tithes')
+        ->select(DB::raw('SUM(money_value) AS TOTAL'))
+        ->groupBy(DB::raw('EXTRACT(MONTH FROM paid_at)'))
+        ->get();
+
+        $arrValues = array();
+        foreach ($tithes as $key) {
+            array_push($arrValues,$key->TOTAL);
+        }
+
+        $count = count($tithes);
+        for ($i=$count; $i < 12; $i++) { 
+            array_push($arrValues,0);
+        }
+        
+        return Response::json($arrValues);
+    }
 }
