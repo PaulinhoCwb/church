@@ -115,7 +115,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <a href="index3.html" class="brand-link">
       <img src="" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Paroquia</span>
     </a>
 
     <!-- Sidebar -->
@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Paroquia São Judas</a>
         </div>
       </div>
 
@@ -214,10 +214,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      Version 1.1
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="#">JpWebDev</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

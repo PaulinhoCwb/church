@@ -27,3 +27,4 @@ Route::get('/tithe/graphic','TitheController@getDataGraphic');
 Route::get('/search','SearchController@search');
 Route::get('/search','SearchController@search');
 Route::get('/weeding','DependentController@weedingBirthDay');
+Route::get('/value/tithe/{id}','TitheController@getValueTithe');

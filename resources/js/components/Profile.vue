@@ -25,8 +25,10 @@
                                 <!-- /.col -->
                                 <div class="col-sm-4 border-right">
                                     <div class="description-block">
-                                        <h5 class="description-header">13,000</h5>
-                                        <span class="description-text">FOLLOWERS</span>
+                                        <h5 class="description-header">Dizimo pago</h5>
+                                        <span class="description-text">
+                                            R$ {{ tithe }}
+                                        </span>
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -95,21 +97,32 @@
                 name: '',
                 totalDependets: [],
                 cadastradoAt: '',
-                idPerson: this.$route.params.id
+                idPerson: this.$route.params.id,
+                tithe: 0
             }
         },
         methods: {
             getProfile () {
                 axios.get('persons/'+this.idPerson).then((res) => {
-                    console.log(res.data.name);
                     this.name = res.data.name;
                     this.totalDependets = res.data.dependents;
                     this.cadastradoAt = res.data.created_at;
+                });
+            },
+
+            getTithes () {
+                axios.get('value/tithe/'+this.idPerson)
+                .then(res => {
+                    this.tithe = res.data;
+                })
+                .catch(res => {
+                    console.log(res);
                 });
             }
         },
         mounted() {
             this.getProfile();
+            this.getTithes();
         }
     }
 

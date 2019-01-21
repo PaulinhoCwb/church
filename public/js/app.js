@@ -73439,7 +73439,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     datasets: [{
                         label: 'Dizimo',
                         data: res.data,
-                        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 159, 64, 0.2)']
+                        backgroundColor: ['rgba(255, 99, 132)', 'rgba(54, 162, 235)', 'rgba(255, 206, 86)', 'rgba(75, 192, 192)', 'rgba(153, 102, 255)', 'rgba(255, 159, 64)', 'rgba(255, 159, 64)', 'rgba(255, 159, 64)', 'rgba(255, 159, 64)', 'rgba(255, 159, 64)', 'rgba(255, 159, 64)', 'rgba(255, 159, 64)']
                     }]
                 };
             }).catch(function (res) {});
@@ -84821,6 +84821,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "profile",
@@ -84829,7 +84831,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             name: '',
             totalDependets: [],
             cadastradoAt: '',
-            idPerson: this.$route.params.id
+            idPerson: this.$route.params.id,
+            tithe: 0
         };
     },
 
@@ -84838,15 +84841,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.get('persons/' + this.idPerson).then(function (res) {
-                console.log(res.data.name);
                 _this.name = res.data.name;
                 _this.totalDependets = res.data.dependents;
                 _this.cadastradoAt = res.data.created_at;
+            });
+        },
+        getTithes: function getTithes() {
+            var _this2 = this;
+
+            axios.get('value/tithe/' + this.idPerson).then(function (res) {
+                _this2.tithe = res.data;
+            }).catch(function (res) {
+                console.log(res);
             });
         }
     },
     mounted: function mounted() {
         this.getProfile();
+        this.getTithes();
     }
 });
 
@@ -84883,7 +84895,21 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "col-sm-4 border-right" }, [
+              _c("div", { staticClass: "description-block" }, [
+                _c("h5", { staticClass: "description-header" }, [
+                  _vm._v("Dizimo pago")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "description-text" }, [
+                  _vm._v(
+                    "\n                                    R$ " +
+                      _vm._s(_vm.tithe) +
+                      "\n                                "
+                  )
+                ])
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-4" }, [
               _c("div", { staticClass: "description-block" }, [
@@ -84903,7 +84929,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "col-md-12" }, [
       _c("div", { staticClass: "card card-info collapsed-card" }, [
-        _vm._m(2),
+        _vm._m(1),
         _vm._v(" "),
         _c(
           "div",
@@ -84911,7 +84937,7 @@ var render = function() {
           [
             _c("div", { staticClass: "table-responsive" }, [
               _c("table", [
-                _vm._m(3),
+                _vm._m(2),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -84955,18 +84981,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "widget-user-image" }, [
       _c("i", { staticClass: "fas fa-user fa-2x img-circle elevation-2" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-4 border-right" }, [
-      _c("div", { staticClass: "description-block" }, [
-        _c("h5", { staticClass: "description-header" }, [_vm._v("13,000")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "description-text" }, [_vm._v("FOLLOWERS")])
-      ])
     ])
   },
   function() {

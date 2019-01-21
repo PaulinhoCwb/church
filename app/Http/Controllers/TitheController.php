@@ -136,4 +136,11 @@ class TitheController extends Controller
         
         return Response::json($arrValues);
     }
+
+    public function getValueTithe($id)
+    {
+        $tithe = Tithe::where('people_id',$id)->sum('money_value');
+
+        return Response::json($tithe);
+    }
 }
