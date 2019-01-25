@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/login', function () {
+    return view('login');
+});
 Route::resource('persons', 'PersonController');
 Route::resource('dependents', 'DependentController');
 Route::resource('tithes','TitheController');
