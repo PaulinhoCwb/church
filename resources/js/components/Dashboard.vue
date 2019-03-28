@@ -55,18 +55,6 @@
           </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="card card-success">
-                    <div class="card-header">
-                        Dizimo mensal
-                    </div>
-                    <div class="card-body">
-                         <graphic :chart-data="dataCollection"></graphic>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -118,12 +106,12 @@
 </template>
 
 <script>
-    import Graphic from './Graphic/Graphic';
+    // import Graphic from './Graphic/Graphic';
     export default {
         name: 'dashboard',
-        components: {
-            Graphic
-        },
+        // components: {
+        //     Graphic
+        // },
         data: function () {
             return {
                 title: "Dashboard",
@@ -158,7 +146,7 @@
             },
 
             getTotalTithe() {
-                axios.get('/tithe/total').then((res) => {
+                axios.get('api/tithe/total').then((res) => {
                     this.dizimo = res.data;
                 }).catch((res)=>{
                     console.log(res);
@@ -195,39 +183,39 @@
                 this.pagination = pagination;
             },
 
-            getDataGraphic() {
-                axios.get('tithe/graphic')
-                .then((res) => { 
-                    console.log(res.data);
-                    this.dataCollection = {
-                        labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"
-                            ,"Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
-                         datasets: [
-                            {
-                                label: 'Dizimo',
-                                data: res.data,
-                                backgroundColor: [
-                                    'rgba(255, 99, 132)',
-                                    'rgba(54, 162, 235)',
-                                    'rgba(255, 206, 86)',
-                                    'rgba(75, 192, 192)',
-                                    'rgba(153, 102, 255)',
-                                    'rgba(255, 159, 64)',
-                                    'rgba(255, 159, 64)',
-                                    'rgba(255, 159, 64)',
-                                    'rgba(255, 159, 64)',
-                                    'rgba(255, 159, 64)',
-                                    'rgba(255, 159, 64)',
-                                    'rgba(255, 159, 64)',
-                                ]
-                            }
-                        ]
-                    }
-                })
-                .catch(res => {
+            // getDataGraphic() {
+            //     axios.get('tithe/graphic')
+            //     .then((res) => { 
+            //         console.log(res.data);
+            //         this.dataCollection = {
+            //             labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"
+            //                 ,"Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
+            //              datasets: [
+            //                 {
+            //                     label: 'Dizimo',
+            //                     data: res.data,
+            //                     backgroundColor: [
+            //                         'rgba(255, 99, 132)',
+            //                         'rgba(54, 162, 235)',
+            //                         'rgba(255, 206, 86)',
+            //                         'rgba(75, 192, 192)',
+            //                         'rgba(153, 102, 255)',
+            //                         'rgba(255, 159, 64)',
+            //                         'rgba(255, 159, 64)',
+            //                         'rgba(255, 159, 64)',
+            //                         'rgba(255, 159, 64)',
+            //                         'rgba(255, 159, 64)',
+            //                         'rgba(255, 159, 64)',
+            //                         'rgba(255, 159, 64)',
+            //                     ]
+            //                 }
+            //             ]
+            //         }
+            //     })
+            //     .catch(res => {
 
-                });
-            }
+            //     });
+            // }
         },
         mounted() {
             this.getPersons();
@@ -235,7 +223,7 @@
             this.getTotalTithe();
             this.getBirthdays();
             this.getWeedingDay();
-            this.getDataGraphic();
+            // this.getDataGraphic();
         }
     }
 </script>

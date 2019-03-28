@@ -36,7 +36,7 @@
                         </thead>
 
                         <tbody>
-                            <tr v-for="token in tokens">
+                            <tr v-for="token in tokens" v-bind:key="index">
                                 <!-- Client Name -->
                                 <td style="vertical-align: middle;">
                                     {{ token.name }}

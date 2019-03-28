@@ -1,22 +1,22 @@
 <template>
     <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="../../index2.html"><b>Church</b>LTE</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Entre para iniciar sua sessão</p>
 
-      <form action="../../index2.html" method="post">
+      <form @submit.prevent="login">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" v-model="username" placeholder="Email">
           <div class="input-group-append">
               <span class="fa fa-envelope input-group-text"></span>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" v-model="senha" class="form-control" placeholder="Senha">
           <div class="input-group-append">
               <span class="fa fa-lock input-group-text"></span>
           </div>
@@ -24,7 +24,9 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+             <button type="submit" class="btn btn-primary btn-block btn-flat">
+              Entrar
+             </button>
           </div>
           <!-- /.col -->
         </div>
@@ -40,12 +42,30 @@ export default {
     name: 'login',
     data () {
         return {
-
+            username:'',
+            senha: ''
         }
     },
     methods: {
         login () {
-
+            axios.post('/oauth/token',{
+              'username': this.username,
+              'password': this.senha,
+              'grant_type': 'password',
+              'client_id': 2,
+              'client_secret':'uD2jbCXzWGAiNNMkbk4hYJAav1sqlOu4ceHELyGG'
+            }).then(res => res.data).then(res => {
+              if (res.access_token) {
+                localStorage.setItem('access_toke',res.access_token);
+                this.$router.push('/master');
+              }
+            }).catch(res => {
+                   toast({
+                    type: 'error',
+                    title: 'Usuario ou senha não conferem'
+                });
+            });
+            // this.$router.push('/master');
         }
     }
 }

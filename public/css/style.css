@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+body {
+    position: relative;
+  margin: 0;
+  min-height: 100%;
+}
+.banner {
+    background-color: #F6F6EA;
+    background-image: linear-gradient(141deg,#be8b8b 0%, #F6F6EA 51%,rgb(236, 236, 200) 75% );
+    opacity: 0.90;
+    text-align: center;
+    padding: 50px;
+}
+
+.banner h2 {
+
+    margin: 0;
+
+    font-size: 55px;
+
+    font-family: 'Open Sans Condensed', sans-serif;
+
+    font-weight: 700;
+
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+    text-transform: uppercase;
+
+}
+
+.bg-light {
+    background-color:#718792 !important;
+}
+.border-divider {
+
+    position: relative;
+
+    margin: 0px;
+
+    height: 5px;
+
+    border: 1px dashed #dedede;
+
+}
+
+.card-avisos {
+
+    width: calc(100% - 20px);
+
+    max-height: 126px;
+
+    margin: 10px;
+
+    display: flex;
+
+    flex-direction: row;
+
+    border-radius: 5px;
+
+    box-shadow: 12px 15px 20px rgba(0, 0, 0, 0.1);
+
+    transition: box-shadow .2 ease;
+
+}
+
+.card-avisos:hover,
+.card:hover {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-avisos .icone {
+
+    width: 30%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 15px;
+
+    background-color: #ccc;
+    opacity: 0.6;
+}
+
+.card-avisos .content {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.card {
+    border: none;
+    box-shadow: 12px 15px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow .2 ease;
+}
+
+#back-news {
+    background: url('../img/patternhead-helvetica1b-thumb.png');
+}
+
+.block-news {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.block-intecoes{
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.top-avisos {
+    position: absolute;
+    top: -5px;
+    left: 90%;
+}
+.wrapper {
+    padding-bottom: 130px;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+@media (max-width: 576px) {
+    .wrapper {
+      padding-bottom: 170px;
+    }
+}
+
+.warning-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 2px dashed #ccc;
+}
+

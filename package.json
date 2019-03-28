@@ -21,7 +21,7 @@
         "popper.js": "^1.12",
         "vue": "^2.5.17",
         "vuetable-2": "^1.7.5",
-        "webpack": "^4.29.0",
+        "webpack": "^3.11.0",
         "webpack-cli": "^3.2.1"
     },
     "dependencies": {
