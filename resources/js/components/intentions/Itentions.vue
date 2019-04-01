@@ -20,7 +20,18 @@
 
 <script>
 export default {
+    name: "intencoes",
+    data () {
+        return {
 
+        }
+    },
+    methods: {
+        getIntentions () {
+            let vm = this;
+            pageUrl = pageUrl || 'intentions';
+        }
+    }
 }
 </script>
 

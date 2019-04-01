@@ -18,6 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @section('map')
     <script type='text/javascript'>

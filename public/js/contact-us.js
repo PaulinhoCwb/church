@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('form#contact-us').submit(function (event) {
         event.preventDefault();
         let url = $(this).attr('action');
-        console.log(url);
+        
         $.ajax({
             url: url,
             type: 'POST',

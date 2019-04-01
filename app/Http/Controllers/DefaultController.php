@@ -31,7 +31,7 @@ class DefaultController extends Controller
 
     public function intentions()
     {
-        return view('intencoes');
+        return view('intencoes',['type' => null, 'message' => null]);
     }
 
     public function contactUs(Request $request)
@@ -46,9 +46,19 @@ class DefaultController extends Controller
 
     public function intentionsSave(Request $request)
     {
-        $request->validate([
-            
-        ]);
-        Intention::create($request->all());
+        $type = null;
+        $message = null;
+        $data = $request->all();
+        $data['data'] = dateToMySQL($request->data);
+        
+        if(Intention::create($data)){
+            $type = "success";
+            $message = "foi enviado com successo!!!";
+        } else {
+            $type = "error";
+            $message = "Não pode ser concluida!!!";
+        }
+
+        return view('intencoes',['type'=> $type, 'message' => $message]);
     }
 }

@@ -153,3 +153,7 @@ footer {
     border-bottom: 2px dashed #ccc;
 }
 
+.bootstrap-timepicker-widget table td a i {
+    margin-left: -20px;
+}
+
