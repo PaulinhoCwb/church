@@ -1,7 +1,7 @@
 <template>
     <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Church</b>LTE</a>
+    <a href="../../index2.html"><b>Church System</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -48,12 +48,12 @@ export default {
     },
     methods: {
         login () {
-            axios.post('/oauth/token',{
+            axios.post('login',{
               'username': this.username,
               'password': this.senha,
-              'grant_type': 'password',
-              'client_id': 2,
-              'client_secret':'uD2jbCXzWGAiNNMkbk4hYJAav1sqlOu4ceHELyGG'
+              // 'grant_type': 'password',
+              // 'client_id': 2,
+              // 'client_secret':'uD2jbCXzWGAiNNMkbk4hYJAav1sqlOu4ceHELyGG'
             }).then(res => res.data).then(res => {
               if (res.access_token) {
                 localStorage.setItem('access_toke',res.access_token);

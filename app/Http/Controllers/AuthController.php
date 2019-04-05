@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $http = new \GuzzleHttp\Client(['base_uri' => 'http://www.santuariosantateresinha41.com.br']);
+        $http = new \GuzzleHttp\Client(['base_uri' => 'https://www.santuariosantateresinha41.com.br']);
         
         try {
             $response = $http->post('/oauth/token',[

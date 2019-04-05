@@ -11,8 +11,8 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-12">
-                            <label for="">Descrião</label>
-                            <textarea name="descricao" class="form-control" id="descricao" cols="30" rows="10"></textarea>
+                            <label for="">Descrição</label>
+                            <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
                         </div>
                     </div>
                     <button class="btn btn-dark float-right" type="submit">Salvar</button>
@@ -23,8 +23,19 @@
 </template>
 
 <script>
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
-    name: 'intentions'
+    name: 'intentions',
+     data() {
+            return {
+                editor: ClassicEditor,
+                editorData: '<p>Content of the editor.</p>',
+                editorConfig: {
+                    //
+                }
+            };
+        }
+    
 }
 </script>
 

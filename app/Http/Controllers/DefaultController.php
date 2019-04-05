@@ -24,7 +24,7 @@ class DefaultController extends Controller
         return view('horarios');
     }
 
-    public function catequese()
+    public function catequese() 
     {
         return view('catequese');
     }

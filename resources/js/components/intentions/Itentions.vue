@@ -2,7 +2,7 @@
     <div>
         <div class="row justify-content-ce">
             <div class="col-12">
-                <table>
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Data</th>
@@ -23,13 +23,17 @@ export default {
     name: "intencoes",
     data () {
         return {
-
+            intentions: []
         }
     },
     methods: {
         getIntentions () {
             let vm = this;
             pageUrl = pageUrl || 'intentions';
+            fetch(pageUrl).then(res => res.json()).then(res => {
+                this.intentions = res.data;
+                vm.makePagination(res.meta, res,links);
+            }).catch();
         }
     }
 }
