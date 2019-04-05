@@ -123,7 +123,7 @@
                                     </div> 
                                     <div class="form-group col-md-6 col-xs-12">
                                         <label for="">Fone</label> 
-                                        <input type="text" name="fone" class="form-control">
+                                        <input type="text" name="fone" id="fone" class="form-control">
                                     </div>
                                 </div>
                                 <button class="btn btn-success float-right" type="submit">Enviar</button>
