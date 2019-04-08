@@ -26,7 +26,7 @@
             </div>
             <!-- /.info-box -->
           </div>
-          <!-- /.col -->
+          <!-- /.col --> 
         </div>
         <div class="row">
              <div class="col-md-6 col-sm-6 col-12">
@@ -77,10 +77,10 @@
                                     <router-link :to="{name: 'profile' ,params:{id: person.id}}" class="btn btn-outline-info btn-sm">
                                         <i class="fas fa-info-circle"></i>
                                     </router-link>
-                                     <a href="" class="btn btn-outline-secondary btn-sm">
+                                     <a @click="deletePerson(person.id, index)" class="btn btn-outline-secondary btn-sm">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
-                                    <a href="" class="btn btn-outline-danger btn-sm">
+                                    <a class="btn btn-outline-danger btn-sm">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <router-link :to="{name: 'tithe-single', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
@@ -92,11 +92,11 @@
                     </table>
                      <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                             <li v-bind:class="[{disabled: !pagination.prev_page_url}]" class="page-item"><a class="page-link" href="#" @click="fetchArticles(pagination.prev_page_url)">Previous</a></li>
+                             <li v-bind:class="[{disabled: !pagination.prev_page_url}]" class="page-item"><a class="page-link" href="#" @click="getPersons(pagination.prev_page_url)">Anterior</a></li>
 
-                             <li class="page-item disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
+                             <li class="page-item disabled"><a class="page-link text-dark" href="#">Pagina {{ pagination.current_page }} De {{ pagination.last_page }}</a></li>
     
-                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link" href="#" @click="fetchArticles(pagination.next_page_url)">Next</a></li>
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link" href="#" @click="getPersons(pagination.next_page_url)">Proximo</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -146,7 +146,7 @@
             },
 
             getTotalTithe() {
-                axios.get('api/tithe/total').then((res) => {
+                axios.get('tithe/total').then((res) => {
                     this.dizimo = res.data;
                 }).catch((res)=>{
                     console.log(res);
@@ -183,6 +183,14 @@
                 this.pagination = pagination;
             },
 
+            deletePerson(id, index){
+                axios.delete('persons/'+id).then((response) => {
+                    console.log(response.data);
+                    this.persons.splice(index, 1);
+                }).catch((response) => {
+
+                });
+            }
             // getDataGraphic() {
             //     axios.get('tithe/graphic')
             //     .then((res) => { 

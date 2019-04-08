@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="row justify-content-center">
+            <p id="nada"></p>
             <div class="col-12">
                 <form action="" method="post">
                     <div class="form-row">
@@ -26,15 +27,18 @@
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
     name: 'intentions',
-     data() {
-            return {
-                editor: ClassicEditor,
-                editorData: '<p>Content of the editor.</p>',
-                editorConfig: {
-                    //
-                }
-            };
-        }
+    data() {
+        return {
+            editor: ClassicEditor,
+            editorData: '',
+            editorConfig: {
+               
+            }
+        };
+    },
+    mounted () {
+    
+    }
     
 }
 </script>

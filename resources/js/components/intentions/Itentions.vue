@@ -12,6 +12,11 @@
                             <th>Tipo</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr v-for="(intention, index) in intentions" :key="index">
+                            <td>{{ intention.data }}</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -32,7 +37,7 @@ export default {
             pageUrl = pageUrl || 'intentions';
             fetch(pageUrl).then(res => res.json()).then(res => {
                 this.intentions = res.data;
-                vm.makePagination(res.meta, res,links);
+                // vm.makePagination(res.meta, res,links);
             }).catch();
         }
     }
