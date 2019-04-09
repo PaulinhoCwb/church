@@ -15,6 +15,10 @@
                     <tbody>
                         <tr v-for="(intention, index) in intentions" :key="index">
                             <td>{{ intention.data }}</td>
+                            <td>{{ intention.contato }}</td>
+                            <td>{{ (intention.intencao)? intention.intencao: "---"}}</td>
+                            <td>{{ intention.data+ "-"+ intention.hora}}</td>
+                            <td>{{ intention.type }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -32,14 +36,16 @@ export default {
         }
     },
     methods: {
-        getIntentions () {
+        getIntentions (pageUrl) {
             let vm = this;
             pageUrl = pageUrl || 'intentions';
-            fetch(pageUrl).then(res => res.json()).then(res => {
-                this.intentions = res.data;
-                // vm.makePagination(res.meta, res,links);
+            axios.get(pageUrl).then((res) => {
+                this.intentions = res.data.data
             }).catch();
         }
+    },
+    mounted () {
+        this.getIntentions(); 
     }
 }
 </script>

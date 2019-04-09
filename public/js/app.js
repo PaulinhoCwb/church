@@ -74073,7 +74073,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74110,6 +74110,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -74117,14 +74124,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             editor: __WEBPACK_IMPORTED_MODULE_0__ckeditor_ckeditor5_build_classic___default.a,
-            editorData: '<p>Content of the editor.</p>',
-            editorConfig: {
-                ckfinder: {
-                    uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
-                }
-            }
+            editorData: '',
+            editorConfig: {}
         };
-    }
+    },
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -74148,9 +74152,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "row justify-content-center" }, [
+      _c("p", { attrs: { id: "nada" } }),
+      _vm._v(" "),
       _c("div", { staticClass: "col-12" }, [
         _c("form", { attrs: { action: "", method: "post" } }, [
           _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
           _vm._v(" "),
           _c("div", { staticClass: "form-row" }, [
             _c(
@@ -74199,6 +74207,21 @@ var staticRenderFns = [
         _c("input", {
           staticClass: "form-control",
           attrs: { type: "text", name: "news_title", id: "news_title" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-row" }, [
+      _c("div", { staticClass: "form-group col-12" }, [
+        _c("label", { attrs: { for: "" } }, [_vm._v("Categoria")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "categoria", id: "categoria" }
         })
       ])
     ])
@@ -74299,7 +74322,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74335,6 +74358,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "intencoes",
@@ -74345,18 +74372,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        getIntentions: function getIntentions() {
+        getIntentions: function getIntentions(pageUrl) {
             var _this = this;
 
             var vm = this;
             pageUrl = pageUrl || 'intentions';
-            fetch(pageUrl).then(function (res) {
-                return res.json();
-            }).then(function (res) {
-                _this.intentions = res.data;
-                // vm.makePagination(res.meta, res,links);
+            axios.get(pageUrl).then(function (res) {
+                _this.intentions = res.data.data;
             }).catch();
         }
+    },
+    mounted: function mounted() {
+        this.getIntentions();
     }
 });
 
@@ -74378,7 +74405,21 @@ var render = function() {
             "tbody",
             _vm._l(_vm.intentions, function(intention, index) {
               return _c("tr", { key: index }, [
-                _c("td", [_vm._v(_vm._s(intention.data))])
+                _c("td", [_vm._v(_vm._s(intention.data))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(intention.contato))]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(intention.intencao ? intention.intencao : "---")
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(_vm._s(intention.data + "-" + intention.hora))
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(intention.type))])
               ])
             }),
             0

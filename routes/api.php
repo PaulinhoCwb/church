@@ -18,9 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('login','AuthController@login');
-Route::apiResource('persons','PersonController');
+Route::apiResource([
+     'persons' => 'PersonController',
+     'intentions' => 'IntentionController@index'
+]);
 Route::get('tithe/total','TitheController@getTotalTithe');
-Route::get('intention','IntentionController@index');
 // Route::post('/register','AuthController@register');
 Route::get('/total/person','PersonController@getTotal');
 // Route::post('/cep','PersonController@getZipCode');

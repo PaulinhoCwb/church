@@ -16,6 +16,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 toastr.info('Mensagem enviada com successo!!!');
+                $(this)[0].reset();
             },
             error: function (data) {
                 toastr.error('Erro ao enviar!!!');

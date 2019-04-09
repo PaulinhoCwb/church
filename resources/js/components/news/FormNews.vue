@@ -12,6 +12,12 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-12">
+                            <label for="">Categoria</label>
+                            <input type="text" class="form-control" name="categoria" id="categoria">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
                             <label for="">Descrição</label>
                             <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
                         </div>
