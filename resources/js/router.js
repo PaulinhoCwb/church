@@ -26,6 +26,6 @@ export default new VueRouter({
             ] 
         },
       ],
-    mode: 'history',
+    mode: 'hash',
     linkActiveClass: "active",
 });
