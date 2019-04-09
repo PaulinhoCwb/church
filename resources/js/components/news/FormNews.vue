@@ -31,17 +31,21 @@
 
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Editor from '@tinymce/tinymce-vue'
 export default {
     name: 'intentions',
-    data() {
-        return {
-            editor: ClassicEditor,
-            editorData: '',
-            editorConfig: {
-               
-            }
-        };
+    components: {
+        'editor': Editor
     },
+    // data() {
+    //     return {
+    //         editor: ClassicEditor,
+    //         editorData: '',
+    //         editorConfig: {
+               
+    //         }
+    //     };
+    // },
     mounted () {
     
     }
