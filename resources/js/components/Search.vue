@@ -79,6 +79,9 @@ export default {
                 params: {
                     month: this.form.month,
                     name: this.form.name
+                },
+                headers:{
+                    Authorization: 'Bearer ' + localStorage.getItem('access_token')
                 }
             }).then((res) => {
                 this.persons = res.data;

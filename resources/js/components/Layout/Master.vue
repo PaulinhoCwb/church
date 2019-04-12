@@ -16,7 +16,6 @@
                     <router-link class="nav-link" to="/logout">
                         <i class="fas fa-sign-out-alt"></i>
                     </router-link>
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
                 </li>
             </ul>
         </nav> 
@@ -136,26 +135,15 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
         
-        <!-- <footer class="main-footer">
+         <footer class="main-footer">
         
             <div class="float-right d-none d-sm-inline">
                 Version 1.1
             </div>
     
             <strong>Copyright &copy; 2019 <a href="#">JpWebDev</a>.</strong> All rights reserved.
-        </footer> -->
+        </footer>
     </div>
 </template>
 

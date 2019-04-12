@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use App\Http\Resources\News as NewsResource;
+use Illuminate\Support\Facades\Auth;
 
 class NewController extends Controller
 {
@@ -13,7 +17,7 @@ class NewController extends Controller
      */
     public function index()
     {
-        return view('noticias');
+        return NewsResource::collection(News::paginate(10));
     }
 
     /**
@@ -34,7 +38,17 @@ class NewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'tipo' => 'required',
+            'titulo' => 'required',
+            'body' => 'required',
+        ]);
+        $user = Auth::guard('api')->user();
+        $data = $request->all();
+        $data['user_id'] = $user->id;
+        $news = News::create($data);
+
+        return Response::json($news);
     }
 
     /**

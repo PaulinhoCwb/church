@@ -2,6 +2,7 @@
     <div>
         <div class="row">
           <div class="col-md-6 col-sm-6 col-12">
+              
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="fas fa-users"></i></span>
 
@@ -106,12 +107,8 @@
 </template>
 
 <script>
-    // import Graphic from './Graphic/Graphic';
     export default {
         name: 'dashboard',
-        // components: {
-        //     Graphic
-        // },
         data: function () {
             return {
                 title: "Dashboard",
@@ -121,7 +118,7 @@
                 birthdays: 0,
                 weeding: 0,
                 pagination: {},
-                dataCollection: null
+                dataCollection: null,
             }
         },
         methods: {
@@ -129,16 +126,25 @@
                 let vm = this;
                 pageUrl = pageUrl || 'persons';
 
-                fetch(pageUrl)
-                .then(res => res.json())
+                axios.get(pageUrl,{
+                    headers:{
+                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                })
                 .then(res => {
-                    this.persons = res.data;
-                    vm.makePagination(res.meta, res.links);
+                    this.persons = res.data.data;
+                    vm.makePagination(res.data.meta, res.data.links);
+                }).catch((res) => {
+
                 });
             },
 
             getTotalPersons() {
-                axios.get('total/person').then((res) => {
+                axios.get('total/person',{
+                    headers:{
+                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                     this.totalPerson = res.data; 
                 }).catch((res) => {
                     console.log(res);
@@ -146,7 +152,11 @@
             },
 
             getTotalTithe() {
-                axios.get('tithe/total').then((res) => {
+                axios.get('tithe/total',{
+                    headers:{
+                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                     this.dizimo = res.data;
                 }).catch((res)=>{
                     console.log(res);
@@ -154,7 +164,11 @@
             },
 
             getBirthdays() {
-                axios.get('person/birthdays').then((res) => {
+                axios.get('person/birthdays',{
+                    headers:{
+                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                     if (res) {
                         this.birthdays = res.data;
                     } else {
@@ -166,7 +180,11 @@
             },
 
             getWeedingDay() {
-                axios.get('weeding').then((res)=>{
+                axios.get('weeding',{
+                    headers:{
+                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                }).then((res)=>{
                     this.weeding = res.data;
                 }).catch((res)=>{
                     console.log();
@@ -184,46 +202,17 @@
             },
 
             deletePerson(id, index){
-                axios.delete('persons/'+id).then((response) => {
+                axios.delete('persons/'+id,{
+                    headers:{
+                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                }).then((response) => {
                     console.log(response.data);
                     this.persons.splice(index, 1);
                 }).catch((response) => {
 
                 });
             }
-            // getDataGraphic() {
-            //     axios.get('tithe/graphic')
-            //     .then((res) => { 
-            //         console.log(res.data);
-            //         this.dataCollection = {
-            //             labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"
-            //                 ,"Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
-            //              datasets: [
-            //                 {
-            //                     label: 'Dizimo',
-            //                     data: res.data,
-            //                     backgroundColor: [
-            //                         'rgba(255, 99, 132)',
-            //                         'rgba(54, 162, 235)',
-            //                         'rgba(255, 206, 86)',
-            //                         'rgba(75, 192, 192)',
-            //                         'rgba(153, 102, 255)',
-            //                         'rgba(255, 159, 64)',
-            //                         'rgba(255, 159, 64)',
-            //                         'rgba(255, 159, 64)',
-            //                         'rgba(255, 159, 64)',
-            //                         'rgba(255, 159, 64)',
-            //                         'rgba(255, 159, 64)',
-            //                         'rgba(255, 159, 64)',
-            //                     ]
-            //                 }
-            //             ]
-            //         }
-            //     })
-            //     .catch(res => {
-
-            //     });
-            // }
         },
         mounted() {
             this.getPersons();

@@ -15,8 +15,7 @@ import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
 import moment from 'moment';
 import vSelect from 'vue-select';
-import { store } from "./Store/store";
-import CKEditor from '@ckeditor/ckeditor5-vue';
+import store from "./Store/store"; 
 
 window.Form = Form;
 window.swal = swal;
@@ -33,7 +32,6 @@ Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 Vue.component('v-select',vSelect);
 
-Vue.use(CKEditor);
 Vue.use(FullCalendar);
 Vue.use(VueProgressBar,{
     color: 'blue',
@@ -86,8 +84,8 @@ Vue.component(
 
 const app = new Vue({
     el: '#app',
+    store: store,
     router: router,
-    store,
     mounted () {
         //  [App.vue specific] When App.vue is finish loading finish the progress bar
         this.$Progress.finish()

@@ -113,8 +113,8 @@ class TitheController extends Controller
     public function getTotalTithe()
     {
         $tithes = Tithe::all();
-        $sum = number_format($tithes->sum('money_value'),2,',','.');
-        return Response::json($sum);
+        // $sum = number_format($tithes->sum('money_value'),2,',','.');
+        return Response::json(number_format($tithes->sum('money_value'),2,',','.'));
     }
 
     public function getDataGraphic()

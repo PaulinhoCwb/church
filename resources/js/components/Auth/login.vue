@@ -51,21 +51,15 @@ export default {
             axios.post('login',{
               'username': this.username,
               'password': this.senha,
-              // 'grant_type': 'password',
-              // 'client_id': 2,
-              // 'client_secret':'uD2jbCXzWGAiNNMkbk4hYJAav1sqlOu4ceHELyGG'
-            }).then(res => res.data).then(res => {
-              if (res.access_token) {
-                localStorage.setItem('access_toke',res.access_token);
-                this.$router.push('/master');
-              }
-            }).catch(res => {
-                   toast({
-                    type: 'error',
+            }).then((res) => {
+               localStorage.setItem('access_token', res.data.access_token);
+               this.$router.push('/master');
+            }).catch((res) => {
+                toast({
+                    type: 'error', 
                     title: 'Usuario ou senha não conferem'
                 });
             });
-            // this.$router.push('/master');
         }
     }
 }

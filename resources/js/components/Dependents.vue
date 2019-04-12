@@ -75,7 +75,11 @@ import {mask} from 'vue-the-mask'
         },
         methods: {
             createDependent () {
-                this.form.post('dependents')
+                this.form.post('dependents',{
+                    headers:{
+                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                })
                 .then((res) => {
                     if(res.data.id){
                         this.form.name = '';

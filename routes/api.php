@@ -13,16 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-     return $request->user();
+Route::middleware('auth:api')->group(function () {
+     Route::apiResources([
+          'persons'    => 'PersonController',
+          'intentions' => 'IntentionController',
+          'dependents' => 'DependentController',
+          'news'       => 'NewController'
+     ]);
+     Route::get('tithe/total','TitheController@getTotalTithe');
+     Route::get('/total/person','PersonController@getTotal');
 });
 
 Route::post('login','AuthController@login');
-Route::apiResource([
-     'persons' => 'PersonController',
-     'intentions' => 'IntentionController@index'
-]);
-Route::get('tithe/total','TitheController@getTotalTithe');
-// Route::post('/register','AuthController@register');
-Route::get('/total/person','PersonController@getTotal');
-// Route::post('/cep','PersonController@getZipCode');
+
+// // Route::post('/register','AuthController@register');
+// // Route::post('/cep','PersonController@getZipCode');

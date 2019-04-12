@@ -6,17 +6,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactUsShipped;
 use App\Intention;
+use function GuzzleHttp\Promise\queue;
+use App\News;
 
 class DefaultController extends Controller
 {
     public function news()
     {
-        return view('noticias');
+        $noticias = News::where('tipo',1);
+        return view('noticias',['noticias' => $noticias]);
     }
 
     public function warnings()
     {
-        return view('avisos');
+        $avisos = News::where('tipo',2);
+        return view('avisos',['avisos',$avisos]);
     }
 
     public function schedules()
@@ -26,7 +30,8 @@ class DefaultController extends Controller
 
     public function catequese() 
     {
-        return view('catequese');
+        $catequese = News::where(3);
+        return view('catequese',['catequese' => $catequese]);
     }
 
     public function intentions()
@@ -36,10 +41,11 @@ class DefaultController extends Controller
 
     public function contactUs(Request $request)
     {
-        \Mail::to('joaopaulocap10@gmail.com')->queue(new ContactUsShipped($request->nome,$request->mensagem));
+        \Mail::to('parstateresinhactba@gmail.com')->queue(new ContactUsShipped($request->nome,$request->mensagem));
+        \Mail::to($request->email)->queue(new ReceiveShipped($request->name));
     }
 
-    public function massRequest()
+    public function massRequest() 
     {
         
     }

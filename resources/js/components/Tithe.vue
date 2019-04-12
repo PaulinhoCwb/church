@@ -63,11 +63,11 @@ export default {
     },
     methods: {
         getPersons(){
-            axios.get('tithes').then((res) => {
+            axios.get('persons').then((res) => {
                 console.log(res);
-                this.persons = res.data;
+                this.persons = res.data.data;
             }).catch((res) => {
-
+                 
             });
         },
         createTithe() {

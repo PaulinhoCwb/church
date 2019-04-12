@@ -22,7 +22,9 @@ class AuthController extends Controller
                      'password' => $request->password,
                  ],
              ]);
-             return json_decode((string) $response->getBody(), true);
+            return json_decode((string) $response->getBody(), true);
+            // // dd((string)$response->getBody());
+            //  return response()->json((string)$response->getBody(),200,[],1);
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
             if($e->getCode() == 400) {
                 return response()->json('Invalid request', $e->getCode());
