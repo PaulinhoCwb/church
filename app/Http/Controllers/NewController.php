@@ -46,6 +46,7 @@ class NewController extends Controller
         $user = Auth::guard('api')->user();
         $data = $request->all();
         $data['user_id'] = $user->id;
+        
         $news = News::create($data);
 
         return Response::json($news);

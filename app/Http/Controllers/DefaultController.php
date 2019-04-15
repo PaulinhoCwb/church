@@ -13,7 +13,7 @@ class DefaultController extends Controller
 {
     public function news()
     {
-        $noticias = News::where('tipo',1);
+        $noticias = News::where('tipo',1)->orderBy('id','ASC')->get();
         return view('noticias',['noticias' => $noticias]);
     }
 
