@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('form#contact-us').submit(function (event) {
         event.preventDefault();
         let url = $(this).attr('action');
-        
+        console.log($(this)[0]);
         $.ajax({
             url: url,
             type: 'POST',
@@ -15,8 +15,14 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (data) {
-                toastr.info('Mensagem enviada com successo!!!');
-                $(this)[0].reset();
+                if (data.msg) {
+                    toastr.info('Mensagem enviada com successo!!!');
+                    $('#name').val("");
+                    $('#email').val("");
+                    $('#mensagem').val("");
+                } else {
+                    toastr.error('Erro ao enviar!!!');
+                }
             },
             error: function (data) {
                 toastr.error('Erro ao enviar!!!');

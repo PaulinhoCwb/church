@@ -29,6 +29,6 @@ class ReceiveShipped extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mails.receive');
+        return $this->subject('Contato Retorno')->markdown('mails.receive');
     }
 }

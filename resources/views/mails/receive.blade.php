@@ -1,5 +1,6 @@
 @component('mail::message')
-# Prezado(a) {{ $name }}
+# Prezado(a),<br>
+{{ $name }}
 
 Recebemos sua mensagem, em breve entraremos em contato.
 

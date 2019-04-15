@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactUsShipped;
-use App\Intention;
-use function GuzzleHttp\Promise\queue;
 use App\News;
+use App\Intention;
+use App\Mail\ReceiveShipped;
+use Illuminate\Http\Request;
+use App\Mail\ContactUsShipped;
+use Illuminate\Support\Facades\Mail;
+use function GuzzleHttp\Promise\queue;
 
 class DefaultController extends Controller
 {
@@ -41,8 +42,15 @@ class DefaultController extends Controller
 
     public function contactUs(Request $request)
     {
-        \Mail::to('parstateresinhactba@gmail.com')->queue(new ContactUsShipped($request->nome,$request->mensagem));
-        \Mail::to($request->email)->queue(new ReceiveShipped($request->name));
+        \Mail::to('joaopaulocap10@gmail.com')->queue(new ContactUsShipped($request->nome,$request->mensagem));
+        // \Mail::to($request->email)->queue(new ReceiveShipped($request->nome)); 
+         
+        if (\Mail::failures()) {
+            return response()->json(['msg' => false]);
+        } 
+
+        return response()->json(['msg' => true]);
+        
     }
 
     public function massRequest() 
