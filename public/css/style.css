@@ -104,11 +104,12 @@ body {
 }
 
 #back-news {
-    background: url('../img/patternhead-helvetica1b-thumb.png');
+    /* background: url('../img/patternhead-helvetica1b-thumb.png'); */
+    background-color: #fff;
 }
 
 .block-news {
-    background-color: #fff;
+    background-color: #E9E8E8;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -117,7 +118,7 @@ body {
 
 .block-intecoes{
     display: flex;
-    background-color: #fff;
+    background-color: #E9E8E8;
     flex-direction: column;
     padding: 10px;
     border-radius: 5px;
