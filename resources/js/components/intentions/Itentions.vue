@@ -18,7 +18,7 @@
                             <td>{{ intention.contato }}</td>
                             <td>{{ (intention.intencao)? intention.intencao: "---"}}</td>
                             <td>{{ intention.data+ "-"+ intention.hora}}</td>
-                            <td>{{ intention.type }}</td>
+                            <td>{{ (intention.type == 1) ? "Falecimentos" : "Intenção" }}</td>
                         </tr>
                     </tbody>
                 </table>

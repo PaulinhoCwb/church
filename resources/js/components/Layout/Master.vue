@@ -154,6 +154,16 @@
             return {
 
             }
+        },
+        methods: {
+            logout () {
+                axios.post('logout')
+                .then((res) => {
+                    
+                }).catch((res) => {
+
+                });
+            }
         }
     }
 

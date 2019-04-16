@@ -43,7 +43,7 @@ class DefaultController extends Controller
     public function contactUs(Request $request)
     {
         \Mail::to('joaopaulocap10@gmail.com')->queue(new ContactUsShipped($request->nome,$request->mensagem));
-        // \Mail::to($request->email)->queue(new ReceiveShipped($request->nome)); 
+        \Mail::to($request->email)->queue(new ReceiveShipped($request->nome)); 
          
         if (\Mail::failures()) {
             return response()->json(['msg' => false]);

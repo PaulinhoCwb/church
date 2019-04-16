@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-link class="btn btn-link" to="form-news">Cadastrar Noticia</router-link>
+        <router-link class="btn btn-default" to="form-news">Cadastrar Noticia</router-link>
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="table-responsive">
@@ -14,7 +14,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                          
+                          <tr v-for="noticia in news" :key="noticia.id">
+                              <td>{{ noticia.titulo }}</td>
+                              <td>{{ noticia.body }}</td>
+                              <td>{{ noticia.user.name }}</td>
+                              <td>{{ noticia.created_at.date}}</td>
+                          </tr>
                         </tbody>
                     </table>
                 </div>
@@ -32,7 +37,15 @@ export default {
         }
     },
     methods: {
-        
+        getNews (pageUrl) {
+            vm = this;
+            pageUrl = pageUrl || 'news';
+            axios.get(pageUrl).then((res) => {
+                this.news = res.data.data;
+            }).catch((res) => {
+
+            });
+        }
     }
 }
 </script>
