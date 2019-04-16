@@ -23,9 +23,18 @@ class IntentionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createPDF()
     {
-        //
+        // $file = public_path('PDF/') . "invoice.pdf";
+
+        $headers = [
+            'Content-Type' => 'application/pdf',
+            'type' => 'application/pdf'
+        ];
+
+        // return response()->file($file, $headers);
+        return response()->download(file_get_contents(storage_path('app/invoice.pdf')), 'invoice.pdf', $headers);
+
     }
 
     /**

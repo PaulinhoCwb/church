@@ -22,3 +22,12 @@ Route::get('/news','DefaultController@news')->name('news');
 Route::get('/catequese','DefaultController@catequese')->name('catequese');
 Route::post('/contact-us','DefaultController@contactUs')->name('contact-us');
 Route::post('/intencoes/save','DefaultController@intentionsSave')->name('save.intencoes');
+Route::get('/invoice-pdf', function () {
+ 
+   $file = storage_path('app/invoice.pdf');
+  
+     $headers = [
+        'Content-Type' => 'application/pdf',
+    ];
+    return response()->download($file, 'missas.pdf', $headers);
+});

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post('login','AuthController@login');
 Route::middleware('auth:api')->group(function () {
      Route::apiResources([
           'persons'    => 'PersonController',
@@ -21,10 +22,10 @@ Route::middleware('auth:api')->group(function () {
           'news'       => 'NewController'
      ]);
      Route::get('tithe/total','TitheController@getTotalTithe');
-     Route::get('/total/person','PersonController@getTotal');
+     Route::get('total/person','PersonController@getTotal');
+     Route::get('intentions/pdf','IntentionController@createPDF');
 });
 
-Route::post('login','AuthController@login');
 
 // // Route::post('/register','AuthController@register');
 // // Route::post('/cep','PersonController@getZipCode');

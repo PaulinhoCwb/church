@@ -57,49 +57,54 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Aniversario</th>
-                                <th scope="col">Celular</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(person, index) in persons" :key="index">
-                                <td>{{ person.name }}</td>
-                                <td>{{ person.dateofbirth | dateToBR }}</td>
-                                <td>{{ person.cellphone }}</td>
-                                <td>{{ person.tellphone }}</td>
-                                <td>
-                                    <router-link :to="{name: 'profile' ,params:{id: person.id}}" class="btn btn-outline-info btn-sm">
-                                        <i class="fas fa-info-circle"></i>
-                                    </router-link>
-                                     <a @click="deletePerson(person.id, index)" class="btn btn-outline-secondary btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                    <a class="btn btn-outline-danger btn-sm">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <router-link :to="{name: 'tithe-single', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
-                                        <i class="fas fa-money-bill-wave"></i>
-                                    </router-link>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                     <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                             <li v-bind:class="[{disabled: !pagination.prev_page_url}]" class="page-item"><a class="page-link" href="#" @click="getPersons(pagination.prev_page_url)">Anterior</a></li>
-
-                             <li class="page-item disabled"><a class="page-link text-dark" href="#">Pagina {{ pagination.current_page }} De {{ pagination.last_page }}</a></li>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Paroquianos</h3>
+                    </div>
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Aniversario</th>
+                                    <th scope="col">Celular</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(person, index) in persons" :key="index">
+                                    <td>{{ person.name }}</td>
+                                    <td>{{ person.dateofbirth | dateToBR }}</td>
+                                    <td>{{ person.cellphone }}</td>
+                                    <td>{{ person.tellphone }}</td>
+                                    <td>
+                                        <router-link :to="{name: 'profile' ,params:{id: person.id}}" class="btn btn-outline-info btn-sm">
+                                            <i class="fas fa-info-circle"></i>
+                                        </router-link>
+                                         <a @click="deletePerson(person.id, index)" class="btn btn-outline-secondary btn-sm">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                        <a class="btn btn-outline-danger btn-sm">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <router-link :to="{name: 'tithe-single', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                        </router-link>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                         <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                 <li v-bind:class="[{disabled: !pagination.prev_page_url}]" class="page-item"><a class="page-link" href="#" @click="getPersons(pagination.prev_page_url)">Anterior</a></li>
     
-                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link" href="#" @click="getPersons(pagination.next_page_url)">Proximo</a></li>
-                        </ul>
-                    </nav>
+                                 <li class="page-item disabled"><a class="page-link text-dark" href="#">Pagina {{ pagination.current_page }} De {{ pagination.last_page }}</a></li>
+        
+                                <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link" href="#" @click="getPersons(pagination.next_page_url)">Proximo</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>

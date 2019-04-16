@@ -15,20 +15,28 @@ class Cors
      */
     public function handle($request, Closure $next)
     {
-        header("Access-Control-Allow-Origin:*");
+        // header("Access-Control-Allow-Origin:*");
 
-        $headers = [
-            'Access-Control-Allow-Methods' => "POST,GET,OPTIONS,PUT,DELETE",
-            'Access-Control-Allow-Headers' => "Content-Type, X-Auth-Token,x-csrf-token, Origin, Authorization,x-requested-with "
-        ];
+        // $headers = [
+        //     'Access-Control-Allow-Methods' => "POST,GET,OPTIONS,PUT,DELETE",
+        //     'Access-Control-Allow-Headers' => "Content-Type, X-Auth-Token,x-csrf-token, Origin, Authorization,x-requested-with "
+        // ];
 
-        if ($request->getMethod() == "OPTIONS") {
-            return response()->json('OK',200, $headers);
-        }
+        // if ($request->getMethod() == "OPTIONS") {
+        //     return response()->json('OK',200, $headers);
+        // }
+        // $response = $next($request);
+        // foreach ($headers as $key => $value) {
+        //     $response->header($key,$value);
+        // }
+
+        // return $response;
+
         $response = $next($request);
-        foreach ($headers as $key => $value) {
-            $response->header($key,$value);
-        }
+
+        $response->headers->set('Access-Control-Allow-Origin' , '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, Application, X-Auth-Token,x-csrf-token, Origin');
 
         return $response;
     }

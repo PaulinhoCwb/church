@@ -42810,23 +42810,12 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_progressbar___default.a, {
 Vue.filter('dateToBR', function (date) {
   return date ? __WEBPACK_IMPORTED_MODULE_5_moment___default()(date).format('DD/MM/YYYY') : '-------';
 });
-
+Vue.filter('dateTimeBR', function (date) {
+  return __WEBPACK_IMPORTED_MODULE_5_moment___default()(date).format('DD/MM/YYYY H:m');
+});
 Vue.filter('sliceName', function (data) {
   return data.slice(0, 17);
 });
-// let routes = [
-//     { path: '/', redirect: '/dashboard' },
-//     { path: '/dashboard', component: require('./components/Dashboard.vue') },
-//     { path: '/profile', component: require('./components/Profile.vue') },
-//     { path: '/form', component: require('./components/FormCadastro.vue') },
-//     { path: '/event', component: require('./components/Event.vue')},
-//     { path: '/dependents/:id', component: require('./components/Dependents.vue')} 
-//   ];
-
-//  const router = new VueRouter({
-//      routes, // short for `routes: routes`
-//      linkActiveClass: "active",
-//  });
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 // Vue.component('navbar-component', require('./components/Profile.vue'));
@@ -72097,6 +72086,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'dashboard',
@@ -72293,137 +72287,144 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "table-responsive" }, [
-          _c("table", { staticClass: "table table-hover" }, [
-            _vm._m(4),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.persons, function(person, index) {
-                return _c("tr", { key: index }, [
-                  _c("td", [_vm._v(_vm._s(person.name))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(_vm._s(_vm._f("dateToBR")(person.dateofbirth)))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(person.cellphone))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(person.tellphone))]),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-outline-info btn-sm",
-                          attrs: {
-                            to: { name: "profile", params: { id: person.id } }
-                          }
-                        },
-                        [_c("i", { staticClass: "fas fa-info-circle" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-outline-secondary btn-sm",
-                          on: {
-                            click: function($event) {
-                              _vm.deletePerson(person.id, index)
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fas fa-trash-alt" })]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(5, true),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-outline-success btn-sm",
-                          attrs: {
-                            to: {
-                              name: "tithe-single",
-                              params: { id: person.id }
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fas fa-money-bill-wave" })]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              }),
-              0
-            )
-          ]),
+        _c("div", { staticClass: "card" }, [
+          _vm._m(4),
           _vm._v(" "),
-          _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
-            _c("ul", { staticClass: "pagination" }, [
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(5),
+              _vm._v(" "),
               _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: [{ disabled: !_vm.pagination.prev_page_url }]
-                },
-                [
+                "tbody",
+                _vm._l(_vm.persons, function(person, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(person.name))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("dateToBR")(person.dateofbirth)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(person.cellphone))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(person.tellphone))]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-outline-info btn-sm",
+                            attrs: {
+                              to: { name: "profile", params: { id: person.id } }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-info-circle" })]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-outline-secondary btn-sm",
+                            on: {
+                              click: function($event) {
+                                _vm.deletePerson(person.id, index)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(6, true),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-outline-success btn-sm",
+                            attrs: {
+                              to: {
+                                name: "tithe-single",
+                                params: { id: person.id }
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-money-bill-wave" })]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
+              _c("ul", { staticClass: "pagination" }, [
+                _c(
+                  "li",
+                  {
+                    staticClass: "page-item",
+                    class: [{ disabled: !_vm.pagination.prev_page_url }]
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.getPersons(_vm.pagination.prev_page_url)
+                          }
+                        }
+                      },
+                      [_vm._v("Anterior")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("li", { staticClass: "page-item disabled" }, [
                   _c(
                     "a",
                     {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          _vm.getPersons(_vm.pagination.prev_page_url)
-                        }
-                      }
+                      staticClass: "page-link text-dark",
+                      attrs: { href: "#" }
                     },
-                    [_vm._v("Anterior")]
+                    [
+                      _vm._v(
+                        "Pagina " +
+                          _vm._s(_vm.pagination.current_page) +
+                          " De " +
+                          _vm._s(_vm.pagination.last_page)
+                      )
+                    ]
                   )
-                ]
-              ),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item disabled" }, [
+                ]),
+                _vm._v(" "),
                 _c(
-                  "a",
-                  { staticClass: "page-link text-dark", attrs: { href: "#" } },
+                  "li",
+                  {
+                    staticClass: "page-item",
+                    class: [{ disabled: !_vm.pagination.next_page_url }]
+                  },
                   [
-                    _vm._v(
-                      "Pagina " +
-                        _vm._s(_vm.pagination.current_page) +
-                        " De " +
-                        _vm._s(_vm.pagination.last_page)
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.getPersons(_vm.pagination.next_page_url)
+                          }
+                        }
+                      },
+                      [_vm._v("Proximo")]
                     )
                   ]
                 )
-              ]),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: [{ disabled: !_vm.pagination.next_page_url }]
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          _vm.getPersons(_vm.pagination.next_page_url)
-                        }
-                      }
-                    },
-                    [_vm._v("Proximo")]
-                  )
-                ]
-              )
+              ])
             ])
           ])
         ])
@@ -72462,6 +72463,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "info-box-icon bg-warning-gradient" }, [
       _c("i", { staticClass: "fas fa-birthday-cake" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Paroquianos")])
     ])
   },
   function() {
@@ -73848,7 +73857,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -73859,6 +73868,15 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73902,12 +73920,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getNews: function getNews(pageUrl) {
             var _this = this;
 
-            vm = this;
+            var vm = this;
             pageUrl = pageUrl || 'news';
             axios.get(pageUrl).then(function (res) {
                 _this.news = res.data.data;
             }).catch(function (res) {});
         }
+    },
+    mounted: function mounted() {
+        this.getNews();
     }
 });
 
@@ -73919,18 +73940,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "router-link",
-        { staticClass: "btn btn-default", attrs: { to: "form-news" } },
-        [_vm._v("Cadastrar Noticia")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "table-responsive" }, [
+  return _c("div", [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [
+              _vm._v("\n                        Noticias\n                    ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-tools" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-outline-primary btn-sm",
+                    attrs: { to: "form-news" }
+                  },
+                  [_vm._v("Cadastrar Noticia")]
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
             _c("table", { staticClass: "table" }, [
               _vm._m(0),
               _vm._v(" "),
@@ -73953,9 +73989,8 @@ var render = function() {
           ])
         ])
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -74432,7 +74467,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74443,6 +74478,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -74490,6 +74535,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get(pageUrl).then(function (res) {
                 _this.intentions = res.data.data;
             }).catch();
+        },
+        getPDF: function getPDF() {
+            axios.get('intentions/pdf', {
+                responseType: 'blob'
+            }).then(function (res) {
+                console.log(res);
+                var blob = new Blob([res.data], { type: 'application/pdf' });
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'test.pdf';
+                link.click();
+            }).catch(function (res) {});
         }
     },
     mounted: function mounted() {
@@ -74506,44 +74563,80 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row justify-content-ce" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-12" }, [
-        _c("table", { staticClass: "table table-hover" }, [
+        _c("div", { staticClass: "card" }, [
           _vm._m(0),
           _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.intentions, function(intention, index) {
-              return _c("tr", { key: index }, [
-                _c("td", [_vm._v(_vm._s(intention.data))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(intention.contato))]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    _vm._s(intention.intencao ? intention.intencao : "---")
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(_vm._s(intention.data + "-" + intention.hora))
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    _vm._s(intention.type == 1 ? "Falecimentos" : "Intenção")
-                  )
-                ])
-              ])
-            }),
-            0
-          )
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.intentions, function(intention, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(intention.data))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(intention.contato))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(intention.intencao ? intention.intencao : "---")
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(_vm._f("dateToBR")(intention.data)) +
+                          " - " +
+                          _vm._s(intention.hora)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          intention.type == 1
+                            ? "Missa"
+                            : "Ação de Graças / Pedidos"
+                        )
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ])
       ])
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Intenções")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-outline-primary btn-sm",
+            attrs: {
+              href: "https://santuariosantateresinha41.com.br/invoice-pdf",
+              target: "blank"
+            }
+          },
+          [_vm._v("Gerar arquivo")]
+        )
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

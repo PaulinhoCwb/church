@@ -42,23 +42,12 @@ Vue.use(VueProgressBar,{
 Vue.filter('dateToBR', function (date) {
     return (date) ? moment(date).format('DD/MM/YYYY') : '-------';
 });
-
+Vue.filter('dateTimeBR', function (date) {
+  return moment(date).format('DD/MM/YYYY H:m');
+});
 Vue.filter('sliceName', function (data) {
   return data.slice(0,17);
-})
-// let routes = [
-//     { path: '/', redirect: '/dashboard' },
-//     { path: '/dashboard', component: require('./components/Dashboard.vue') },
-//     { path: '/profile', component: require('./components/Profile.vue') },
-//     { path: '/form', component: require('./components/FormCadastro.vue') },
-//     { path: '/event', component: require('./components/Event.vue')},
-//     { path: '/dependents/:id', component: require('./components/Dependents.vue')} 
-//   ];
-
-//  const router = new VueRouter({
-//      routes, // short for `routes: routes`
-//      linkActiveClass: "active",
-//  });
+});
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 // Vue.component('navbar-component', require('./components/Profile.vue'));
