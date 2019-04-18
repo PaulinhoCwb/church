@@ -72113,11 +72113,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
             pageUrl = pageUrl || 'persons';
 
-            axios.get(pageUrl, {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                }
-            }).then(function (res) {
+            axios.get(pageUrl).then(function (res) {
                 _this.persons = res.data.data;
                 vm.makePagination(res.data.meta, res.data.links);
             }).catch(function (res) {});
@@ -72125,11 +72121,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getTotalPersons: function getTotalPersons() {
             var _this2 = this;
 
-            axios.get('total/person', {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                }
-            }).then(function (res) {
+            axios.get('total/person').then(function (res) {
                 _this2.totalPerson = res.data;
             }).catch(function (res) {
                 console.log(res);
@@ -72138,44 +72130,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getTotalTithe: function getTotalTithe() {
             var _this3 = this;
 
-            axios.get('tithe/total', {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                }
-            }).then(function (res) {
+            axios.get('tithe/total').then(function (res) {
                 _this3.dizimo = res.data;
             }).catch(function (res) {
                 console.log(res);
             });
         },
-        getBirthdays: function getBirthdays() {
-            var _this4 = this;
 
-            axios.get('person/birthdays', {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                }
-            }).then(function (res) {
-                if (res) {
-                    _this4.birthdays = res.data;
-                } else {
-                    _this4.birthdays = 0;
-                }
-            }).catch(function (res) {});
-        },
-        getWeedingDay: function getWeedingDay() {
-            var _this5 = this;
 
-            axios.get('weeding', {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                }
-            }).then(function (res) {
-                _this5.weeding = res.data;
-            }).catch(function (res) {
-                console.log();
-            });
-        },
+        // getBirthdays() {
+        //     axios.get('person/birthdays').then((res) => {
+        //         if (res) {
+        //             this.birthdays = res.data;
+        //         } else {
+        //             this.birthdays = 0;
+        //         }
+        //     }).catch((res) => {
+
+        //     });
+        // },
+
+        // getWeedingDay() {
+        //     axios.get('weeding',{
+        //         headers:{
+        //              Authorization: 'Bearer ' + localStorage.getItem('access_token')
+        //         }
+        //     }).then((res)=>{
+        //         this.weeding = res.data;
+        //     }).catch((res)=>{
+        //         console.log();
+        //     });
+        // },
+
         makePagination: function makePagination(meta, links) {
             var pagination = {
                 current_page: meta.current_page,
@@ -72186,7 +72172,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.pagination = pagination;
         },
         deletePerson: function deletePerson(id, index) {
-            var _this6 = this;
+            var _this4 = this;
 
             axios.delete('persons/' + id, {
                 headers: {
@@ -72194,7 +72180,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }).then(function (response) {
                 console.log(response.data);
-                _this6.persons.splice(index, 1);
+                _this4.persons.splice(index, 1);
             }).catch(function (response) {});
         }
     },
@@ -74628,8 +74614,8 @@ var staticRenderFns = [
           {
             staticClass: "btn btn-outline-primary btn-sm",
             attrs: {
-              href: "https://santuariosantateresinha41.com.br/invoice-pdf",
-              target: "blank"
+              href: "https://santuariosantateresinha41.com.br/invoice",
+              target: "_blank"
             }
           },
           [_vm._v("Gerar arquivo")]

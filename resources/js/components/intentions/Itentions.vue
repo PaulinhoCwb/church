@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Intenções</h3>
                         <div class="card-tools">
-                            <a href="https://santuariosantateresinha41.com.br/invoice-pdf" target="blank" class="btn btn-outline-primary btn-sm">Gerar arquivo</a>
+                            <a href="https://santuariosantateresinha41.com.br/invoice" target="_blank" class="btn btn-outline-primary btn-sm">Gerar arquivo</a>
                         </div>
                     </div>
                     <div class="card-body table-responsive p-0">

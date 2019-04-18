@@ -131,11 +131,7 @@
                 let vm = this;
                 pageUrl = pageUrl || 'persons';
 
-                axios.get(pageUrl,{
-                    headers:{
-                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                    }
-                })
+                axios.get(pageUrl)
                 .then(res => {
                     this.persons = res.data.data;
                     vm.makePagination(res.data.meta, res.data.links);
@@ -145,11 +141,7 @@
             },
 
             getTotalPersons() {
-                axios.get('total/person',{
-                    headers:{
-                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                    }
-                }).then((res) => {
+                axios.get('total/person').then((res) => {
                     this.totalPerson = res.data; 
                 }).catch((res) => {
                     console.log(res);
@@ -157,44 +149,36 @@
             },
 
             getTotalTithe() {
-                axios.get('tithe/total',{
-                    headers:{
-                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                    }
-                }).then((res) => {
+                axios.get('tithe/total').then((res) => {
                     this.dizimo = res.data;
                 }).catch((res)=>{
                     console.log(res);
                 });
             },
 
-            getBirthdays() {
-                axios.get('person/birthdays',{
-                    headers:{
-                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                    }
-                }).then((res) => {
-                    if (res) {
-                        this.birthdays = res.data;
-                    } else {
-                        this.birthdays = 0;
-                    }
-                }).catch((res) => {
+            // getBirthdays() {
+            //     axios.get('person/birthdays').then((res) => {
+            //         if (res) {
+            //             this.birthdays = res.data;
+            //         } else {
+            //             this.birthdays = 0;
+            //         }
+            //     }).catch((res) => {
 
-                });
-            },
+            //     });
+            // },
 
-            getWeedingDay() {
-                axios.get('weeding',{
-                    headers:{
-                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
-                    }
-                }).then((res)=>{
-                    this.weeding = res.data;
-                }).catch((res)=>{
-                    console.log();
-                });
-            },
+            // getWeedingDay() {
+            //     axios.get('weeding',{
+            //         headers:{
+            //              Authorization: 'Bearer ' + localStorage.getItem('access_token')
+            //         }
+            //     }).then((res)=>{
+            //         this.weeding = res.data;
+            //     }).catch((res)=>{
+            //         console.log();
+            //     });
+            // },
 
             makePagination(meta, links) {
                 let pagination = {
