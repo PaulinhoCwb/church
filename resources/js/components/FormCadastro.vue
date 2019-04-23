@@ -1,7 +1,7 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card card-default">
+            <div class="card card-default"> 
                 <div class="card-header">{{ title }} {{ id }}</div>
 
                 <div class="card-body">

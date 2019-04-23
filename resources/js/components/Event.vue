@@ -3,8 +3,9 @@
 </template>
 <script>
 	import moment from 'moment';
-	export default {
-  name: 'event',
+    import 'fullcalendar/dist/locale/pt-br'
+export default {
+    name: 'event',
   data() {
     return {
       events: [
@@ -32,6 +33,7 @@
         eventClick: (event) => {
           this.selected = event;
         },
+        locale: 'pt-br',
       },
       selected: {},
     };

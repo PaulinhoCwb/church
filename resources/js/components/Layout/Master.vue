@@ -13,9 +13,9 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/logout">
+                    <a href="#" @click.prevent="logout" class="nav-link">
                         <i class="fas fa-sign-out-alt"></i>
-                    </router-link>
+                    </a>
                 </li>
             </ul>
         </nav> 
@@ -103,6 +103,14 @@
                                 </p>
                             </router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link to="/users" class="nav-link">
+                                <i class="nav-icon fas fa-users text-white"></i>
+                                <p>
+                                    Usuarios
+                                </p>
+                            </router-link>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -163,6 +171,7 @@
                         type: 'success',
                         title: 'Você está saindo do sistema'
                     });
+                    localStorage.removeItem('access_token');
                     this.$router.push('/');
                 }).catch((res) => {
                     toast({

@@ -97,9 +97,6 @@ export default {
     },
     mounted () {
         this.getPerson();                                        
-    },   
-    created () {
-        
     }
 }
 </script>

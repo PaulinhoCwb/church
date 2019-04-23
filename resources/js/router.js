@@ -23,6 +23,7 @@ export default new VueRouter({
                 { path: '/form-news', component: require('./components/news/FormNews.vue')},
                 { path: '/intencoes', component: require('./components/intentions/Itentions.vue')},
                 { path: '/event', component: require('./components/Event.vue') },
+                { path: '/users', component: require('./components/Users/Users.vue') },
             ] 
         },
       ],
