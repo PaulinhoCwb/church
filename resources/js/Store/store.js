@@ -4,8 +4,8 @@ import axios from 'axios'
 
 Vue.use(Vuex);
 
-axios.defaults.baseURL = 'https://santuariosantateresinha41.com.br/api/';
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+axios.defaults.baseURL = 'https://santuariosantateresinha41.com.br/api/';
 
 export default new Vuex.Store({
     state: { 

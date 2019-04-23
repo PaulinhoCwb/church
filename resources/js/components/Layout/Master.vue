@@ -27,7 +27,7 @@
             <a href="index3.html" class="brand-link">
                 <!-- <img src="" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8"> -->
-                <span class="brand-text font-weight-light">Paroquia</span>
+                <span class="brand-text font-weight-light">Santuario</span>
             </a>
 
             <!-- Sidebar -->
@@ -38,7 +38,7 @@
                         <!-- <img src="" class="img-circle elevation-2" alt="User Image"> -->
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Paroquia São Judas</a>
+                        <a href="#" class="d-block">Santa Teresinha do Menino Jesus</a>
                     </div>
                 </div>
 
@@ -117,7 +117,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Controle de paroquianos</h1>
+                            <h1 class="m-0 text-dark">Paroquia Nossa Senhora do Menino Jesus</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -159,9 +159,16 @@
             logout () {
                 axios.post('logout')
                 .then((res) => {
-                    
+                    toast({
+                        type: 'success',
+                        title: 'Você está saindo do sistema'
+                    });
+                    this.$router.push('/');
                 }).catch((res) => {
-
+                    toast({
+                        type: 'error',
+                        title: 'Erro ao fazer logout'
+                    });
                 });
             }
         }

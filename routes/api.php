@@ -22,5 +22,6 @@ Route::middleware('auth:api')->group(function () {
      ]);
      Route::get('tithe/total','TitheController@getTotalTithe');
      Route::get('total/person','PersonController@getTotal');
+     Route::post('logout','AuthController@logout');
 });
 

@@ -13,7 +13,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="">Categoria</label>
-                            <select v-model="form.tipo" name="tipo" id="tipo">
+                            <select v-model="form.tipo" class="form-control" name="tipo" id="tipo">
                                 <option value="3">Catequese</option> 
                                 <option value="2">Avisos Paroquiais</option>
                                 <option value="1">Noticias comunidade</option>

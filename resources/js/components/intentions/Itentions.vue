@@ -18,6 +18,7 @@
                                     <th>Mensagem</th>
                                     <th>Horario Missa</th>
                                     <th>Tipo</th>
+                                    <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,6 +28,11 @@
                                     <td>{{ (intention.intencao)? intention.intencao: "---"}}</td>
                                     <td>{{ intention.data | dateToBR }} - {{ intention.hora }}</td>
                                     <td>{{ (intention.type == 1) ? "Missa" : "Ação de Graças / Pedidos" }}</td>
+                                    <td>
+                                        <button @click="deleteIntention(intention.id, index)" class="btn btn-outline-secondary btn-sm">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -65,6 +71,16 @@ export default {
                 link.href = window.URL.createObjectURL(blob);
                 link.download = 'test.pdf';
                 link.click();
+            })
+            .catch((res) => {
+
+            });
+        },
+
+        deleteIntention(id, index) {
+            axios.delete('')
+            .then((res)=> {
+
             })
             .catch((res) => {
 

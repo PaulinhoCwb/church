@@ -8,7 +8,6 @@ export default new VueRouter({
     [
         { path: '', redirect: '/login' },
         { path: '/', redirect: '/login' },
-        { path: '/event', component: require('./components/Event.vue') },
         { path: '/login', component: require('./components/Auth/Login.vue') },
         { path: '/master', component: require('./components/Layout/Master.vue'),
             children: [
@@ -23,6 +22,7 @@ export default new VueRouter({
                 { path: '/news', component: require('./components/news/News.vue')},
                 { path: '/form-news', component: require('./components/news/FormNews.vue')},
                 { path: '/intencoes', component: require('./components/intentions/Itentions.vue')},
+                { path: '/event', component: require('./components/Event.vue') },
             ] 
         },
       ],

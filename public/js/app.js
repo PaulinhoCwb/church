@@ -1919,7 +1919,7 @@
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(209)("./" + name);
+                __webpack_require__(264)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -5193,7 +5193,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(207)
+var listToStyles = __webpack_require__(206)
 
 /*
 type StyleObject = {
@@ -30314,6 +30314,12 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
+(function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VMoney=t():e.VMoney=t()})(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p=".",t(t.s=9)}([function(e,t,n){"use strict";t.a={prefix:"",suffix:"",thousands:",",decimal:".",precision:2}},function(e,t,n){"use strict";var r=n(2),i=n(5),u=n(0);t.a=function(e,t){if(t.value){var o=n.i(i.a)(u.a,t.value);if("INPUT"!==e.tagName.toLocaleUpperCase()){var a=e.getElementsByTagName("input");1!==a.length||(e=a[0])}e.oninput=function(){var t=e.value.length-e.selectionEnd;e.value=n.i(r.a)(e.value,o),t=Math.max(t,o.suffix.length),t=e.value.length-t,t=Math.max(t,o.prefix.length+1),n.i(r.b)(e,t),e.dispatchEvent(n.i(r.c)("change"))},e.onfocus=function(){n.i(r.b)(e,e.value.length-o.suffix.length)},e.oninput(),e.dispatchEvent(n.i(r.c)("input"))}}},function(e,t,n){"use strict";function r(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:m.a;"number"==typeof e&&(e=e.toFixed(o(t.precision)));var n=e.indexOf("-")>=0?"-":"",r=u(e),i=c(r,t.precision),a=d(i).split("."),p=a[0],l=a[1];return p=f(p,t.thousands),t.prefix+n+s(p,l,t.decimal)+t.suffix}function i(e,t){var n=e.indexOf("-")>=0?-1:1,r=u(e),i=c(r,t);return parseFloat(i)*n}function u(e){return d(e).replace(/\D+/g,"")||"0"}function o(e){return a(0,e,20)}function a(e,t,n){return Math.max(e,Math.min(t,n))}function c(e,t){var n=Math.pow(10,t);return(parseFloat(e)/n).toFixed(o(t))}function f(e,t){return e.replace(/(\d)(?=(?:\d{3})+\b)/gm,"$1"+t)}function s(e,t,n){return t?e+n+t:e}function d(e){return e?e.toString():""}function p(e,t){var n=function(){e.setSelectionRange(t,t)};e===document.activeElement&&(n(),setTimeout(n,1))}function l(e){var t=document.createEvent("Event");return t.initEvent(e,!0,!0),t}var m=n(0);n.d(t,"a",function(){return r}),n.d(t,"d",function(){return i}),n.d(t,"b",function(){return p}),n.d(t,"c",function(){return l})},function(e,t,n){"use strict";function r(e,t){t&&Object.keys(t).map(function(e){a.a[e]=t[e]}),e.directive("money",o.a),e.component("money",u.a)}Object.defineProperty(t,"__esModule",{value:!0});var i=n(6),u=n.n(i),o=n(1),a=n(0);n.d(t,"Money",function(){return u.a}),n.d(t,"VMoney",function(){return o.a}),n.d(t,"options",function(){return a.a}),n.d(t,"VERSION",function(){return c});var c="0.8.1";t.default=r,"undefined"!=typeof window&&window.Vue&&window.Vue.use(r)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(1),i=n(0),u=n(2);t.default={name:"Money",props:{value:{required:!0,type:[Number,String],default:0},masked:{type:Boolean,default:!1},precision:{type:Number,default:function(){return i.a.precision}},decimal:{type:String,default:function(){return i.a.decimal}},thousands:{type:String,default:function(){return i.a.thousands}},prefix:{type:String,default:function(){return i.a.prefix}},suffix:{type:String,default:function(){return i.a.suffix}}},directives:{money:r.a},data:function(){return{formattedValue:""}},watch:{value:{immediate:!0,handler:function(e,t){var r=n.i(u.a)(e,this.$props);r!==this.formattedValue&&(this.formattedValue=r)}}},methods:{change:function(e){this.$emit("input",this.masked?e.target.value:n.i(u.d)(e.target.value,this.precision))}}}},function(e,t,n){"use strict";t.a=function(e,t){return e=e||{},t=t||{},Object.keys(e).concat(Object.keys(t)).reduce(function(n,r){return n[r]=void 0===t[r]?e[r]:t[r],n},{})}},function(e,t,n){var r=n(7)(n(4),n(8),null,null);e.exports=r.exports},function(e,t){e.exports=function(e,t,n,r){var i,u=e=e||{},o=typeof e.default;"object"!==o&&"function"!==o||(i=e,u=e.default);var a="function"==typeof u?u.options:u;if(t&&(a.render=t.render,a.staticRenderFns=t.staticRenderFns),n&&(a._scopeId=n),r){var c=a.computed||(a.computed={});Object.keys(r).forEach(function(e){var t=r[e];c[e]=function(){return t}})}return{esModule:i,exports:u,options:a}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("input",{directives:[{name:"money",rawName:"v-money",value:{precision:e.precision,decimal:e.decimal,thousands:e.thousands,prefix:e.prefix,suffix:e.suffix},expression:"{precision, decimal, thousands, prefix, suffix}"}],staticClass:"v-money",attrs:{type:"tel"},domProps:{value:e.formattedValue},on:{change:e.change}})},staticRenderFns:[]}},function(e,t,n){e.exports=n(3)}])});
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
 //! moment.js locale configuration
 
 ;(function (global, factory) {
@@ -30388,7 +30394,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30527,7 +30533,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30590,7 +30596,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30653,7 +30659,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30779,7 +30785,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30842,7 +30848,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30950,7 +30956,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31013,7 +31019,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31122,7 +31128,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31258,7 +31264,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31352,7 +31358,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31414,7 +31420,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31537,7 +31543,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31660,7 +31666,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31772,7 +31778,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31927,7 +31933,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32019,7 +32025,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32195,7 +32201,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32262,7 +32268,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32346,7 +32352,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32410,7 +32416,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32490,7 +32496,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32570,7 +32576,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32650,7 +32656,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32753,7 +32759,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32857,7 +32863,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32928,7 +32934,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32999,7 +33005,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33066,7 +33072,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33137,7 +33143,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33208,7 +33214,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33274,7 +33280,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33345,7 +33351,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33420,7 +33426,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33516,7 +33522,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33612,7 +33618,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33708,7 +33714,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33792,7 +33798,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33862,7 +33868,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -33972,7 +33978,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34085,7 +34091,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34149,7 +34155,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34236,7 +34242,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34314,7 +34320,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34396,7 +34402,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34475,7 +34481,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34556,7 +34562,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34636,7 +34642,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34717,7 +34723,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34844,7 +34850,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -34972,7 +34978,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35073,7 +35079,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35201,7 +35207,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35359,7 +35365,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35473,7 +35479,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35572,7 +35578,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35658,7 +35664,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35794,7 +35800,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35867,7 +35873,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -35940,7 +35946,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36036,7 +36042,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36122,7 +36128,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36215,7 +36221,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36306,7 +36312,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36420,7 +36426,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36550,7 +36556,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36635,7 +36641,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36758,7 +36764,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36849,7 +36855,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -36989,7 +36995,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37063,7 +37069,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37185,7 +37191,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37286,7 +37292,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37402,7 +37408,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37470,7 +37476,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37564,7 +37570,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37649,7 +37655,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37757,7 +37763,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -37921,7 +37927,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38007,7 +38013,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38093,7 +38099,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38157,7 +38163,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38254,7 +38260,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38320,7 +38326,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38447,7 +38453,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38538,7 +38544,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38629,7 +38635,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38693,7 +38699,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38821,7 +38827,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -38951,7 +38957,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39020,7 +39026,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39085,7 +39091,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39164,7 +39170,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39350,7 +39356,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39452,7 +39458,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39516,7 +39522,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39591,7 +39597,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39751,7 +39757,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -39928,7 +39934,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40000,7 +40006,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40115,7 +40121,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40230,7 +40236,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40322,7 +40328,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40395,7 +40401,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40458,7 +40464,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40591,7 +40597,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40684,7 +40690,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40755,7 +40761,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40875,7 +40881,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -40946,7 +40952,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41012,7 +41018,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41138,7 +41144,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -41236,7 +41242,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41331,7 +41337,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41393,7 +41399,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41455,7 +41461,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js language configuration
@@ -41578,7 +41584,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41736,7 +41742,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41838,7 +41844,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41900,7 +41906,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -41962,7 +41968,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -42045,7 +42051,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -42117,7 +42123,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -42181,7 +42187,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -42295,7 +42301,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -42402,7 +42408,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -42507,12 +42513,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 })));
 
-
-/***/ }),
-/* 161 */
-/***/ (function(module, exports, __webpack_require__) {
-
-(function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VMoney=t():e.VMoney=t()})(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p=".",t(t.s=9)}([function(e,t,n){"use strict";t.a={prefix:"",suffix:"",thousands:",",decimal:".",precision:2}},function(e,t,n){"use strict";var r=n(2),i=n(5),u=n(0);t.a=function(e,t){if(t.value){var o=n.i(i.a)(u.a,t.value);if("INPUT"!==e.tagName.toLocaleUpperCase()){var a=e.getElementsByTagName("input");1!==a.length||(e=a[0])}e.oninput=function(){var t=e.value.length-e.selectionEnd;e.value=n.i(r.a)(e.value,o),t=Math.max(t,o.suffix.length),t=e.value.length-t,t=Math.max(t,o.prefix.length+1),n.i(r.b)(e,t),e.dispatchEvent(n.i(r.c)("change"))},e.onfocus=function(){n.i(r.b)(e,e.value.length-o.suffix.length)},e.oninput(),e.dispatchEvent(n.i(r.c)("input"))}}},function(e,t,n){"use strict";function r(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:m.a;"number"==typeof e&&(e=e.toFixed(o(t.precision)));var n=e.indexOf("-")>=0?"-":"",r=u(e),i=c(r,t.precision),a=d(i).split("."),p=a[0],l=a[1];return p=f(p,t.thousands),t.prefix+n+s(p,l,t.decimal)+t.suffix}function i(e,t){var n=e.indexOf("-")>=0?-1:1,r=u(e),i=c(r,t);return parseFloat(i)*n}function u(e){return d(e).replace(/\D+/g,"")||"0"}function o(e){return a(0,e,20)}function a(e,t,n){return Math.max(e,Math.min(t,n))}function c(e,t){var n=Math.pow(10,t);return(parseFloat(e)/n).toFixed(o(t))}function f(e,t){return e.replace(/(\d)(?=(?:\d{3})+\b)/gm,"$1"+t)}function s(e,t,n){return t?e+n+t:e}function d(e){return e?e.toString():""}function p(e,t){var n=function(){e.setSelectionRange(t,t)};e===document.activeElement&&(n(),setTimeout(n,1))}function l(e){var t=document.createEvent("Event");return t.initEvent(e,!0,!0),t}var m=n(0);n.d(t,"a",function(){return r}),n.d(t,"d",function(){return i}),n.d(t,"b",function(){return p}),n.d(t,"c",function(){return l})},function(e,t,n){"use strict";function r(e,t){t&&Object.keys(t).map(function(e){a.a[e]=t[e]}),e.directive("money",o.a),e.component("money",u.a)}Object.defineProperty(t,"__esModule",{value:!0});var i=n(6),u=n.n(i),o=n(1),a=n(0);n.d(t,"Money",function(){return u.a}),n.d(t,"VMoney",function(){return o.a}),n.d(t,"options",function(){return a.a}),n.d(t,"VERSION",function(){return c});var c="0.8.1";t.default=r,"undefined"!=typeof window&&window.Vue&&window.Vue.use(r)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(1),i=n(0),u=n(2);t.default={name:"Money",props:{value:{required:!0,type:[Number,String],default:0},masked:{type:Boolean,default:!1},precision:{type:Number,default:function(){return i.a.precision}},decimal:{type:String,default:function(){return i.a.decimal}},thousands:{type:String,default:function(){return i.a.thousands}},prefix:{type:String,default:function(){return i.a.prefix}},suffix:{type:String,default:function(){return i.a.suffix}}},directives:{money:r.a},data:function(){return{formattedValue:""}},watch:{value:{immediate:!0,handler:function(e,t){var r=n.i(u.a)(e,this.$props);r!==this.formattedValue&&(this.formattedValue=r)}}},methods:{change:function(e){this.$emit("input",this.masked?e.target.value:n.i(u.d)(e.target.value,this.precision))}}}},function(e,t,n){"use strict";t.a=function(e,t){return e=e||{},t=t||{},Object.keys(e).concat(Object.keys(t)).reduce(function(n,r){return n[r]=void 0===t[r]?e[r]:t[r],n},{})}},function(e,t,n){var r=n(7)(n(4),n(8),null,null);e.exports=r.exports},function(e,t){e.exports=function(e,t,n,r){var i,u=e=e||{},o=typeof e.default;"object"!==o&&"function"!==o||(i=e,u=e.default);var a="function"==typeof u?u.options:u;if(t&&(a.render=t.render,a.staticRenderFns=t.staticRenderFns),n&&(a._scopeId=n),r){var c=a.computed||(a.computed={});Object.keys(r).forEach(function(e){var t=r[e];c[e]=function(){return t}})}return{esModule:i,exports:u,options:a}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("input",{directives:[{name:"money",rawName:"v-money",value:{precision:e.precision,decimal:e.decimal,thousands:e.thousands,prefix:e.prefix,suffix:e.suffix},expression:"{precision, decimal, thousands, prefix, suffix}"}],staticClass:"v-money",attrs:{type:"tel"},domProps:{value:e.formattedValue},on:{change:e.change}})},staticRenderFns:[]}},function(e,t,n){e.exports=n(3)}])});
 
 /***/ }),
 /* 162 */
@@ -66380,8 +66380,8 @@ var AlertSuccess_Component = normalizeComponent(
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-    routes: [{ path: '', redirect: '/login' }, { path: '/', redirect: '/login' }, { path: '/event', component: __webpack_require__(203) }, { path: '/login', component: __webpack_require__(211) }, { path: '/master', component: __webpack_require__(216),
-        children: [{ path: '/', redirect: '/dashboard' }, { path: '/form', component: __webpack_require__(219) }, { path: '/dependents/:id', component: __webpack_require__(224) }, { path: '/profile/:id', component: __webpack_require__(227), name: 'profile' }, { path: '/dashboard', component: __webpack_require__(230), name: 'dashboard' }, { path: '/tithe', component: __webpack_require__(233) }, { path: '/tithe/:id', component: __webpack_require__(238), name: 'tithe-single' }, { path: '/search', component: __webpack_require__(243) }, { path: '/news', component: __webpack_require__(251) }, { path: '/form-news', component: __webpack_require__(256) }, { path: '/intencoes', component: __webpack_require__(261) }]
+    routes: [{ path: '', redirect: '/login' }, { path: '/', redirect: '/login' }, { path: '/login', component: __webpack_require__(203) }, { path: '/master', component: __webpack_require__(209),
+        children: [{ path: '/', redirect: '/dashboard' }, { path: '/form', component: __webpack_require__(212) }, { path: '/dependents/:id', component: __webpack_require__(217) }, { path: '/profile/:id', component: __webpack_require__(220), name: 'profile' }, { path: '/dashboard', component: __webpack_require__(223), name: 'dashboard' }, { path: '/tithe', component: __webpack_require__(226) }, { path: '/tithe/:id', component: __webpack_require__(231), name: 'tithe-single' }, { path: '/search', component: __webpack_require__(236) }, { path: '/news', component: __webpack_require__(244) }, { path: '/form-news', component: __webpack_require__(249) }, { path: '/intencoes', component: __webpack_require__(254) }, { path: '/event', component: __webpack_require__(259) }]
     }],
     mode: 'history',
     linkActiveClass: "active"
@@ -69023,525 +69023,9 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(208)
+var __vue_script__ = __webpack_require__(207)
 /* template */
-var __vue_template__ = __webpack_require__(210)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/Event.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5793e382", Component.options)
-  } else {
-    hotAPI.reload("data-v-5793e382", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 204 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(205);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("4ef360ce", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5793e382\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Event.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5793e382\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Event.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 205 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-exports.i(__webpack_require__(206), "");
-
-// module
-exports.push([module.i, "\r\n\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 206 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "/*!\n * FullCalendar v3.10.0\n * Docs & License: https://fullcalendar.io/\n * (c) 2018 Adam Shaw\n */\n.fc {\n  direction: ltr;\n  text-align: left; }\n\n.fc-rtl {\n  text-align: right; }\n\nbody .fc {\n  /* extra precedence to overcome jqui */\n  font-size: 1em; }\n\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.fc-highlight {\n  /* when user is selecting cells */\n  background: #bce8f1;\n  opacity: .3; }\n\n.fc-bgevent {\n  /* default look for background events */\n  background: #8fdf82;\n  opacity: .3; }\n\n.fc-nonbusiness {\n  /* default look for non-business-hours areas */\n  /* will inherit .fc-bgevent's styles */\n  background: #d7d7d7; }\n\n/* Buttons (styled <button> tags, normalized to work cross-browser)\n--------------------------------------------------------------------------------------------------*/\n.fc button {\n  /* force height to include the border and padding */\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  /* dimensions */\n  margin: 0;\n  height: 2.1em;\n  padding: 0 .6em;\n  /* text & cursor */\n  font-size: 1em;\n  /* normalize */\n  white-space: nowrap;\n  cursor: pointer; }\n\n/* Firefox has an annoying inner border */\n.fc button::-moz-focus-inner {\n  margin: 0;\n  padding: 0; }\n\n.fc-state-default {\n  /* non-theme */\n  border: 1px solid; }\n\n.fc-state-default.fc-corner-left {\n  /* non-theme */\n  border-top-left-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\n.fc-state-default.fc-corner-right {\n  /* non-theme */\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 4px; }\n\n/* icons in buttons */\n.fc button .fc-icon {\n  /* non-theme */\n  position: relative;\n  top: -0.05em;\n  /* seems to be a good adjustment across browsers */\n  margin: 0 .2em;\n  vertical-align: middle; }\n\n/*\n  button states\n  borrowed from twitter bootstrap (http://twitter.github.com/bootstrap/)\n*/\n.fc-state-default {\n  background-color: #f5f5f5;\n  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));\n  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);\n  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);\n  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);\n  background-repeat: repeat-x;\n  border-color: #e6e6e6 #e6e6e6 #bfbfbf;\n  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);\n  color: #333;\n  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); }\n\n.fc-state-hover,\n.fc-state-down,\n.fc-state-active,\n.fc-state-disabled {\n  color: #333333;\n  background-color: #e6e6e6; }\n\n.fc-state-hover {\n  color: #333333;\n  text-decoration: none;\n  background-position: 0 -15px;\n  -webkit-transition: background-position 0.1s linear;\n  -moz-transition: background-position 0.1s linear;\n  -o-transition: background-position 0.1s linear;\n  transition: background-position 0.1s linear; }\n\n.fc-state-down,\n.fc-state-active {\n  background-color: #cccccc;\n  background-image: none;\n  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05); }\n\n.fc-state-disabled {\n  cursor: default;\n  background-image: none;\n  opacity: 0.65;\n  box-shadow: none; }\n\n/* Buttons Groups\n--------------------------------------------------------------------------------------------------*/\n.fc-button-group {\n  display: inline-block; }\n\n/*\nevery button that is not first in a button group should scootch over one pixel and cover the\nprevious button's border...\n*/\n.fc .fc-button-group > * {\n  /* extra precedence b/c buttons have margin set to zero */\n  float: left;\n  margin: 0 0 0 -1px; }\n\n.fc .fc-button-group > :first-child {\n  /* same */\n  margin-left: 0; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-popover {\n  position: absolute;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }\n\n.fc-popover .fc-header {\n  /* TODO: be more consistent with fc-head/fc-body */\n  padding: 2px 4px; }\n\n.fc-popover .fc-header .fc-title {\n  margin: 0 2px; }\n\n.fc-popover .fc-header .fc-close {\n  cursor: pointer; }\n\n.fc-ltr .fc-popover .fc-header .fc-title,\n.fc-rtl .fc-popover .fc-header .fc-close {\n  float: left; }\n\n.fc-rtl .fc-popover .fc-header .fc-title,\n.fc-ltr .fc-popover .fc-header .fc-close {\n  float: right; }\n\n/* Misc Reusable Components\n--------------------------------------------------------------------------------------------------*/\n.fc-divider {\n  border-style: solid;\n  border-width: 1px; }\n\nhr.fc-divider {\n  height: 0;\n  margin: 0;\n  padding: 0 0 2px;\n  /* height is unreliable across browsers, so use padding */\n  border-width: 1px 0; }\n\n.fc-clear {\n  clear: both; }\n\n.fc-bg,\n.fc-bgevent-skeleton,\n.fc-highlight-skeleton,\n.fc-helper-skeleton {\n  /* these element should always cling to top-left/right corners */\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\n.fc-bg {\n  bottom: 0;\n  /* strech bg to bottom edge */ }\n\n.fc-bg table {\n  height: 100%;\n  /* strech bg to bottom edge */ }\n\n/* Tables\n--------------------------------------------------------------------------------------------------*/\n.fc table {\n  width: 100%;\n  box-sizing: border-box;\n  /* fix scrollbar issue in firefox */\n  table-layout: fixed;\n  border-collapse: collapse;\n  border-spacing: 0;\n  font-size: 1em;\n  /* normalize cross-browser */ }\n\n.fc th {\n  text-align: center; }\n\n.fc th,\n.fc td {\n  border-style: solid;\n  border-width: 1px;\n  padding: 0;\n  vertical-align: top; }\n\n.fc td.fc-today {\n  border-style: double;\n  /* overcome neighboring borders */ }\n\n/* Internal Nav Links\n--------------------------------------------------------------------------------------------------*/\na[data-goto] {\n  cursor: pointer; }\n\na[data-goto]:hover {\n  text-decoration: underline; }\n\n/* Fake Table Rows\n--------------------------------------------------------------------------------------------------*/\n.fc .fc-row {\n  /* extra precedence to overcome themes w/ .ui-widget-content forcing a 1px border */\n  /* no visible border by default. but make available if need be (scrollbar width compensation) */\n  border-style: solid;\n  border-width: 0; }\n\n.fc-row table {\n  /* don't put left/right border on anything within a fake row.\n     the outer tbody will worry about this */\n  border-left: 0 hidden transparent;\n  border-right: 0 hidden transparent;\n  /* no bottom borders on rows */\n  border-bottom: 0 hidden transparent; }\n\n.fc-row:first-child table {\n  border-top: 0 hidden transparent;\n  /* no top border on first row */ }\n\n/* Day Row (used within the header and the DayGrid)\n--------------------------------------------------------------------------------------------------*/\n.fc-row {\n  position: relative; }\n\n.fc-row .fc-bg {\n  z-index: 1; }\n\n/* highlighting cells & background event skeleton */\n.fc-row .fc-bgevent-skeleton,\n.fc-row .fc-highlight-skeleton {\n  bottom: 0;\n  /* stretch skeleton to bottom of row */ }\n\n.fc-row .fc-bgevent-skeleton table,\n.fc-row .fc-highlight-skeleton table {\n  height: 100%;\n  /* stretch skeleton to bottom of row */ }\n\n.fc-row .fc-highlight-skeleton td,\n.fc-row .fc-bgevent-skeleton td {\n  border-color: transparent; }\n\n.fc-row .fc-bgevent-skeleton {\n  z-index: 2; }\n\n.fc-row .fc-highlight-skeleton {\n  z-index: 3; }\n\n/*\nrow content (which contains day/week numbers and events) as well as \"helper\" (which contains\ntemporary rendered events).\n*/\n.fc-row .fc-content-skeleton {\n  position: relative;\n  z-index: 4;\n  padding-bottom: 2px;\n  /* matches the space above the events */ }\n\n.fc-row .fc-helper-skeleton {\n  z-index: 5; }\n\n.fc .fc-row .fc-content-skeleton table,\n.fc .fc-row .fc-content-skeleton td,\n.fc .fc-row .fc-helper-skeleton td {\n  /* see-through to the background below */\n  /* extra precedence to prevent theme-provided backgrounds */\n  background: none;\n  /* in case <td>s are globally styled */\n  border-color: transparent; }\n\n.fc-row .fc-content-skeleton td,\n.fc-row .fc-helper-skeleton td {\n  /* don't put a border between events and/or the day number */\n  border-bottom: 0; }\n\n.fc-row .fc-content-skeleton tbody td,\n.fc-row .fc-helper-skeleton tbody td {\n  /* don't put a border between event cells */\n  border-top: 0; }\n\n/* Scrolling Container\n--------------------------------------------------------------------------------------------------*/\n.fc-scroller {\n  -webkit-overflow-scrolling: touch; }\n\n/* TODO: move to agenda/basic */\n.fc-scroller > .fc-day-grid,\n.fc-scroller > .fc-time-grid {\n  position: relative;\n  /* re-scope all positions */\n  width: 100%;\n  /* hack to force re-sizing this inner element when scrollbars appear/disappear */ }\n\n/* Global Event Styles\n--------------------------------------------------------------------------------------------------*/\n.fc-event {\n  position: relative;\n  /* for resize handle and other inner positioning */\n  display: block;\n  /* make the <a> tag block */\n  font-size: .85em;\n  line-height: 1.3;\n  border-radius: 3px;\n  border: 1px solid #3a87ad;\n  /* default BORDER color */ }\n\n.fc-event,\n.fc-event-dot {\n  background-color: #3a87ad;\n  /* default BACKGROUND color */ }\n\n.fc-event,\n.fc-event:hover {\n  color: #fff;\n  /* default TEXT color */\n  text-decoration: none;\n  /* if <a> has an href */ }\n\n.fc-event[href],\n.fc-event.fc-draggable {\n  cursor: pointer;\n  /* give events with links and draggable events a hand mouse pointer */ }\n\n.fc-not-allowed,\n.fc-not-allowed .fc-event {\n  /* to override an event's custom cursor */\n  cursor: not-allowed; }\n\n.fc-event .fc-bg {\n  /* the generic .fc-bg already does position */\n  z-index: 1;\n  background: #fff;\n  opacity: .25; }\n\n.fc-event .fc-content {\n  position: relative;\n  z-index: 2; }\n\n/* resizer (cursor AND touch devices) */\n.fc-event .fc-resizer {\n  position: absolute;\n  z-index: 4; }\n\n/* resizer (touch devices) */\n.fc-event .fc-resizer {\n  display: none; }\n\n.fc-event.fc-allow-mouse-resize .fc-resizer,\n.fc-event.fc-selected .fc-resizer {\n  /* only show when hovering or selected (with touch) */\n  display: block; }\n\n/* hit area */\n.fc-event.fc-selected .fc-resizer:before {\n  /* 40x40 touch area */\n  content: \"\";\n  position: absolute;\n  z-index: 9999;\n  /* user of this util can scope within a lower z-index */\n  top: 50%;\n  left: 50%;\n  width: 40px;\n  height: 40px;\n  margin-left: -20px;\n  margin-top: -20px; }\n\n/* Event Selection (only for touch devices)\n--------------------------------------------------------------------------------------------------*/\n.fc-event.fc-selected {\n  z-index: 9999 !important;\n  /* overcomes inline z-index */\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }\n\n.fc-event.fc-selected.fc-dragging {\n  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3); }\n\n/* Horizontal Events\n--------------------------------------------------------------------------------------------------*/\n/* bigger touch area when selected */\n.fc-h-event.fc-selected:before {\n  content: \"\";\n  position: absolute;\n  z-index: 3;\n  /* below resizers */\n  top: -10px;\n  bottom: -10px;\n  left: 0;\n  right: 0; }\n\n/* events that are continuing to/from another week. kill rounded corners and butt up against edge */\n.fc-ltr .fc-h-event.fc-not-start,\n.fc-rtl .fc-h-event.fc-not-end {\n  margin-left: 0;\n  border-left-width: 0;\n  padding-left: 1px;\n  /* replace the border with padding */\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.fc-ltr .fc-h-event.fc-not-end,\n.fc-rtl .fc-h-event.fc-not-start {\n  margin-right: 0;\n  border-right-width: 0;\n  padding-right: 1px;\n  /* replace the border with padding */\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0; }\n\n/* resizer (cursor AND touch devices) */\n/* left resizer  */\n.fc-ltr .fc-h-event .fc-start-resizer,\n.fc-rtl .fc-h-event .fc-end-resizer {\n  cursor: w-resize;\n  left: -1px;\n  /* overcome border */ }\n\n/* right resizer */\n.fc-ltr .fc-h-event .fc-end-resizer,\n.fc-rtl .fc-h-event .fc-start-resizer {\n  cursor: e-resize;\n  right: -1px;\n  /* overcome border */ }\n\n/* resizer (mouse devices) */\n.fc-h-event.fc-allow-mouse-resize .fc-resizer {\n  width: 7px;\n  top: -1px;\n  /* overcome top border */\n  bottom: -1px;\n  /* overcome bottom border */ }\n\n/* resizer (touch devices) */\n.fc-h-event.fc-selected .fc-resizer {\n  /* 8x8 little dot */\n  border-radius: 4px;\n  border-width: 1px;\n  width: 6px;\n  height: 6px;\n  border-style: solid;\n  border-color: inherit;\n  background: #fff;\n  /* vertically center */\n  top: 50%;\n  margin-top: -4px; }\n\n/* left resizer  */\n.fc-ltr .fc-h-event.fc-selected .fc-start-resizer,\n.fc-rtl .fc-h-event.fc-selected .fc-end-resizer {\n  margin-left: -4px;\n  /* centers the 8x8 dot on the left edge */ }\n\n/* right resizer */\n.fc-ltr .fc-h-event.fc-selected .fc-end-resizer,\n.fc-rtl .fc-h-event.fc-selected .fc-start-resizer {\n  margin-right: -4px;\n  /* centers the 8x8 dot on the right edge */ }\n\n/* DayGrid events\n----------------------------------------------------------------------------------------------------\nWe use the full \"fc-day-grid-event\" class instead of using descendants because the event won't\nbe a descendant of the grid when it is being dragged.\n*/\n.fc-day-grid-event {\n  margin: 1px 2px 0;\n  /* spacing between events and edges */\n  padding: 0 1px; }\n\ntr:first-child > td > .fc-day-grid-event {\n  margin-top: 2px;\n  /* a little bit more space before the first event */ }\n\n.fc-day-grid-event.fc-selected:after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  /* same z-index as fc-bg, behind text */\n  /* overcome the borders */\n  top: -1px;\n  right: -1px;\n  bottom: -1px;\n  left: -1px;\n  /* darkening effect */\n  background: #000;\n  opacity: .25; }\n\n.fc-day-grid-event .fc-content {\n  /* force events to be one-line tall */\n  white-space: nowrap;\n  overflow: hidden; }\n\n.fc-day-grid-event .fc-time {\n  font-weight: bold; }\n\n/* resizer (cursor devices) */\n/* left resizer  */\n.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer,\n.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer {\n  margin-left: -2px;\n  /* to the day cell's edge */ }\n\n/* right resizer */\n.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer,\n.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer {\n  margin-right: -2px;\n  /* to the day cell's edge */ }\n\n/* Event Limiting\n--------------------------------------------------------------------------------------------------*/\n/* \"more\" link that represents hidden events */\na.fc-more {\n  margin: 1px 3px;\n  font-size: .85em;\n  cursor: pointer;\n  text-decoration: none; }\n\na.fc-more:hover {\n  text-decoration: underline; }\n\n.fc-limited {\n  /* rows and cells that are hidden because of a \"more\" link */\n  display: none; }\n\n/* popover that appears when \"more\" link is clicked */\n.fc-day-grid .fc-row {\n  z-index: 1;\n  /* make the \"more\" popover one higher than this */ }\n\n.fc-more-popover {\n  z-index: 2;\n  width: 220px; }\n\n.fc-more-popover .fc-event-container {\n  padding: 10px; }\n\n/* Now Indicator\n--------------------------------------------------------------------------------------------------*/\n.fc-now-indicator {\n  position: absolute;\n  border: 0 solid red; }\n\n/* Utilities\n--------------------------------------------------------------------------------------------------*/\n.fc-unselectable {\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-touch-callout: none;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n\n/*\nTODO: more distinction between this file and common.css\n*/\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed th,\n.fc-unthemed td,\n.fc-unthemed thead,\n.fc-unthemed tbody,\n.fc-unthemed .fc-divider,\n.fc-unthemed .fc-row,\n.fc-unthemed .fc-content,\n.fc-unthemed .fc-popover,\n.fc-unthemed .fc-list-view,\n.fc-unthemed .fc-list-heading td {\n  border-color: #ddd; }\n\n.fc-unthemed .fc-popover {\n  background-color: #fff; }\n\n.fc-unthemed .fc-divider,\n.fc-unthemed .fc-popover .fc-header,\n.fc-unthemed .fc-list-heading td {\n  background: #eee; }\n\n.fc-unthemed .fc-popover .fc-header .fc-close {\n  color: #666; }\n\n.fc-unthemed td.fc-today {\n  background: #fcf8e3; }\n\n.fc-unthemed .fc-disabled-day {\n  background: #d7d7d7;\n  opacity: .3; }\n\n/* Icons (inline elements with styled text that mock arrow icons)\n--------------------------------------------------------------------------------------------------*/\n.fc-icon {\n  display: inline-block;\n  height: 1em;\n  line-height: 1em;\n  font-size: 1em;\n  text-align: center;\n  overflow: hidden;\n  font-family: \"Courier New\", Courier, monospace;\n  /* don't allow browser text-selection */\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n/*\nAcceptable font-family overrides for individual icons:\n  \"Arial\", sans-serif\n  \"Times New Roman\", serif\n\nNOTE: use percentage font sizes or else old IE chokes\n*/\n.fc-icon:after {\n  position: relative; }\n\n.fc-icon-left-single-arrow:after {\n  content: \"\\2039\";\n  font-weight: bold;\n  font-size: 200%;\n  top: -7%; }\n\n.fc-icon-right-single-arrow:after {\n  content: \"\\203A\";\n  font-weight: bold;\n  font-size: 200%;\n  top: -7%; }\n\n.fc-icon-left-double-arrow:after {\n  content: \"\\AB\";\n  font-size: 160%;\n  top: -7%; }\n\n.fc-icon-right-double-arrow:after {\n  content: \"\\BB\";\n  font-size: 160%;\n  top: -7%; }\n\n.fc-icon-left-triangle:after {\n  content: \"\\25C4\";\n  font-size: 125%;\n  top: 3%; }\n\n.fc-icon-right-triangle:after {\n  content: \"\\25BA\";\n  font-size: 125%;\n  top: 3%; }\n\n.fc-icon-down-triangle:after {\n  content: \"\\25BC\";\n  font-size: 125%;\n  top: 2%; }\n\n.fc-icon-x:after {\n  content: \"\\D7\";\n  font-size: 200%;\n  top: 6%; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed .fc-popover {\n  border-width: 1px;\n  border-style: solid; }\n\n.fc-unthemed .fc-popover .fc-header .fc-close {\n  font-size: .9em;\n  margin-top: 2px; }\n\n/* List View\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed .fc-list-item:hover td {\n  background-color: #f5f5f5; }\n\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.ui-widget .fc-disabled-day {\n  background-image: none; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-popover > .ui-widget-header + .ui-widget-content {\n  border-top: 0;\n  /* where they meet, let the header have the border */ }\n\n/* Global Event Styles\n--------------------------------------------------------------------------------------------------*/\n.ui-widget .fc-event {\n  /* overpower jqui's styles on <a> tags. TODO: more DRY */\n  color: #fff;\n  /* default TEXT color */\n  text-decoration: none;\n  /* if <a> has an href */\n  /* undo ui-widget-header bold */\n  font-weight: normal; }\n\n/* TimeGrid axis running down the side (for both the all-day area and the slot area)\n--------------------------------------------------------------------------------------------------*/\n.ui-widget td.fc-axis {\n  font-weight: normal;\n  /* overcome bold */ }\n\n/* TimeGrid Slats (lines that run horizontally)\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid .fc-slats .ui-widget-content {\n  background: none;\n  /* see through to fc-bg */ }\n\n.fc.fc-bootstrap3 a {\n  text-decoration: none; }\n\n.fc.fc-bootstrap3 a[data-goto]:hover {\n  text-decoration: underline; }\n\n.fc-bootstrap3 hr.fc-divider {\n  border-color: inherit; }\n\n.fc-bootstrap3 .fc-today.alert {\n  border-radius: 0; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-bootstrap3 .fc-popover .panel-body {\n  padding: 0; }\n\n/* TimeGrid Slats (lines that run horizontally)\n--------------------------------------------------------------------------------------------------*/\n.fc-bootstrap3 .fc-time-grid .fc-slats table {\n  /* some themes have background color. see through to slats */\n  background: none; }\n\n.fc.fc-bootstrap4 a {\n  text-decoration: none; }\n\n.fc.fc-bootstrap4 a[data-goto]:hover {\n  text-decoration: underline; }\n\n.fc-bootstrap4 hr.fc-divider {\n  border-color: inherit; }\n\n.fc-bootstrap4 .fc-today.alert {\n  border-radius: 0; }\n\n.fc-bootstrap4 a.fc-event:not([href]):not([tabindex]) {\n  color: #fff; }\n\n.fc-bootstrap4 .fc-popover.card {\n  position: absolute; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-bootstrap4 .fc-popover .card-body {\n  padding: 0; }\n\n/* TimeGrid Slats (lines that run horizontally)\n--------------------------------------------------------------------------------------------------*/\n.fc-bootstrap4 .fc-time-grid .fc-slats table {\n  /* some themes have background color. see through to slats */\n  background: none; }\n\n/* Toolbar\n--------------------------------------------------------------------------------------------------*/\n.fc-toolbar {\n  text-align: center; }\n\n.fc-toolbar.fc-header-toolbar {\n  margin-bottom: 1em; }\n\n.fc-toolbar.fc-footer-toolbar {\n  margin-top: 1em; }\n\n.fc-toolbar .fc-left {\n  float: left; }\n\n.fc-toolbar .fc-right {\n  float: right; }\n\n.fc-toolbar .fc-center {\n  display: inline-block; }\n\n/* the things within each left/right/center section */\n.fc .fc-toolbar > * > * {\n  /* extra precedence to override button border margins */\n  float: left;\n  margin-left: .75em; }\n\n/* the first thing within each left/center/right section */\n.fc .fc-toolbar > * > :first-child {\n  /* extra precedence to override button border margins */\n  margin-left: 0; }\n\n/* title text */\n.fc-toolbar h2 {\n  margin: 0; }\n\n/* button layering (for border precedence) */\n.fc-toolbar button {\n  position: relative; }\n\n.fc-toolbar .fc-state-hover,\n.fc-toolbar .ui-state-hover {\n  z-index: 2; }\n\n.fc-toolbar .fc-state-down {\n  z-index: 3; }\n\n.fc-toolbar .fc-state-active,\n.fc-toolbar .ui-state-active {\n  z-index: 4; }\n\n.fc-toolbar button:focus {\n  z-index: 5; }\n\n/* View Structure\n--------------------------------------------------------------------------------------------------*/\n/* undo twitter bootstrap's box-sizing rules. normalizes positioning techniques */\n/* don't do this for the toolbar because we'll want bootstrap to style those buttons as some pt */\n.fc-view-container *,\n.fc-view-container *:before,\n.fc-view-container *:after {\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box; }\n\n.fc-view,\n.fc-view > table {\n  /* so dragged elements can be above the view's main element */\n  position: relative;\n  z-index: 1; }\n\n/* BasicView\n--------------------------------------------------------------------------------------------------*/\n/* day row structure */\n.fc-basicWeek-view .fc-content-skeleton,\n.fc-basicDay-view .fc-content-skeleton {\n  /* there may be week numbers in these views, so no padding-top */\n  padding-bottom: 1em;\n  /* ensure a space at bottom of cell for user selecting/clicking */ }\n\n.fc-basic-view .fc-body .fc-row {\n  min-height: 4em;\n  /* ensure that all rows are at least this tall */ }\n\n/* a \"rigid\" row will take up a constant amount of height because content-skeleton is absolute */\n.fc-row.fc-rigid {\n  overflow: hidden; }\n\n.fc-row.fc-rigid .fc-content-skeleton {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\n/* week and day number styling */\n.fc-day-top.fc-other-month {\n  opacity: 0.3; }\n\n.fc-basic-view .fc-week-number,\n.fc-basic-view .fc-day-number {\n  padding: 2px; }\n\n.fc-basic-view th.fc-week-number,\n.fc-basic-view th.fc-day-number {\n  padding: 0 2px;\n  /* column headers can't have as much v space */ }\n\n.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {\n  float: right; }\n\n.fc-rtl .fc-basic-view .fc-day-top .fc-day-number {\n  float: left; }\n\n.fc-ltr .fc-basic-view .fc-day-top .fc-week-number {\n  float: left;\n  border-radius: 0 0 3px 0; }\n\n.fc-rtl .fc-basic-view .fc-day-top .fc-week-number {\n  float: right;\n  border-radius: 0 0 0 3px; }\n\n.fc-basic-view .fc-day-top .fc-week-number {\n  min-width: 1.5em;\n  text-align: center;\n  background-color: #f2f2f2;\n  color: #808080; }\n\n/* when week/day number have own column */\n.fc-basic-view td.fc-week-number {\n  text-align: center; }\n\n.fc-basic-view td.fc-week-number > * {\n  /* work around the way we do column resizing and ensure a minimum width */\n  display: inline-block;\n  min-width: 1.25em; }\n\n/* AgendaView all-day area\n--------------------------------------------------------------------------------------------------*/\n.fc-agenda-view .fc-day-grid {\n  position: relative;\n  z-index: 2;\n  /* so the \"more..\" popover will be over the time grid */ }\n\n.fc-agenda-view .fc-day-grid .fc-row {\n  min-height: 3em;\n  /* all-day section will never get shorter than this */ }\n\n.fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton {\n  padding-bottom: 1em;\n  /* give space underneath events for clicking/selecting days */ }\n\n/* TimeGrid axis running down the side (for both the all-day area and the slot area)\n--------------------------------------------------------------------------------------------------*/\n.fc .fc-axis {\n  /* .fc to overcome default cell styles */\n  vertical-align: middle;\n  padding: 0 4px;\n  white-space: nowrap; }\n\n.fc-ltr .fc-axis {\n  text-align: right; }\n\n.fc-rtl .fc-axis {\n  text-align: left; }\n\n/* TimeGrid Structure\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid-container,\n.fc-time-grid {\n  /* so slats/bg/content/etc positions get scoped within here */\n  position: relative;\n  z-index: 1; }\n\n.fc-time-grid {\n  min-height: 100%;\n  /* so if height setting is 'auto', .fc-bg stretches to fill height */ }\n\n.fc-time-grid table {\n  /* don't put outer borders on slats/bg/content/etc */\n  border: 0 hidden transparent; }\n\n.fc-time-grid > .fc-bg {\n  z-index: 1; }\n\n.fc-time-grid .fc-slats,\n.fc-time-grid > hr {\n  /* the <hr> AgendaView injects when grid is shorter than scroller */\n  position: relative;\n  z-index: 2; }\n\n.fc-time-grid .fc-content-col {\n  position: relative;\n  /* because now-indicator lives directly inside */ }\n\n.fc-time-grid .fc-content-skeleton {\n  position: absolute;\n  z-index: 3;\n  top: 0;\n  left: 0;\n  right: 0; }\n\n/* divs within a cell within the fc-content-skeleton */\n.fc-time-grid .fc-business-container {\n  position: relative;\n  z-index: 1; }\n\n.fc-time-grid .fc-bgevent-container {\n  position: relative;\n  z-index: 2; }\n\n.fc-time-grid .fc-highlight-container {\n  position: relative;\n  z-index: 3; }\n\n.fc-time-grid .fc-event-container {\n  position: relative;\n  z-index: 4; }\n\n.fc-time-grid .fc-now-indicator-line {\n  z-index: 5; }\n\n.fc-time-grid .fc-helper-container {\n  /* also is fc-event-container */\n  position: relative;\n  z-index: 6; }\n\n/* TimeGrid Slats (lines that run horizontally)\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid .fc-slats td {\n  height: 1.5em;\n  border-bottom: 0;\n  /* each cell is responsible for its top border */ }\n\n.fc-time-grid .fc-slats .fc-minor td {\n  border-top-style: dotted; }\n\n/* TimeGrid Highlighting Slots\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid .fc-highlight-container {\n  /* a div within a cell within the fc-highlight-skeleton */\n  position: relative;\n  /* scopes the left/right of the fc-highlight to be in the column */ }\n\n.fc-time-grid .fc-highlight {\n  position: absolute;\n  left: 0;\n  right: 0;\n  /* top and bottom will be in by JS */ }\n\n/* TimeGrid Event Containment\n--------------------------------------------------------------------------------------------------*/\n.fc-ltr .fc-time-grid .fc-event-container {\n  /* space on the sides of events for LTR (default) */\n  margin: 0 2.5% 0 2px; }\n\n.fc-rtl .fc-time-grid .fc-event-container {\n  /* space on the sides of events for RTL */\n  margin: 0 2px 0 2.5%; }\n\n.fc-time-grid .fc-event,\n.fc-time-grid .fc-bgevent {\n  position: absolute;\n  z-index: 1;\n  /* scope inner z-index's */ }\n\n.fc-time-grid .fc-bgevent {\n  /* background events always span full width */\n  left: 0;\n  right: 0; }\n\n/* Generic Vertical Event\n--------------------------------------------------------------------------------------------------*/\n.fc-v-event.fc-not-start {\n  /* events that are continuing from another day */\n  /* replace space made by the top border with padding */\n  border-top-width: 0;\n  padding-top: 1px;\n  /* remove top rounded corners */\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.fc-v-event.fc-not-end {\n  /* replace space made by the top border with padding */\n  border-bottom-width: 0;\n  padding-bottom: 1px;\n  /* remove bottom rounded corners */\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0; }\n\n/* TimeGrid Event Styling\n----------------------------------------------------------------------------------------------------\nWe use the full \"fc-time-grid-event\" class instead of using descendants because the event won't\nbe a descendant of the grid when it is being dragged.\n*/\n.fc-time-grid-event {\n  overflow: hidden;\n  /* don't let the bg flow over rounded corners */ }\n\n.fc-time-grid-event.fc-selected {\n  /* need to allow touch resizers to extend outside event's bounding box */\n  /* common fc-selected styles hide the fc-bg, so don't need this anyway */\n  overflow: visible; }\n\n.fc-time-grid-event.fc-selected .fc-bg {\n  display: none;\n  /* hide semi-white background, to appear darker */ }\n\n.fc-time-grid-event .fc-content {\n  overflow: hidden;\n  /* for when .fc-selected */ }\n\n.fc-time-grid-event .fc-time,\n.fc-time-grid-event .fc-title {\n  padding: 0 1px; }\n\n.fc-time-grid-event .fc-time {\n  font-size: .85em;\n  white-space: nowrap; }\n\n/* short mode, where time and title are on the same line */\n.fc-time-grid-event.fc-short .fc-content {\n  /* don't wrap to second line (now that contents will be inline) */\n  white-space: nowrap; }\n\n.fc-time-grid-event.fc-short .fc-time,\n.fc-time-grid-event.fc-short .fc-title {\n  /* put the time and title on the same line */\n  display: inline-block;\n  vertical-align: top; }\n\n.fc-time-grid-event.fc-short .fc-time span {\n  display: none;\n  /* don't display the full time text... */ }\n\n.fc-time-grid-event.fc-short .fc-time:before {\n  content: attr(data-start);\n  /* ...instead, display only the start time */ }\n\n.fc-time-grid-event.fc-short .fc-time:after {\n  content: \"\\A0-\\A0\";\n  /* seperate with a dash, wrapped in nbsp's */ }\n\n.fc-time-grid-event.fc-short .fc-title {\n  font-size: .85em;\n  /* make the title text the same size as the time */\n  padding: 0;\n  /* undo padding from above */ }\n\n/* resizer (cursor device) */\n.fc-time-grid-event.fc-allow-mouse-resize .fc-resizer {\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 8px;\n  overflow: hidden;\n  line-height: 8px;\n  font-size: 11px;\n  font-family: monospace;\n  text-align: center;\n  cursor: s-resize; }\n\n.fc-time-grid-event.fc-allow-mouse-resize .fc-resizer:after {\n  content: \"=\"; }\n\n/* resizer (touch device) */\n.fc-time-grid-event.fc-selected .fc-resizer {\n  /* 10x10 dot */\n  border-radius: 5px;\n  border-width: 1px;\n  width: 8px;\n  height: 8px;\n  border-style: solid;\n  border-color: inherit;\n  background: #fff;\n  /* horizontally center */\n  left: 50%;\n  margin-left: -5px;\n  /* center on the bottom edge */\n  bottom: -5px; }\n\n/* Now Indicator\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid .fc-now-indicator-line {\n  border-top-width: 1px;\n  left: 0;\n  right: 0; }\n\n/* arrow on axis */\n.fc-time-grid .fc-now-indicator-arrow {\n  margin-top: -5px;\n  /* vertically center on top coordinate */ }\n\n.fc-ltr .fc-time-grid .fc-now-indicator-arrow {\n  left: 0;\n  /* triangle pointing right... */\n  border-width: 5px 0 5px 6px;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n.fc-rtl .fc-time-grid .fc-now-indicator-arrow {\n  right: 0;\n  /* triangle pointing left... */\n  border-width: 5px 6px 5px 0;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n/* List View\n--------------------------------------------------------------------------------------------------*/\n/* possibly reusable */\n.fc-event-dot {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  border-radius: 5px; }\n\n/* view wrapper */\n.fc-rtl .fc-list-view {\n  direction: rtl;\n  /* unlike core views, leverage browser RTL */ }\n\n.fc-list-view {\n  border-width: 1px;\n  border-style: solid; }\n\n/* table resets */\n.fc .fc-list-table {\n  table-layout: auto;\n  /* for shrinkwrapping cell content */ }\n\n.fc-list-table td {\n  border-width: 1px 0 0;\n  padding: 8px 14px; }\n\n.fc-list-table tr:first-child td {\n  border-top-width: 0; }\n\n/* day headings with the list */\n.fc-list-heading {\n  border-bottom-width: 1px; }\n\n.fc-list-heading td {\n  font-weight: bold; }\n\n.fc-ltr .fc-list-heading-main {\n  float: left; }\n\n.fc-ltr .fc-list-heading-alt {\n  float: right; }\n\n.fc-rtl .fc-list-heading-main {\n  float: right; }\n\n.fc-rtl .fc-list-heading-alt {\n  float: left; }\n\n/* event list items */\n.fc-list-item.fc-has-url {\n  cursor: pointer;\n  /* whole row will be clickable */ }\n\n.fc-list-item-marker,\n.fc-list-item-time {\n  white-space: nowrap;\n  width: 1px; }\n\n/* make the dot closer to the event title */\n.fc-ltr .fc-list-item-marker {\n  padding-right: 0; }\n\n.fc-rtl .fc-list-item-marker {\n  padding-left: 0; }\n\n.fc-list-item-title a {\n  /* every event title cell has an <a> tag */\n  text-decoration: none;\n  color: inherit; }\n\n.fc-list-item-title a[href]:hover {\n  /* hover effect only on titles with hrefs */\n  text-decoration: underline; }\n\n/* message when no events */\n.fc-list-empty-wrap2 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0; }\n\n.fc-list-empty-wrap1 {\n  width: 100%;\n  height: 100%;\n  display: table; }\n\n.fc-list-empty {\n  display: table-cell;\n  vertical-align: middle;\n  text-align: center; }\n\n.fc-unthemed .fc-list-empty {\n  /* theme will provide own background */\n  background-color: #eee; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 207 */
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
-
-/***/ }),
-/* 208 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'event',
-  data: function data() {
-    var _this = this;
-
-    return {
-      events: [{
-        id: 1,
-        title: 'event1',
-        start: __WEBPACK_IMPORTED_MODULE_0_moment___default()().hours(12).minutes(0)
-      }, {
-        id: 2,
-        title: 'event2',
-        start: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(-1, 'days'),
-        end: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(1, 'days'),
-        allDay: true
-      }, {
-        id: 3,
-        title: 'event3',
-        start: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(2, 'days'),
-        end: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(2, 'days').add(6, 'hours'),
-        allDay: false
-      }],
-      config: {
-        eventClick: function eventClick(event) {
-          _this.selected = event;
-        }
-      },
-      selected: {}
-    };
-  },
-
-  methods: {
-    refreshEvents: function refreshEvents() {
-      this.$refs.calendar.$emit('refetch-events');
-    },
-    removeEvent: function removeEvent() {
-      this.$refs.calendar.$emit('remove-event', this.selected);
-      this.selected = {};
-    },
-    eventSelected: function eventSelected(event) {
-      this.selected = event;
-    },
-    eventCreated: function eventCreated() {
-      for (var _len = arguments.length, test = Array(_len), _key = 0; _key < _len; _key++) {
-        test[_key] = arguments[_key];
-      }
-
-      console.log(test);
-    }
-  },
-  computed: {
-    eventSources: function eventSources() {
-      var self = this;
-      return [{
-        events: function events(start, end, timezone, callback) {
-          setTimeout(function () {
-            callback(self.events.filter(function () {
-              return Math.random() > 0.5;
-            }));
-          }, 1000);
-        }
-      }];
-    }
-  }
-});
-
-/***/ }),
-/* 209 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./af": 34,
-	"./af.js": 34,
-	"./ar": 35,
-	"./ar-dz": 36,
-	"./ar-dz.js": 36,
-	"./ar-kw": 37,
-	"./ar-kw.js": 37,
-	"./ar-ly": 38,
-	"./ar-ly.js": 38,
-	"./ar-ma": 39,
-	"./ar-ma.js": 39,
-	"./ar-sa": 40,
-	"./ar-sa.js": 40,
-	"./ar-tn": 41,
-	"./ar-tn.js": 41,
-	"./ar.js": 35,
-	"./az": 42,
-	"./az.js": 42,
-	"./be": 43,
-	"./be.js": 43,
-	"./bg": 44,
-	"./bg.js": 44,
-	"./bm": 45,
-	"./bm.js": 45,
-	"./bn": 46,
-	"./bn.js": 46,
-	"./bo": 47,
-	"./bo.js": 47,
-	"./br": 48,
-	"./br.js": 48,
-	"./bs": 49,
-	"./bs.js": 49,
-	"./ca": 50,
-	"./ca.js": 50,
-	"./cs": 51,
-	"./cs.js": 51,
-	"./cv": 52,
-	"./cv.js": 52,
-	"./cy": 53,
-	"./cy.js": 53,
-	"./da": 54,
-	"./da.js": 54,
-	"./de": 55,
-	"./de-at": 56,
-	"./de-at.js": 56,
-	"./de-ch": 57,
-	"./de-ch.js": 57,
-	"./de.js": 55,
-	"./dv": 58,
-	"./dv.js": 58,
-	"./el": 59,
-	"./el.js": 59,
-	"./en-SG": 60,
-	"./en-SG.js": 60,
-	"./en-au": 61,
-	"./en-au.js": 61,
-	"./en-ca": 62,
-	"./en-ca.js": 62,
-	"./en-gb": 63,
-	"./en-gb.js": 63,
-	"./en-ie": 64,
-	"./en-ie.js": 64,
-	"./en-il": 65,
-	"./en-il.js": 65,
-	"./en-nz": 66,
-	"./en-nz.js": 66,
-	"./eo": 67,
-	"./eo.js": 67,
-	"./es": 68,
-	"./es-do": 69,
-	"./es-do.js": 69,
-	"./es-us": 70,
-	"./es-us.js": 70,
-	"./es.js": 68,
-	"./et": 71,
-	"./et.js": 71,
-	"./eu": 72,
-	"./eu.js": 72,
-	"./fa": 73,
-	"./fa.js": 73,
-	"./fi": 74,
-	"./fi.js": 74,
-	"./fo": 75,
-	"./fo.js": 75,
-	"./fr": 76,
-	"./fr-ca": 77,
-	"./fr-ca.js": 77,
-	"./fr-ch": 78,
-	"./fr-ch.js": 78,
-	"./fr.js": 76,
-	"./fy": 79,
-	"./fy.js": 79,
-	"./ga": 80,
-	"./ga.js": 80,
-	"./gd": 81,
-	"./gd.js": 81,
-	"./gl": 82,
-	"./gl.js": 82,
-	"./gom-latn": 83,
-	"./gom-latn.js": 83,
-	"./gu": 84,
-	"./gu.js": 84,
-	"./he": 85,
-	"./he.js": 85,
-	"./hi": 86,
-	"./hi.js": 86,
-	"./hr": 87,
-	"./hr.js": 87,
-	"./hu": 88,
-	"./hu.js": 88,
-	"./hy-am": 89,
-	"./hy-am.js": 89,
-	"./id": 90,
-	"./id.js": 90,
-	"./is": 91,
-	"./is.js": 91,
-	"./it": 92,
-	"./it-ch": 93,
-	"./it-ch.js": 93,
-	"./it.js": 92,
-	"./ja": 94,
-	"./ja.js": 94,
-	"./jv": 95,
-	"./jv.js": 95,
-	"./ka": 96,
-	"./ka.js": 96,
-	"./kk": 97,
-	"./kk.js": 97,
-	"./km": 98,
-	"./km.js": 98,
-	"./kn": 99,
-	"./kn.js": 99,
-	"./ko": 100,
-	"./ko.js": 100,
-	"./ku": 101,
-	"./ku.js": 101,
-	"./ky": 102,
-	"./ky.js": 102,
-	"./lb": 103,
-	"./lb.js": 103,
-	"./lo": 104,
-	"./lo.js": 104,
-	"./lt": 105,
-	"./lt.js": 105,
-	"./lv": 106,
-	"./lv.js": 106,
-	"./me": 107,
-	"./me.js": 107,
-	"./mi": 108,
-	"./mi.js": 108,
-	"./mk": 109,
-	"./mk.js": 109,
-	"./ml": 110,
-	"./ml.js": 110,
-	"./mn": 111,
-	"./mn.js": 111,
-	"./mr": 112,
-	"./mr.js": 112,
-	"./ms": 113,
-	"./ms-my": 114,
-	"./ms-my.js": 114,
-	"./ms.js": 113,
-	"./mt": 115,
-	"./mt.js": 115,
-	"./my": 116,
-	"./my.js": 116,
-	"./nb": 117,
-	"./nb.js": 117,
-	"./ne": 118,
-	"./ne.js": 118,
-	"./nl": 119,
-	"./nl-be": 120,
-	"./nl-be.js": 120,
-	"./nl.js": 119,
-	"./nn": 121,
-	"./nn.js": 121,
-	"./pa-in": 122,
-	"./pa-in.js": 122,
-	"./pl": 123,
-	"./pl.js": 123,
-	"./pt": 124,
-	"./pt-br": 125,
-	"./pt-br.js": 125,
-	"./pt.js": 124,
-	"./ro": 126,
-	"./ro.js": 126,
-	"./ru": 127,
-	"./ru.js": 127,
-	"./sd": 128,
-	"./sd.js": 128,
-	"./se": 129,
-	"./se.js": 129,
-	"./si": 130,
-	"./si.js": 130,
-	"./sk": 131,
-	"./sk.js": 131,
-	"./sl": 132,
-	"./sl.js": 132,
-	"./sq": 133,
-	"./sq.js": 133,
-	"./sr": 134,
-	"./sr-cyrl": 135,
-	"./sr-cyrl.js": 135,
-	"./sr.js": 134,
-	"./ss": 136,
-	"./ss.js": 136,
-	"./sv": 137,
-	"./sv.js": 137,
-	"./sw": 138,
-	"./sw.js": 138,
-	"./ta": 139,
-	"./ta.js": 139,
-	"./te": 140,
-	"./te.js": 140,
-	"./tet": 141,
-	"./tet.js": 141,
-	"./tg": 142,
-	"./tg.js": 142,
-	"./th": 143,
-	"./th.js": 143,
-	"./tl-ph": 144,
-	"./tl-ph.js": 144,
-	"./tlh": 145,
-	"./tlh.js": 145,
-	"./tr": 146,
-	"./tr.js": 146,
-	"./tzl": 147,
-	"./tzl.js": 147,
-	"./tzm": 148,
-	"./tzm-latn": 149,
-	"./tzm-latn.js": 149,
-	"./tzm.js": 148,
-	"./ug-cn": 150,
-	"./ug-cn.js": 150,
-	"./uk": 151,
-	"./uk.js": 151,
-	"./ur": 152,
-	"./ur.js": 152,
-	"./uz": 153,
-	"./uz-latn": 154,
-	"./uz-latn.js": 154,
-	"./uz.js": 153,
-	"./vi": 155,
-	"./vi.js": 155,
-	"./x-pseudo": 156,
-	"./x-pseudo.js": 156,
-	"./yo": 157,
-	"./yo.js": 157,
-	"./zh-cn": 158,
-	"./zh-cn.js": 158,
-	"./zh-hk": 159,
-	"./zh-hk.js": 159,
-	"./zh-tw": 160,
-	"./zh-tw.js": 160
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 209;
-
-/***/ }),
-/* 210 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("full-calendar", {
-    attrs: { config: _vm.config, events: _vm.events }
-  })
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5793e382", module.exports)
-  }
-}
-
-/***/ }),
-/* 211 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(212)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(214)
-/* template */
-var __vue_template__ = __webpack_require__(215)
+var __vue_template__ = __webpack_require__(208)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69580,13 +69064,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 212 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(213);
+var content = __webpack_require__(205);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -69606,7 +69090,7 @@ if(false) {
 }
 
 /***/ }),
-/* 213 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -69620,7 +69104,40 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 214 */
+/* 206 */
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69695,7 +69212,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 215 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -69836,15 +69353,15 @@ if (false) {
 }
 
 /***/ }),
-/* 216 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(217)
+var __vue_script__ = __webpack_require__(210)
 /* template */
-var __vue_template__ = __webpack_require__(218)
+var __vue_template__ = __webpack_require__(211)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69883,7 +69400,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 217 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70046,13 +69563,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         logout: function logout() {
-            axios.post('logout').then(function (res) {}).catch(function (res) {});
+            var _this = this;
+
+            axios.post('logout').then(function (res) {
+                toast({
+                    type: 'success',
+                    title: 'Você está saindo do sistema'
+                });
+                _this.$router.push('/');
+            }).catch(function (res) {
+                toast({
+                    type: 'error',
+                    title: 'Erro ao fazer logout'
+                });
+            });
         }
     }
 });
 
 /***/ }),
-/* 218 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70315,7 +69845,7 @@ var staticRenderFns = [
       { staticClass: "brand-link", attrs: { href: "index3.html" } },
       [
         _c("span", { staticClass: "brand-text font-weight-light" }, [
-          _vm._v("Paroquia")
+          _vm._v("Santuario")
         ])
       ]
     )
@@ -70329,7 +69859,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "info" }, [
         _c("a", { staticClass: "d-block", attrs: { href: "#" } }, [
-          _vm._v("Paroquia São Judas")
+          _vm._v("Santa Teresinha do Menino Jesus")
         ])
       ])
     ])
@@ -70343,7 +69873,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "row mb-2" }, [
           _c("div", { staticClass: "col-sm-6" }, [
             _c("h1", { staticClass: "m-0 text-dark" }, [
-              _vm._v("Controle de paroquianos")
+              _vm._v("Paroquia Nossa Senhora do Menino Jesus")
             ])
           ])
         ])
@@ -70378,19 +69908,19 @@ if (false) {
 }
 
 /***/ }),
-/* 219 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(220)
+  __webpack_require__(213)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(222)
+var __vue_script__ = __webpack_require__(215)
 /* template */
-var __vue_template__ = __webpack_require__(223)
+var __vue_template__ = __webpack_require__(216)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -70429,13 +69959,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 220 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(221);
+var content = __webpack_require__(214);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -70455,7 +69985,7 @@ if(false) {
 }
 
 /***/ }),
-/* 221 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -70469,7 +69999,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 222 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70641,7 +70171,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 223 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71137,15 +70667,15 @@ if (false) {
 }
 
 /***/ }),
-/* 224 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(225)
+var __vue_script__ = __webpack_require__(218)
 /* template */
-var __vue_template__ = __webpack_require__(226)
+var __vue_template__ = __webpack_require__(219)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -71184,7 +70714,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 225 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71297,7 +70827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 226 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71577,15 +71107,15 @@ if (false) {
 }
 
 /***/ }),
-/* 227 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(228)
+var __vue_script__ = __webpack_require__(221)
 /* template */
-var __vue_template__ = __webpack_require__(229)
+var __vue_template__ = __webpack_require__(222)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -71624,7 +71154,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 228 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71760,7 +71290,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 229 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71926,15 +71456,15 @@ if (false) {
 }
 
 /***/ }),
-/* 230 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(231)
+var __vue_script__ = __webpack_require__(224)
 /* template */
-var __vue_template__ = __webpack_require__(232)
+var __vue_template__ = __webpack_require__(225)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -71973,7 +71503,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 231 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72188,14 +71718,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.getPersons();
         this.getTotalPersons();
         this.getTotalTithe();
-        this.getBirthdays();
-        this.getWeedingDay();
+        // this.getBirthdays();
+        // this.getWeedingDay();
         // this.getDataGraphic();
     }
 });
 
 /***/ }),
-/* 232 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72496,19 +72026,19 @@ if (false) {
 }
 
 /***/ }),
-/* 233 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(234)
+  __webpack_require__(227)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(236)
+var __vue_script__ = __webpack_require__(229)
 /* template */
-var __vue_template__ = __webpack_require__(237)
+var __vue_template__ = __webpack_require__(230)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -72547,13 +72077,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 234 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(235);
+var content = __webpack_require__(228);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72573,7 +72103,7 @@ if(false) {
 }
 
 /***/ }),
-/* 235 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -72587,14 +72117,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 236 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_the_mask__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_v_money__);
 //
 //
@@ -72691,7 +72221,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 237 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72848,19 +72378,19 @@ if (false) {
 }
 
 /***/ }),
-/* 238 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(239)
+  __webpack_require__(232)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(241)
+var __vue_script__ = __webpack_require__(234)
 /* template */
-var __vue_template__ = __webpack_require__(242)
+var __vue_template__ = __webpack_require__(235)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -72899,13 +72429,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 239 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(240);
+var content = __webpack_require__(233);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72925,7 +72455,7 @@ if(false) {
 }
 
 /***/ }),
-/* 240 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -72939,14 +72469,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 241 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_the_mask__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_money___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_v_money__);
 //
 //
@@ -73050,7 +72580,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 242 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73217,19 +72747,19 @@ if (false) {
 }
 
 /***/ }),
-/* 243 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(244)
+  __webpack_require__(237)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(246)
+var __vue_script__ = __webpack_require__(239)
 /* template */
-var __vue_template__ = __webpack_require__(250)
+var __vue_template__ = __webpack_require__(243)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73268,13 +72798,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 244 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(245);
+var content = __webpack_require__(238);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -73294,7 +72824,7 @@ if(false) {
 }
 
 /***/ }),
-/* 245 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -73308,12 +72838,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 246 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Search_Person__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Search_Person__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Search_Person___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Search_Person__);
 //
 //
@@ -73414,15 +72944,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 247 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(248)
+var __vue_script__ = __webpack_require__(241)
 /* template */
-var __vue_template__ = __webpack_require__(249)
+var __vue_template__ = __webpack_require__(242)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73461,7 +72991,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 248 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73489,7 +73019,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 249 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73539,7 +73069,7 @@ if (false) {
 }
 
 /***/ }),
-/* 250 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73758,19 +73288,19 @@ if (false) {
 }
 
 /***/ }),
-/* 251 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(252)
+  __webpack_require__(245)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(254)
+var __vue_script__ = __webpack_require__(247)
 /* template */
-var __vue_template__ = __webpack_require__(255)
+var __vue_template__ = __webpack_require__(248)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73809,13 +73339,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 252 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(253);
+var content = __webpack_require__(246);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -73835,7 +73365,7 @@ if(false) {
 }
 
 /***/ }),
-/* 253 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -73849,7 +73379,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 254 */
+/* 247 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73919,7 +73449,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 255 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74006,19 +73536,19 @@ if (false) {
 }
 
 /***/ }),
-/* 256 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(257)
+  __webpack_require__(250)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(259)
+var __vue_script__ = __webpack_require__(252)
 /* template */
-var __vue_template__ = __webpack_require__(260)
+var __vue_template__ = __webpack_require__(253)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74057,13 +73587,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 257 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(258);
+var content = __webpack_require__(251);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -74083,7 +73613,7 @@ if(false) {
 }
 
 /***/ }),
-/* 258 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -74097,7 +73627,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 259 */
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74208,7 +73738,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 260 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74277,6 +73807,7 @@ var render = function() {
                         expression: "form.tipo"
                       }
                     ],
+                    staticClass: "form-control",
                     attrs: { name: "tipo", id: "tipo" },
                     on: {
                       change: function($event) {
@@ -74368,19 +73899,19 @@ if (false) {
 }
 
 /***/ }),
-/* 261 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(262)
+  __webpack_require__(255)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(264)
+var __vue_script__ = __webpack_require__(257)
 /* template */
-var __vue_template__ = __webpack_require__(265)
+var __vue_template__ = __webpack_require__(258)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74419,13 +73950,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 262 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(263);
+var content = __webpack_require__(256);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -74445,7 +73976,7 @@ if(false) {
 }
 
 /***/ }),
-/* 263 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -74453,17 +73984,23 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 264 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -74533,6 +74070,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 link.download = 'test.pdf';
                 link.click();
             }).catch(function (res) {});
+        },
+        deleteIntention: function deleteIntention(id, index) {
+            axios.delete('').then(function (res) {}).catch(function (res) {});
         }
     },
     mounted: function mounted() {
@@ -74541,7 +74081,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 265 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74587,6 +74127,21 @@ var render = function() {
                             ? "Missa"
                             : "Ação de Graças / Pedidos"
                         )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-outline-secondary btn-sm",
+                          on: {
+                            click: function($event) {
+                              _vm.deleteIntention(intention.id, index)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-trash-alt" })]
                       )
                     ])
                   ])
@@ -74637,7 +74192,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Horario Missa")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Tipo")])
+        _c("th", [_vm._v("Tipo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ação")])
       ])
     ])
   }
@@ -74648,6 +74205,489 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-2c0ac324", module.exports)
+  }
+}
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(260)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(263)
+/* template */
+var __vue_template__ = __webpack_require__(265)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Event.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5793e382", Component.options)
+  } else {
+    hotAPI.reload("data-v-5793e382", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(261);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("4ef360ce", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5793e382\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Event.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5793e382\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Event.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 261 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+exports.i(__webpack_require__(262), "");
+
+// module
+exports.push([module.i, "\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "/*!\n * FullCalendar v3.10.0\n * Docs & License: https://fullcalendar.io/\n * (c) 2018 Adam Shaw\n */\n.fc {\n  direction: ltr;\n  text-align: left; }\n\n.fc-rtl {\n  text-align: right; }\n\nbody .fc {\n  /* extra precedence to overcome jqui */\n  font-size: 1em; }\n\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.fc-highlight {\n  /* when user is selecting cells */\n  background: #bce8f1;\n  opacity: .3; }\n\n.fc-bgevent {\n  /* default look for background events */\n  background: #8fdf82;\n  opacity: .3; }\n\n.fc-nonbusiness {\n  /* default look for non-business-hours areas */\n  /* will inherit .fc-bgevent's styles */\n  background: #d7d7d7; }\n\n/* Buttons (styled <button> tags, normalized to work cross-browser)\n--------------------------------------------------------------------------------------------------*/\n.fc button {\n  /* force height to include the border and padding */\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  /* dimensions */\n  margin: 0;\n  height: 2.1em;\n  padding: 0 .6em;\n  /* text & cursor */\n  font-size: 1em;\n  /* normalize */\n  white-space: nowrap;\n  cursor: pointer; }\n\n/* Firefox has an annoying inner border */\n.fc button::-moz-focus-inner {\n  margin: 0;\n  padding: 0; }\n\n.fc-state-default {\n  /* non-theme */\n  border: 1px solid; }\n\n.fc-state-default.fc-corner-left {\n  /* non-theme */\n  border-top-left-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\n.fc-state-default.fc-corner-right {\n  /* non-theme */\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 4px; }\n\n/* icons in buttons */\n.fc button .fc-icon {\n  /* non-theme */\n  position: relative;\n  top: -0.05em;\n  /* seems to be a good adjustment across browsers */\n  margin: 0 .2em;\n  vertical-align: middle; }\n\n/*\n  button states\n  borrowed from twitter bootstrap (http://twitter.github.com/bootstrap/)\n*/\n.fc-state-default {\n  background-color: #f5f5f5;\n  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));\n  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);\n  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);\n  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);\n  background-repeat: repeat-x;\n  border-color: #e6e6e6 #e6e6e6 #bfbfbf;\n  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);\n  color: #333;\n  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); }\n\n.fc-state-hover,\n.fc-state-down,\n.fc-state-active,\n.fc-state-disabled {\n  color: #333333;\n  background-color: #e6e6e6; }\n\n.fc-state-hover {\n  color: #333333;\n  text-decoration: none;\n  background-position: 0 -15px;\n  -webkit-transition: background-position 0.1s linear;\n  -moz-transition: background-position 0.1s linear;\n  -o-transition: background-position 0.1s linear;\n  transition: background-position 0.1s linear; }\n\n.fc-state-down,\n.fc-state-active {\n  background-color: #cccccc;\n  background-image: none;\n  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05); }\n\n.fc-state-disabled {\n  cursor: default;\n  background-image: none;\n  opacity: 0.65;\n  box-shadow: none; }\n\n/* Buttons Groups\n--------------------------------------------------------------------------------------------------*/\n.fc-button-group {\n  display: inline-block; }\n\n/*\nevery button that is not first in a button group should scootch over one pixel and cover the\nprevious button's border...\n*/\n.fc .fc-button-group > * {\n  /* extra precedence b/c buttons have margin set to zero */\n  float: left;\n  margin: 0 0 0 -1px; }\n\n.fc .fc-button-group > :first-child {\n  /* same */\n  margin-left: 0; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-popover {\n  position: absolute;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }\n\n.fc-popover .fc-header {\n  /* TODO: be more consistent with fc-head/fc-body */\n  padding: 2px 4px; }\n\n.fc-popover .fc-header .fc-title {\n  margin: 0 2px; }\n\n.fc-popover .fc-header .fc-close {\n  cursor: pointer; }\n\n.fc-ltr .fc-popover .fc-header .fc-title,\n.fc-rtl .fc-popover .fc-header .fc-close {\n  float: left; }\n\n.fc-rtl .fc-popover .fc-header .fc-title,\n.fc-ltr .fc-popover .fc-header .fc-close {\n  float: right; }\n\n/* Misc Reusable Components\n--------------------------------------------------------------------------------------------------*/\n.fc-divider {\n  border-style: solid;\n  border-width: 1px; }\n\nhr.fc-divider {\n  height: 0;\n  margin: 0;\n  padding: 0 0 2px;\n  /* height is unreliable across browsers, so use padding */\n  border-width: 1px 0; }\n\n.fc-clear {\n  clear: both; }\n\n.fc-bg,\n.fc-bgevent-skeleton,\n.fc-highlight-skeleton,\n.fc-helper-skeleton {\n  /* these element should always cling to top-left/right corners */\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\n.fc-bg {\n  bottom: 0;\n  /* strech bg to bottom edge */ }\n\n.fc-bg table {\n  height: 100%;\n  /* strech bg to bottom edge */ }\n\n/* Tables\n--------------------------------------------------------------------------------------------------*/\n.fc table {\n  width: 100%;\n  box-sizing: border-box;\n  /* fix scrollbar issue in firefox */\n  table-layout: fixed;\n  border-collapse: collapse;\n  border-spacing: 0;\n  font-size: 1em;\n  /* normalize cross-browser */ }\n\n.fc th {\n  text-align: center; }\n\n.fc th,\n.fc td {\n  border-style: solid;\n  border-width: 1px;\n  padding: 0;\n  vertical-align: top; }\n\n.fc td.fc-today {\n  border-style: double;\n  /* overcome neighboring borders */ }\n\n/* Internal Nav Links\n--------------------------------------------------------------------------------------------------*/\na[data-goto] {\n  cursor: pointer; }\n\na[data-goto]:hover {\n  text-decoration: underline; }\n\n/* Fake Table Rows\n--------------------------------------------------------------------------------------------------*/\n.fc .fc-row {\n  /* extra precedence to overcome themes w/ .ui-widget-content forcing a 1px border */\n  /* no visible border by default. but make available if need be (scrollbar width compensation) */\n  border-style: solid;\n  border-width: 0; }\n\n.fc-row table {\n  /* don't put left/right border on anything within a fake row.\n     the outer tbody will worry about this */\n  border-left: 0 hidden transparent;\n  border-right: 0 hidden transparent;\n  /* no bottom borders on rows */\n  border-bottom: 0 hidden transparent; }\n\n.fc-row:first-child table {\n  border-top: 0 hidden transparent;\n  /* no top border on first row */ }\n\n/* Day Row (used within the header and the DayGrid)\n--------------------------------------------------------------------------------------------------*/\n.fc-row {\n  position: relative; }\n\n.fc-row .fc-bg {\n  z-index: 1; }\n\n/* highlighting cells & background event skeleton */\n.fc-row .fc-bgevent-skeleton,\n.fc-row .fc-highlight-skeleton {\n  bottom: 0;\n  /* stretch skeleton to bottom of row */ }\n\n.fc-row .fc-bgevent-skeleton table,\n.fc-row .fc-highlight-skeleton table {\n  height: 100%;\n  /* stretch skeleton to bottom of row */ }\n\n.fc-row .fc-highlight-skeleton td,\n.fc-row .fc-bgevent-skeleton td {\n  border-color: transparent; }\n\n.fc-row .fc-bgevent-skeleton {\n  z-index: 2; }\n\n.fc-row .fc-highlight-skeleton {\n  z-index: 3; }\n\n/*\nrow content (which contains day/week numbers and events) as well as \"helper\" (which contains\ntemporary rendered events).\n*/\n.fc-row .fc-content-skeleton {\n  position: relative;\n  z-index: 4;\n  padding-bottom: 2px;\n  /* matches the space above the events */ }\n\n.fc-row .fc-helper-skeleton {\n  z-index: 5; }\n\n.fc .fc-row .fc-content-skeleton table,\n.fc .fc-row .fc-content-skeleton td,\n.fc .fc-row .fc-helper-skeleton td {\n  /* see-through to the background below */\n  /* extra precedence to prevent theme-provided backgrounds */\n  background: none;\n  /* in case <td>s are globally styled */\n  border-color: transparent; }\n\n.fc-row .fc-content-skeleton td,\n.fc-row .fc-helper-skeleton td {\n  /* don't put a border between events and/or the day number */\n  border-bottom: 0; }\n\n.fc-row .fc-content-skeleton tbody td,\n.fc-row .fc-helper-skeleton tbody td {\n  /* don't put a border between event cells */\n  border-top: 0; }\n\n/* Scrolling Container\n--------------------------------------------------------------------------------------------------*/\n.fc-scroller {\n  -webkit-overflow-scrolling: touch; }\n\n/* TODO: move to agenda/basic */\n.fc-scroller > .fc-day-grid,\n.fc-scroller > .fc-time-grid {\n  position: relative;\n  /* re-scope all positions */\n  width: 100%;\n  /* hack to force re-sizing this inner element when scrollbars appear/disappear */ }\n\n/* Global Event Styles\n--------------------------------------------------------------------------------------------------*/\n.fc-event {\n  position: relative;\n  /* for resize handle and other inner positioning */\n  display: block;\n  /* make the <a> tag block */\n  font-size: .85em;\n  line-height: 1.3;\n  border-radius: 3px;\n  border: 1px solid #3a87ad;\n  /* default BORDER color */ }\n\n.fc-event,\n.fc-event-dot {\n  background-color: #3a87ad;\n  /* default BACKGROUND color */ }\n\n.fc-event,\n.fc-event:hover {\n  color: #fff;\n  /* default TEXT color */\n  text-decoration: none;\n  /* if <a> has an href */ }\n\n.fc-event[href],\n.fc-event.fc-draggable {\n  cursor: pointer;\n  /* give events with links and draggable events a hand mouse pointer */ }\n\n.fc-not-allowed,\n.fc-not-allowed .fc-event {\n  /* to override an event's custom cursor */\n  cursor: not-allowed; }\n\n.fc-event .fc-bg {\n  /* the generic .fc-bg already does position */\n  z-index: 1;\n  background: #fff;\n  opacity: .25; }\n\n.fc-event .fc-content {\n  position: relative;\n  z-index: 2; }\n\n/* resizer (cursor AND touch devices) */\n.fc-event .fc-resizer {\n  position: absolute;\n  z-index: 4; }\n\n/* resizer (touch devices) */\n.fc-event .fc-resizer {\n  display: none; }\n\n.fc-event.fc-allow-mouse-resize .fc-resizer,\n.fc-event.fc-selected .fc-resizer {\n  /* only show when hovering or selected (with touch) */\n  display: block; }\n\n/* hit area */\n.fc-event.fc-selected .fc-resizer:before {\n  /* 40x40 touch area */\n  content: \"\";\n  position: absolute;\n  z-index: 9999;\n  /* user of this util can scope within a lower z-index */\n  top: 50%;\n  left: 50%;\n  width: 40px;\n  height: 40px;\n  margin-left: -20px;\n  margin-top: -20px; }\n\n/* Event Selection (only for touch devices)\n--------------------------------------------------------------------------------------------------*/\n.fc-event.fc-selected {\n  z-index: 9999 !important;\n  /* overcomes inline z-index */\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }\n\n.fc-event.fc-selected.fc-dragging {\n  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3); }\n\n/* Horizontal Events\n--------------------------------------------------------------------------------------------------*/\n/* bigger touch area when selected */\n.fc-h-event.fc-selected:before {\n  content: \"\";\n  position: absolute;\n  z-index: 3;\n  /* below resizers */\n  top: -10px;\n  bottom: -10px;\n  left: 0;\n  right: 0; }\n\n/* events that are continuing to/from another week. kill rounded corners and butt up against edge */\n.fc-ltr .fc-h-event.fc-not-start,\n.fc-rtl .fc-h-event.fc-not-end {\n  margin-left: 0;\n  border-left-width: 0;\n  padding-left: 1px;\n  /* replace the border with padding */\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.fc-ltr .fc-h-event.fc-not-end,\n.fc-rtl .fc-h-event.fc-not-start {\n  margin-right: 0;\n  border-right-width: 0;\n  padding-right: 1px;\n  /* replace the border with padding */\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0; }\n\n/* resizer (cursor AND touch devices) */\n/* left resizer  */\n.fc-ltr .fc-h-event .fc-start-resizer,\n.fc-rtl .fc-h-event .fc-end-resizer {\n  cursor: w-resize;\n  left: -1px;\n  /* overcome border */ }\n\n/* right resizer */\n.fc-ltr .fc-h-event .fc-end-resizer,\n.fc-rtl .fc-h-event .fc-start-resizer {\n  cursor: e-resize;\n  right: -1px;\n  /* overcome border */ }\n\n/* resizer (mouse devices) */\n.fc-h-event.fc-allow-mouse-resize .fc-resizer {\n  width: 7px;\n  top: -1px;\n  /* overcome top border */\n  bottom: -1px;\n  /* overcome bottom border */ }\n\n/* resizer (touch devices) */\n.fc-h-event.fc-selected .fc-resizer {\n  /* 8x8 little dot */\n  border-radius: 4px;\n  border-width: 1px;\n  width: 6px;\n  height: 6px;\n  border-style: solid;\n  border-color: inherit;\n  background: #fff;\n  /* vertically center */\n  top: 50%;\n  margin-top: -4px; }\n\n/* left resizer  */\n.fc-ltr .fc-h-event.fc-selected .fc-start-resizer,\n.fc-rtl .fc-h-event.fc-selected .fc-end-resizer {\n  margin-left: -4px;\n  /* centers the 8x8 dot on the left edge */ }\n\n/* right resizer */\n.fc-ltr .fc-h-event.fc-selected .fc-end-resizer,\n.fc-rtl .fc-h-event.fc-selected .fc-start-resizer {\n  margin-right: -4px;\n  /* centers the 8x8 dot on the right edge */ }\n\n/* DayGrid events\n----------------------------------------------------------------------------------------------------\nWe use the full \"fc-day-grid-event\" class instead of using descendants because the event won't\nbe a descendant of the grid when it is being dragged.\n*/\n.fc-day-grid-event {\n  margin: 1px 2px 0;\n  /* spacing between events and edges */\n  padding: 0 1px; }\n\ntr:first-child > td > .fc-day-grid-event {\n  margin-top: 2px;\n  /* a little bit more space before the first event */ }\n\n.fc-day-grid-event.fc-selected:after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  /* same z-index as fc-bg, behind text */\n  /* overcome the borders */\n  top: -1px;\n  right: -1px;\n  bottom: -1px;\n  left: -1px;\n  /* darkening effect */\n  background: #000;\n  opacity: .25; }\n\n.fc-day-grid-event .fc-content {\n  /* force events to be one-line tall */\n  white-space: nowrap;\n  overflow: hidden; }\n\n.fc-day-grid-event .fc-time {\n  font-weight: bold; }\n\n/* resizer (cursor devices) */\n/* left resizer  */\n.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer,\n.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer {\n  margin-left: -2px;\n  /* to the day cell's edge */ }\n\n/* right resizer */\n.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer,\n.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer {\n  margin-right: -2px;\n  /* to the day cell's edge */ }\n\n/* Event Limiting\n--------------------------------------------------------------------------------------------------*/\n/* \"more\" link that represents hidden events */\na.fc-more {\n  margin: 1px 3px;\n  font-size: .85em;\n  cursor: pointer;\n  text-decoration: none; }\n\na.fc-more:hover {\n  text-decoration: underline; }\n\n.fc-limited {\n  /* rows and cells that are hidden because of a \"more\" link */\n  display: none; }\n\n/* popover that appears when \"more\" link is clicked */\n.fc-day-grid .fc-row {\n  z-index: 1;\n  /* make the \"more\" popover one higher than this */ }\n\n.fc-more-popover {\n  z-index: 2;\n  width: 220px; }\n\n.fc-more-popover .fc-event-container {\n  padding: 10px; }\n\n/* Now Indicator\n--------------------------------------------------------------------------------------------------*/\n.fc-now-indicator {\n  position: absolute;\n  border: 0 solid red; }\n\n/* Utilities\n--------------------------------------------------------------------------------------------------*/\n.fc-unselectable {\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-touch-callout: none;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n\n/*\nTODO: more distinction between this file and common.css\n*/\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed th,\n.fc-unthemed td,\n.fc-unthemed thead,\n.fc-unthemed tbody,\n.fc-unthemed .fc-divider,\n.fc-unthemed .fc-row,\n.fc-unthemed .fc-content,\n.fc-unthemed .fc-popover,\n.fc-unthemed .fc-list-view,\n.fc-unthemed .fc-list-heading td {\n  border-color: #ddd; }\n\n.fc-unthemed .fc-popover {\n  background-color: #fff; }\n\n.fc-unthemed .fc-divider,\n.fc-unthemed .fc-popover .fc-header,\n.fc-unthemed .fc-list-heading td {\n  background: #eee; }\n\n.fc-unthemed .fc-popover .fc-header .fc-close {\n  color: #666; }\n\n.fc-unthemed td.fc-today {\n  background: #fcf8e3; }\n\n.fc-unthemed .fc-disabled-day {\n  background: #d7d7d7;\n  opacity: .3; }\n\n/* Icons (inline elements with styled text that mock arrow icons)\n--------------------------------------------------------------------------------------------------*/\n.fc-icon {\n  display: inline-block;\n  height: 1em;\n  line-height: 1em;\n  font-size: 1em;\n  text-align: center;\n  overflow: hidden;\n  font-family: \"Courier New\", Courier, monospace;\n  /* don't allow browser text-selection */\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n/*\nAcceptable font-family overrides for individual icons:\n  \"Arial\", sans-serif\n  \"Times New Roman\", serif\n\nNOTE: use percentage font sizes or else old IE chokes\n*/\n.fc-icon:after {\n  position: relative; }\n\n.fc-icon-left-single-arrow:after {\n  content: \"\\2039\";\n  font-weight: bold;\n  font-size: 200%;\n  top: -7%; }\n\n.fc-icon-right-single-arrow:after {\n  content: \"\\203A\";\n  font-weight: bold;\n  font-size: 200%;\n  top: -7%; }\n\n.fc-icon-left-double-arrow:after {\n  content: \"\\AB\";\n  font-size: 160%;\n  top: -7%; }\n\n.fc-icon-right-double-arrow:after {\n  content: \"\\BB\";\n  font-size: 160%;\n  top: -7%; }\n\n.fc-icon-left-triangle:after {\n  content: \"\\25C4\";\n  font-size: 125%;\n  top: 3%; }\n\n.fc-icon-right-triangle:after {\n  content: \"\\25BA\";\n  font-size: 125%;\n  top: 3%; }\n\n.fc-icon-down-triangle:after {\n  content: \"\\25BC\";\n  font-size: 125%;\n  top: 2%; }\n\n.fc-icon-x:after {\n  content: \"\\D7\";\n  font-size: 200%;\n  top: 6%; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed .fc-popover {\n  border-width: 1px;\n  border-style: solid; }\n\n.fc-unthemed .fc-popover .fc-header .fc-close {\n  font-size: .9em;\n  margin-top: 2px; }\n\n/* List View\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed .fc-list-item:hover td {\n  background-color: #f5f5f5; }\n\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.ui-widget .fc-disabled-day {\n  background-image: none; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-popover > .ui-widget-header + .ui-widget-content {\n  border-top: 0;\n  /* where they meet, let the header have the border */ }\n\n/* Global Event Styles\n--------------------------------------------------------------------------------------------------*/\n.ui-widget .fc-event {\n  /* overpower jqui's styles on <a> tags. TODO: more DRY */\n  color: #fff;\n  /* default TEXT color */\n  text-decoration: none;\n  /* if <a> has an href */\n  /* undo ui-widget-header bold */\n  font-weight: normal; }\n\n/* TimeGrid axis running down the side (for both the all-day area and the slot area)\n--------------------------------------------------------------------------------------------------*/\n.ui-widget td.fc-axis {\n  font-weight: normal;\n  /* overcome bold */ }\n\n/* TimeGrid Slats (lines that run horizontally)\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid .fc-slats .ui-widget-content {\n  background: none;\n  /* see through to fc-bg */ }\n\n.fc.fc-bootstrap3 a {\n  text-decoration: none; }\n\n.fc.fc-bootstrap3 a[data-goto]:hover {\n  text-decoration: underline; }\n\n.fc-bootstrap3 hr.fc-divider {\n  border-color: inherit; }\n\n.fc-bootstrap3 .fc-today.alert {\n  border-radius: 0; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-bootstrap3 .fc-popover .panel-body {\n  padding: 0; }\n\n/* TimeGrid Slats (lines that run horizontally)\n--------------------------------------------------------------------------------------------------*/\n.fc-bootstrap3 .fc-time-grid .fc-slats table {\n  /* some themes have background color. see through to slats */\n  background: none; }\n\n.fc.fc-bootstrap4 a {\n  text-decoration: none; }\n\n.fc.fc-bootstrap4 a[data-goto]:hover {\n  text-decoration: underline; }\n\n.fc-bootstrap4 hr.fc-divider {\n  border-color: inherit; }\n\n.fc-bootstrap4 .fc-today.alert {\n  border-radius: 0; }\n\n.fc-bootstrap4 a.fc-event:not([href]):not([tabindex]) {\n  color: #fff; }\n\n.fc-bootstrap4 .fc-popover.card {\n  position: absolute; }\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-bootstrap4 .fc-popover .card-body {\n  padding: 0; }\n\n/* TimeGrid Slats (lines that run horizontally)\n--------------------------------------------------------------------------------------------------*/\n.fc-bootstrap4 .fc-time-grid .fc-slats table {\n  /* some themes have background color. see through to slats */\n  background: none; }\n\n/* Toolbar\n--------------------------------------------------------------------------------------------------*/\n.fc-toolbar {\n  text-align: center; }\n\n.fc-toolbar.fc-header-toolbar {\n  margin-bottom: 1em; }\n\n.fc-toolbar.fc-footer-toolbar {\n  margin-top: 1em; }\n\n.fc-toolbar .fc-left {\n  float: left; }\n\n.fc-toolbar .fc-right {\n  float: right; }\n\n.fc-toolbar .fc-center {\n  display: inline-block; }\n\n/* the things within each left/right/center section */\n.fc .fc-toolbar > * > * {\n  /* extra precedence to override button border margins */\n  float: left;\n  margin-left: .75em; }\n\n/* the first thing within each left/center/right section */\n.fc .fc-toolbar > * > :first-child {\n  /* extra precedence to override button border margins */\n  margin-left: 0; }\n\n/* title text */\n.fc-toolbar h2 {\n  margin: 0; }\n\n/* button layering (for border precedence) */\n.fc-toolbar button {\n  position: relative; }\n\n.fc-toolbar .fc-state-hover,\n.fc-toolbar .ui-state-hover {\n  z-index: 2; }\n\n.fc-toolbar .fc-state-down {\n  z-index: 3; }\n\n.fc-toolbar .fc-state-active,\n.fc-toolbar .ui-state-active {\n  z-index: 4; }\n\n.fc-toolbar button:focus {\n  z-index: 5; }\n\n/* View Structure\n--------------------------------------------------------------------------------------------------*/\n/* undo twitter bootstrap's box-sizing rules. normalizes positioning techniques */\n/* don't do this for the toolbar because we'll want bootstrap to style those buttons as some pt */\n.fc-view-container *,\n.fc-view-container *:before,\n.fc-view-container *:after {\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box; }\n\n.fc-view,\n.fc-view > table {\n  /* so dragged elements can be above the view's main element */\n  position: relative;\n  z-index: 1; }\n\n/* BasicView\n--------------------------------------------------------------------------------------------------*/\n/* day row structure */\n.fc-basicWeek-view .fc-content-skeleton,\n.fc-basicDay-view .fc-content-skeleton {\n  /* there may be week numbers in these views, so no padding-top */\n  padding-bottom: 1em;\n  /* ensure a space at bottom of cell for user selecting/clicking */ }\n\n.fc-basic-view .fc-body .fc-row {\n  min-height: 4em;\n  /* ensure that all rows are at least this tall */ }\n\n/* a \"rigid\" row will take up a constant amount of height because content-skeleton is absolute */\n.fc-row.fc-rigid {\n  overflow: hidden; }\n\n.fc-row.fc-rigid .fc-content-skeleton {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0; }\n\n/* week and day number styling */\n.fc-day-top.fc-other-month {\n  opacity: 0.3; }\n\n.fc-basic-view .fc-week-number,\n.fc-basic-view .fc-day-number {\n  padding: 2px; }\n\n.fc-basic-view th.fc-week-number,\n.fc-basic-view th.fc-day-number {\n  padding: 0 2px;\n  /* column headers can't have as much v space */ }\n\n.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {\n  float: right; }\n\n.fc-rtl .fc-basic-view .fc-day-top .fc-day-number {\n  float: left; }\n\n.fc-ltr .fc-basic-view .fc-day-top .fc-week-number {\n  float: left;\n  border-radius: 0 0 3px 0; }\n\n.fc-rtl .fc-basic-view .fc-day-top .fc-week-number {\n  float: right;\n  border-radius: 0 0 0 3px; }\n\n.fc-basic-view .fc-day-top .fc-week-number {\n  min-width: 1.5em;\n  text-align: center;\n  background-color: #f2f2f2;\n  color: #808080; }\n\n/* when week/day number have own column */\n.fc-basic-view td.fc-week-number {\n  text-align: center; }\n\n.fc-basic-view td.fc-week-number > * {\n  /* work around the way we do column resizing and ensure a minimum width */\n  display: inline-block;\n  min-width: 1.25em; }\n\n/* AgendaView all-day area\n--------------------------------------------------------------------------------------------------*/\n.fc-agenda-view .fc-day-grid {\n  position: relative;\n  z-index: 2;\n  /* so the \"more..\" popover will be over the time grid */ }\n\n.fc-agenda-view .fc-day-grid .fc-row {\n  min-height: 3em;\n  /* all-day section will never get shorter than this */ }\n\n.fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton {\n  padding-bottom: 1em;\n  /* give space underneath events for clicking/selecting days */ }\n\n/* TimeGrid axis running down the side (for both the all-day area and the slot area)\n--------------------------------------------------------------------------------------------------*/\n.fc .fc-axis {\n  /* .fc to overcome default cell styles */\n  vertical-align: middle;\n  padding: 0 4px;\n  white-space: nowrap; }\n\n.fc-ltr .fc-axis {\n  text-align: right; }\n\n.fc-rtl .fc-axis {\n  text-align: left; }\n\n/* TimeGrid Structure\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid-container,\n.fc-time-grid {\n  /* so slats/bg/content/etc positions get scoped within here */\n  position: relative;\n  z-index: 1; }\n\n.fc-time-grid {\n  min-height: 100%;\n  /* so if height setting is 'auto', .fc-bg stretches to fill height */ }\n\n.fc-time-grid table {\n  /* don't put outer borders on slats/bg/content/etc */\n  border: 0 hidden transparent; }\n\n.fc-time-grid > .fc-bg {\n  z-index: 1; }\n\n.fc-time-grid .fc-slats,\n.fc-time-grid > hr {\n  /* the <hr> AgendaView injects when grid is shorter than scroller */\n  position: relative;\n  z-index: 2; }\n\n.fc-time-grid .fc-content-col {\n  position: relative;\n  /* because now-indicator lives directly inside */ }\n\n.fc-time-grid .fc-content-skeleton {\n  position: absolute;\n  z-index: 3;\n  top: 0;\n  left: 0;\n  right: 0; }\n\n/* divs within a cell within the fc-content-skeleton */\n.fc-time-grid .fc-business-container {\n  position: relative;\n  z-index: 1; }\n\n.fc-time-grid .fc-bgevent-container {\n  position: relative;\n  z-index: 2; }\n\n.fc-time-grid .fc-highlight-container {\n  position: relative;\n  z-index: 3; }\n\n.fc-time-grid .fc-event-container {\n  position: relative;\n  z-index: 4; }\n\n.fc-time-grid .fc-now-indicator-line {\n  z-index: 5; }\n\n.fc-time-grid .fc-helper-container {\n  /* also is fc-event-container */\n  position: relative;\n  z-index: 6; }\n\n/* TimeGrid Slats (lines that run horizontally)\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid .fc-slats td {\n  height: 1.5em;\n  border-bottom: 0;\n  /* each cell is responsible for its top border */ }\n\n.fc-time-grid .fc-slats .fc-minor td {\n  border-top-style: dotted; }\n\n/* TimeGrid Highlighting Slots\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid .fc-highlight-container {\n  /* a div within a cell within the fc-highlight-skeleton */\n  position: relative;\n  /* scopes the left/right of the fc-highlight to be in the column */ }\n\n.fc-time-grid .fc-highlight {\n  position: absolute;\n  left: 0;\n  right: 0;\n  /* top and bottom will be in by JS */ }\n\n/* TimeGrid Event Containment\n--------------------------------------------------------------------------------------------------*/\n.fc-ltr .fc-time-grid .fc-event-container {\n  /* space on the sides of events for LTR (default) */\n  margin: 0 2.5% 0 2px; }\n\n.fc-rtl .fc-time-grid .fc-event-container {\n  /* space on the sides of events for RTL */\n  margin: 0 2px 0 2.5%; }\n\n.fc-time-grid .fc-event,\n.fc-time-grid .fc-bgevent {\n  position: absolute;\n  z-index: 1;\n  /* scope inner z-index's */ }\n\n.fc-time-grid .fc-bgevent {\n  /* background events always span full width */\n  left: 0;\n  right: 0; }\n\n/* Generic Vertical Event\n--------------------------------------------------------------------------------------------------*/\n.fc-v-event.fc-not-start {\n  /* events that are continuing from another day */\n  /* replace space made by the top border with padding */\n  border-top-width: 0;\n  padding-top: 1px;\n  /* remove top rounded corners */\n  border-top-left-radius: 0;\n  border-top-right-radius: 0; }\n\n.fc-v-event.fc-not-end {\n  /* replace space made by the top border with padding */\n  border-bottom-width: 0;\n  padding-bottom: 1px;\n  /* remove bottom rounded corners */\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0; }\n\n/* TimeGrid Event Styling\n----------------------------------------------------------------------------------------------------\nWe use the full \"fc-time-grid-event\" class instead of using descendants because the event won't\nbe a descendant of the grid when it is being dragged.\n*/\n.fc-time-grid-event {\n  overflow: hidden;\n  /* don't let the bg flow over rounded corners */ }\n\n.fc-time-grid-event.fc-selected {\n  /* need to allow touch resizers to extend outside event's bounding box */\n  /* common fc-selected styles hide the fc-bg, so don't need this anyway */\n  overflow: visible; }\n\n.fc-time-grid-event.fc-selected .fc-bg {\n  display: none;\n  /* hide semi-white background, to appear darker */ }\n\n.fc-time-grid-event .fc-content {\n  overflow: hidden;\n  /* for when .fc-selected */ }\n\n.fc-time-grid-event .fc-time,\n.fc-time-grid-event .fc-title {\n  padding: 0 1px; }\n\n.fc-time-grid-event .fc-time {\n  font-size: .85em;\n  white-space: nowrap; }\n\n/* short mode, where time and title are on the same line */\n.fc-time-grid-event.fc-short .fc-content {\n  /* don't wrap to second line (now that contents will be inline) */\n  white-space: nowrap; }\n\n.fc-time-grid-event.fc-short .fc-time,\n.fc-time-grid-event.fc-short .fc-title {\n  /* put the time and title on the same line */\n  display: inline-block;\n  vertical-align: top; }\n\n.fc-time-grid-event.fc-short .fc-time span {\n  display: none;\n  /* don't display the full time text... */ }\n\n.fc-time-grid-event.fc-short .fc-time:before {\n  content: attr(data-start);\n  /* ...instead, display only the start time */ }\n\n.fc-time-grid-event.fc-short .fc-time:after {\n  content: \"\\A0-\\A0\";\n  /* seperate with a dash, wrapped in nbsp's */ }\n\n.fc-time-grid-event.fc-short .fc-title {\n  font-size: .85em;\n  /* make the title text the same size as the time */\n  padding: 0;\n  /* undo padding from above */ }\n\n/* resizer (cursor device) */\n.fc-time-grid-event.fc-allow-mouse-resize .fc-resizer {\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 8px;\n  overflow: hidden;\n  line-height: 8px;\n  font-size: 11px;\n  font-family: monospace;\n  text-align: center;\n  cursor: s-resize; }\n\n.fc-time-grid-event.fc-allow-mouse-resize .fc-resizer:after {\n  content: \"=\"; }\n\n/* resizer (touch device) */\n.fc-time-grid-event.fc-selected .fc-resizer {\n  /* 10x10 dot */\n  border-radius: 5px;\n  border-width: 1px;\n  width: 8px;\n  height: 8px;\n  border-style: solid;\n  border-color: inherit;\n  background: #fff;\n  /* horizontally center */\n  left: 50%;\n  margin-left: -5px;\n  /* center on the bottom edge */\n  bottom: -5px; }\n\n/* Now Indicator\n--------------------------------------------------------------------------------------------------*/\n.fc-time-grid .fc-now-indicator-line {\n  border-top-width: 1px;\n  left: 0;\n  right: 0; }\n\n/* arrow on axis */\n.fc-time-grid .fc-now-indicator-arrow {\n  margin-top: -5px;\n  /* vertically center on top coordinate */ }\n\n.fc-ltr .fc-time-grid .fc-now-indicator-arrow {\n  left: 0;\n  /* triangle pointing right... */\n  border-width: 5px 0 5px 6px;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n.fc-rtl .fc-time-grid .fc-now-indicator-arrow {\n  right: 0;\n  /* triangle pointing left... */\n  border-width: 5px 6px 5px 0;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n/* List View\n--------------------------------------------------------------------------------------------------*/\n/* possibly reusable */\n.fc-event-dot {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  border-radius: 5px; }\n\n/* view wrapper */\n.fc-rtl .fc-list-view {\n  direction: rtl;\n  /* unlike core views, leverage browser RTL */ }\n\n.fc-list-view {\n  border-width: 1px;\n  border-style: solid; }\n\n/* table resets */\n.fc .fc-list-table {\n  table-layout: auto;\n  /* for shrinkwrapping cell content */ }\n\n.fc-list-table td {\n  border-width: 1px 0 0;\n  padding: 8px 14px; }\n\n.fc-list-table tr:first-child td {\n  border-top-width: 0; }\n\n/* day headings with the list */\n.fc-list-heading {\n  border-bottom-width: 1px; }\n\n.fc-list-heading td {\n  font-weight: bold; }\n\n.fc-ltr .fc-list-heading-main {\n  float: left; }\n\n.fc-ltr .fc-list-heading-alt {\n  float: right; }\n\n.fc-rtl .fc-list-heading-main {\n  float: right; }\n\n.fc-rtl .fc-list-heading-alt {\n  float: left; }\n\n/* event list items */\n.fc-list-item.fc-has-url {\n  cursor: pointer;\n  /* whole row will be clickable */ }\n\n.fc-list-item-marker,\n.fc-list-item-time {\n  white-space: nowrap;\n  width: 1px; }\n\n/* make the dot closer to the event title */\n.fc-ltr .fc-list-item-marker {\n  padding-right: 0; }\n\n.fc-rtl .fc-list-item-marker {\n  padding-left: 0; }\n\n.fc-list-item-title a {\n  /* every event title cell has an <a> tag */\n  text-decoration: none;\n  color: inherit; }\n\n.fc-list-item-title a[href]:hover {\n  /* hover effect only on titles with hrefs */\n  text-decoration: underline; }\n\n/* message when no events */\n.fc-list-empty-wrap2 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0; }\n\n.fc-list-empty-wrap1 {\n  width: 100%;\n  height: 100%;\n  display: table; }\n\n.fc-list-empty {\n  display: table-cell;\n  vertical-align: middle;\n  text-align: center; }\n\n.fc-unthemed .fc-list-empty {\n  /* theme will provide own background */\n  background-color: #eee; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 263 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'event',
+  data: function data() {
+    var _this = this;
+
+    return {
+      events: [{
+        id: 1,
+        title: 'event1',
+        start: __WEBPACK_IMPORTED_MODULE_0_moment___default()().hours(12).minutes(0)
+      }, {
+        id: 2,
+        title: 'event2',
+        start: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(-1, 'days'),
+        end: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(1, 'days'),
+        allDay: true
+      }, {
+        id: 3,
+        title: 'event3',
+        start: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(2, 'days'),
+        end: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(2, 'days').add(6, 'hours'),
+        allDay: false
+      }],
+      config: {
+        eventClick: function eventClick(event) {
+          _this.selected = event;
+        }
+      },
+      selected: {}
+    };
+  },
+
+  methods: {
+    refreshEvents: function refreshEvents() {
+      this.$refs.calendar.$emit('refetch-events');
+    },
+    removeEvent: function removeEvent() {
+      this.$refs.calendar.$emit('remove-event', this.selected);
+      this.selected = {};
+    },
+    eventSelected: function eventSelected(event) {
+      this.selected = event;
+    },
+    eventCreated: function eventCreated() {
+      for (var _len = arguments.length, test = Array(_len), _key = 0; _key < _len; _key++) {
+        test[_key] = arguments[_key];
+      }
+
+      console.log(test);
+    }
+  },
+  computed: {
+    eventSources: function eventSources() {
+      var self = this;
+      return [{
+        events: function events(start, end, timezone, callback) {
+          setTimeout(function () {
+            callback(self.events.filter(function () {
+              return Math.random() > 0.5;
+            }));
+          }, 1000);
+        }
+      }];
+    }
+  }
+});
+
+/***/ }),
+/* 264 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": 35,
+	"./af.js": 35,
+	"./ar": 36,
+	"./ar-dz": 37,
+	"./ar-dz.js": 37,
+	"./ar-kw": 38,
+	"./ar-kw.js": 38,
+	"./ar-ly": 39,
+	"./ar-ly.js": 39,
+	"./ar-ma": 40,
+	"./ar-ma.js": 40,
+	"./ar-sa": 41,
+	"./ar-sa.js": 41,
+	"./ar-tn": 42,
+	"./ar-tn.js": 42,
+	"./ar.js": 36,
+	"./az": 43,
+	"./az.js": 43,
+	"./be": 44,
+	"./be.js": 44,
+	"./bg": 45,
+	"./bg.js": 45,
+	"./bm": 46,
+	"./bm.js": 46,
+	"./bn": 47,
+	"./bn.js": 47,
+	"./bo": 48,
+	"./bo.js": 48,
+	"./br": 49,
+	"./br.js": 49,
+	"./bs": 50,
+	"./bs.js": 50,
+	"./ca": 51,
+	"./ca.js": 51,
+	"./cs": 52,
+	"./cs.js": 52,
+	"./cv": 53,
+	"./cv.js": 53,
+	"./cy": 54,
+	"./cy.js": 54,
+	"./da": 55,
+	"./da.js": 55,
+	"./de": 56,
+	"./de-at": 57,
+	"./de-at.js": 57,
+	"./de-ch": 58,
+	"./de-ch.js": 58,
+	"./de.js": 56,
+	"./dv": 59,
+	"./dv.js": 59,
+	"./el": 60,
+	"./el.js": 60,
+	"./en-SG": 61,
+	"./en-SG.js": 61,
+	"./en-au": 62,
+	"./en-au.js": 62,
+	"./en-ca": 63,
+	"./en-ca.js": 63,
+	"./en-gb": 64,
+	"./en-gb.js": 64,
+	"./en-ie": 65,
+	"./en-ie.js": 65,
+	"./en-il": 66,
+	"./en-il.js": 66,
+	"./en-nz": 67,
+	"./en-nz.js": 67,
+	"./eo": 68,
+	"./eo.js": 68,
+	"./es": 69,
+	"./es-do": 70,
+	"./es-do.js": 70,
+	"./es-us": 71,
+	"./es-us.js": 71,
+	"./es.js": 69,
+	"./et": 72,
+	"./et.js": 72,
+	"./eu": 73,
+	"./eu.js": 73,
+	"./fa": 74,
+	"./fa.js": 74,
+	"./fi": 75,
+	"./fi.js": 75,
+	"./fo": 76,
+	"./fo.js": 76,
+	"./fr": 77,
+	"./fr-ca": 78,
+	"./fr-ca.js": 78,
+	"./fr-ch": 79,
+	"./fr-ch.js": 79,
+	"./fr.js": 77,
+	"./fy": 80,
+	"./fy.js": 80,
+	"./ga": 81,
+	"./ga.js": 81,
+	"./gd": 82,
+	"./gd.js": 82,
+	"./gl": 83,
+	"./gl.js": 83,
+	"./gom-latn": 84,
+	"./gom-latn.js": 84,
+	"./gu": 85,
+	"./gu.js": 85,
+	"./he": 86,
+	"./he.js": 86,
+	"./hi": 87,
+	"./hi.js": 87,
+	"./hr": 88,
+	"./hr.js": 88,
+	"./hu": 89,
+	"./hu.js": 89,
+	"./hy-am": 90,
+	"./hy-am.js": 90,
+	"./id": 91,
+	"./id.js": 91,
+	"./is": 92,
+	"./is.js": 92,
+	"./it": 93,
+	"./it-ch": 94,
+	"./it-ch.js": 94,
+	"./it.js": 93,
+	"./ja": 95,
+	"./ja.js": 95,
+	"./jv": 96,
+	"./jv.js": 96,
+	"./ka": 97,
+	"./ka.js": 97,
+	"./kk": 98,
+	"./kk.js": 98,
+	"./km": 99,
+	"./km.js": 99,
+	"./kn": 100,
+	"./kn.js": 100,
+	"./ko": 101,
+	"./ko.js": 101,
+	"./ku": 102,
+	"./ku.js": 102,
+	"./ky": 103,
+	"./ky.js": 103,
+	"./lb": 104,
+	"./lb.js": 104,
+	"./lo": 105,
+	"./lo.js": 105,
+	"./lt": 106,
+	"./lt.js": 106,
+	"./lv": 107,
+	"./lv.js": 107,
+	"./me": 108,
+	"./me.js": 108,
+	"./mi": 109,
+	"./mi.js": 109,
+	"./mk": 110,
+	"./mk.js": 110,
+	"./ml": 111,
+	"./ml.js": 111,
+	"./mn": 112,
+	"./mn.js": 112,
+	"./mr": 113,
+	"./mr.js": 113,
+	"./ms": 114,
+	"./ms-my": 115,
+	"./ms-my.js": 115,
+	"./ms.js": 114,
+	"./mt": 116,
+	"./mt.js": 116,
+	"./my": 117,
+	"./my.js": 117,
+	"./nb": 118,
+	"./nb.js": 118,
+	"./ne": 119,
+	"./ne.js": 119,
+	"./nl": 120,
+	"./nl-be": 121,
+	"./nl-be.js": 121,
+	"./nl.js": 120,
+	"./nn": 122,
+	"./nn.js": 122,
+	"./pa-in": 123,
+	"./pa-in.js": 123,
+	"./pl": 124,
+	"./pl.js": 124,
+	"./pt": 125,
+	"./pt-br": 126,
+	"./pt-br.js": 126,
+	"./pt.js": 125,
+	"./ro": 127,
+	"./ro.js": 127,
+	"./ru": 128,
+	"./ru.js": 128,
+	"./sd": 129,
+	"./sd.js": 129,
+	"./se": 130,
+	"./se.js": 130,
+	"./si": 131,
+	"./si.js": 131,
+	"./sk": 132,
+	"./sk.js": 132,
+	"./sl": 133,
+	"./sl.js": 133,
+	"./sq": 134,
+	"./sq.js": 134,
+	"./sr": 135,
+	"./sr-cyrl": 136,
+	"./sr-cyrl.js": 136,
+	"./sr.js": 135,
+	"./ss": 137,
+	"./ss.js": 137,
+	"./sv": 138,
+	"./sv.js": 138,
+	"./sw": 139,
+	"./sw.js": 139,
+	"./ta": 140,
+	"./ta.js": 140,
+	"./te": 141,
+	"./te.js": 141,
+	"./tet": 142,
+	"./tet.js": 142,
+	"./tg": 143,
+	"./tg.js": 143,
+	"./th": 144,
+	"./th.js": 144,
+	"./tl-ph": 145,
+	"./tl-ph.js": 145,
+	"./tlh": 146,
+	"./tlh.js": 146,
+	"./tr": 147,
+	"./tr.js": 147,
+	"./tzl": 148,
+	"./tzl.js": 148,
+	"./tzm": 149,
+	"./tzm-latn": 150,
+	"./tzm-latn.js": 150,
+	"./tzm.js": 149,
+	"./ug-cn": 151,
+	"./ug-cn.js": 151,
+	"./uk": 152,
+	"./uk.js": 152,
+	"./ur": 153,
+	"./ur.js": 153,
+	"./uz": 154,
+	"./uz-latn": 155,
+	"./uz-latn.js": 155,
+	"./uz.js": 154,
+	"./vi": 156,
+	"./vi.js": 156,
+	"./x-pseudo": 157,
+	"./x-pseudo.js": 157,
+	"./yo": 158,
+	"./yo.js": 158,
+	"./zh-cn": 159,
+	"./zh-cn.js": 159,
+	"./zh-hk": 160,
+	"./zh-hk.js": 160,
+	"./zh-tw": 161,
+	"./zh-tw.js": 161
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 264;
+
+/***/ }),
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("full-calendar", {
+    attrs: { config: _vm.config, events: _vm.events }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5793e382", module.exports)
   }
 }
 
@@ -95757,8 +95797,8 @@ o[t.label]=e,o)),t._v(" "),t.multiple?n("button",{staticClass:"close",attrs:{dis
 
 __WEBPACK_IMPORTED_MODULE_0_Vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_1_Vuex__["a" /* default */]);
 
-__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.baseURL = 'https://santuariosantateresinha41.com.br/api/';
 __WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.baseURL = 'https://santuariosantateresinha41.com.br/api/';
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_Vuex__["a" /* default */].Store({
     state: {

@@ -207,8 +207,8 @@
             this.getPersons();
             this.getTotalPersons();
             this.getTotalTithe();
-            this.getBirthdays();
-            this.getWeedingDay();
+            // this.getBirthdays();
+            // this.getWeedingDay();
             // this.getDataGraphic();
         }
     }
