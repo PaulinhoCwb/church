@@ -4,26 +4,25 @@
     <div class="row">
         <div class="col-md-8 col-xs-12">
             <ul class="list-unstyled mt-2" id="list-warning">
+                @forelse ($avisos as $aviso)
                 <li class="warning-list">
-                    <h2 class="title">Titulo do Aviso</h2>
+                    <h2 class="title">{{ $aviso->titulo }}</h2>
                     <div class="content-warning">
                         <img src="" alt="">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, sed velit? Quisquam, quam. Quisquam, fugiat.</p>
+                        <p>{{ $aviso->body }}.</p>
                     </div>
                     <div class="warning-date">
-                        <small>18/03/2019</small>
+                        <small>{{ $aviso->created_at }}</small>
                     </div>
                 </li>
-                <li class="warning-list">
-                    <h2 class="title">Titulo do Aviso</h2>
-                    <div class="content-warning">
-                        <img src="" alt="">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, sed velit? Quisquam, quam. Quisquam, fugiat.</p>
-                    </div>
-                    <div class="warning-date">
-                        <small>18/03/2019</small>
-                    </div>
-                </li>
+                @empty
+                <div class="alert alert-warning" role="alert">
+                        <h4 class="alert-heading">Avisos!</h4>
+                        <p>Não existe avisos publicados, para essa seção.</p>
+                        <hr>
+                        <p class="mb-0">Caso queira maiores informações entrar em contato pelo fale conosco.</p>
+                      </div>
+                @endforelse
             </ul>
         </div>
     </div>

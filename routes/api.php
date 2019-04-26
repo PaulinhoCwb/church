@@ -18,7 +18,8 @@ Route::middleware('auth:api')->group(function () {
           'persons'    => 'PersonController',
           'intentions' => 'IntentionController',
           'dependents' => 'DependentController',
-          'news'       => 'NewController'
+          'news'       => 'NewController',
+          'users'      => 'UserController'
      ]);
      Route::get('tithe/total','TitheController@getTotalTithe');
      Route::get('total/person','PersonController@getTotal');

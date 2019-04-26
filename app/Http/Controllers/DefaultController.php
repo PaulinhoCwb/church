@@ -20,7 +20,7 @@ class DefaultController extends Controller
 
     public function warnings()
     {
-        $avisos = News::where('tipo',2);
+        $avisos = News::where('tipo',2)->orderBy('id','ASC')->get();
         return view('avisos',['avisos',$avisos]);
     }
 
@@ -31,8 +31,9 @@ class DefaultController extends Controller
 
     public function catequese() 
     {
-        $catequese = News::where(3);
-        return view('catequese',['catequese' => $catequese]);
+        $catequese = News::where('tipo',3)->orderBy('id','ASC')->get();
+        // dd($catequese);
+        return view('catequese',['avisos' => $catequese]);
     }
 
     public function intentions()

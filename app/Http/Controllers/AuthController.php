@@ -23,8 +23,6 @@ class AuthController extends Controller
                  ],
              ]);
             return json_decode((string) $response->getBody(), true);
-            // // dd((string)$response->getBody());
-            //  return response()->json((string)$response->getBody(),200,[],1);
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
             if($e->getCode() == 400) {
                 return response()->json('Invalid request', $e->getCode());
@@ -32,7 +30,7 @@ class AuthController extends Controller
                 return response()->json('Suas credencias estão incorretas', $e->getCode());
             }
         
-           return response()->json('Erro no servidos',$e->getCode());
+           return response()->json('Erro no servidor',$e->getCode());
         }
     }
 

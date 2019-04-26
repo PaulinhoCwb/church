@@ -15,7 +15,9 @@ import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
 import moment from 'moment';
 import vSelect from 'vue-select';
-import store from "./Store/store"; 
+// import store from "./Store/store";
+
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem('access_token');
 
 window.Form = Form;
 window.swal = swal;
@@ -73,8 +75,8 @@ Vue.component(
 
 const app = new Vue({
     el: '#app',
-    store: store,
-    router: router,
+    // store,
+    router,
     mounted () {
         //  [App.vue specific] When App.vue is finish loading finish the progress bar
         this.$Progress.finish()

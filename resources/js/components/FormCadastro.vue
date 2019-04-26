@@ -105,6 +105,7 @@
 <script>
 import {mask} from 'vue-the-mask'
     export default {
+        name: 'formCadastro',
         directives: {mask},
         data() {
             return {

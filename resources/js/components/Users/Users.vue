@@ -5,10 +5,10 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Noticias
+                            Usuarios
                         </h3>
                         <div class="card-tools">
-                             <router-link class="btn btn-outline-primary btn-sm" to="form-news">Cadastrar Usuario</router-link>
+                             <router-link class="btn btn-outline-primary btn-sm" to="form-users">Cadastrar Usuario</router-link>
                         </div>
                     </div>
                     <div class="card-body table-responsive p-0">
@@ -22,9 +22,9 @@
                             </thead>
                             <tbody>
                               <tr v-for="user in users" :key="user.id">
-                                  <td>{{ user.titulo }}</td>
-                                  <td>{{ user.body }}</td>
-                                  <td>{{ user.user.name }}</td>
+                                  <td>{{ user.name }}</td>
+                                  <td>{{ user.email }}</td>
+                                  <td>{{ user.created_at }}</td>
                               </tr>
                             </tbody>
                         </table>
@@ -56,6 +56,9 @@ export default {
                 });
             });
         }
+    },
+    mounted () {
+        this.getUsers();
     }
 }
 </script>

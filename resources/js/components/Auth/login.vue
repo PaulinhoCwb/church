@@ -52,15 +52,17 @@ export default {
               'username': this.username,
               'password': this.senha,
             }).then((res) => {
-               localStorage.setItem('access_token', res.data.access_token);
-               this.$router.push('/master');
+               window.localStorage.setItem('access_token', res.data.access_token);
+               setTimeout(() => {
+                 this.$router.push('/master');
+               }, 3000);
             }).catch((res) => {
                 toast({
                     type: 'error', 
                     title: 'Usuario ou senha não conferem'
                 });
             });
-        }
+        },
     }
 }
 </script>

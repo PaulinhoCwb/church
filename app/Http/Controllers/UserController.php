@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Http\Resource\User as UserResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use App\Http\Resources\User as UserResource;
 
 class UserController extends Controller
 {
@@ -31,14 +32,11 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required|min:6'
         ]);
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $user = User::create($data);
 
-        $user = User::create($request->all());
-
-        if (!$user) {
-            return response()->json(['error' => true]);
-        }
-
-        return response()->json(['error' => false]);
+        return Response::json($user);
     }
 
     /**
