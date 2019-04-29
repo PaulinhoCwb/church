@@ -1,6 +1,9 @@
-import axios from 'axios';
-
-const state = {};
+const state = {
+    login: {
+        access_token: null,
+        scopes: null
+    }
+};
 
 const getters = {};
 
