@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Response;
 use App\Http\Resources\News as NewsResource;
-use Illuminate\Support\Facades\Auth;
 
 class NewController extends Controller
 {
@@ -42,9 +43,28 @@ class NewController extends Controller
             'tipo' => 'required',
             'titulo' => 'required',
             'body' => 'required',
+            'photo' => 'required'
         ]);
+
+        $file = $request->file('photo');
+
+        $fileName = $file->getClientOriginalName();
+
+        $imageMedia = Image::make($file->getRealPath())->resize(100,100, function ($constraint)
+        {
+            $constraint->aspectRatio();
+        })->save(public_path('img/media/').$fileName);
+        
+        $imageLong  = Image::make($file->getRealPath())->resize(700,200, function ($constraint)
+        {
+            $constraint->aspectRatio();
+        })->save(public_path('img/media/').$fileName);
+
+
         $user = Auth::guard('api')->user();
         $data = $request->all();
+
+        $data['photo'] = $$fileName;
         $data['user_id'] = $user->id;
         
         $news = News::create($data);

@@ -14,7 +14,7 @@
                         <div class="form-group col-12">
                             <label for="">Imagem</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                <input type="file" class="custom-file-input" @change="uploadPhoto" name="photo" id="validatedCustomFile" required>
                                 <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                                 <div class="invalid-feedback">Example invalid custom file feedback</div>
                             </div>
@@ -53,7 +53,8 @@
                     tipo: "",
                     titulo: "",
                     body: "",
-                    user_id: 2
+                    user_id: "",
+                    photo:""
                 }),
                 news: [],
                 pagination: {}
@@ -108,6 +109,9 @@
                     prev_page_url: links.prev
                 };
                 this.pagination = pagination;
+            },
+            uploadPhoto (e) {
+                
             }
         }
     }

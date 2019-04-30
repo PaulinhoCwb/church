@@ -55,7 +55,7 @@ export default {
                window.localStorage.setItem('access_token', res.data.access_token);
                setTimeout(() => {
                  this.$router.push('/master');
-               }, 3000);
+               }, 5000);
             }).catch((res) => {
                 toast({
                     type: 'error', 

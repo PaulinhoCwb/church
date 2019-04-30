@@ -203,13 +203,19 @@
                 });
             }
         },
-        mounted() {
+        mounted () {
             this.getPersons();
             this.getTotalPersons();
             this.getTotalTithe();
             // this.getBirthdays();
             // this.getWeedingDay();
             // this.getDataGraphic();
+            
+        },
+        created () { 
+            this.getPersons();
+            this.getTotalPersons();
+            this.getTotalTithe();
         }
     }
 </script>
