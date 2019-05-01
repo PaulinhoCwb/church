@@ -5,13 +5,14 @@
         <div class="col-md-9 col-xs-12">
             @foreach ($noticias as $noticia)
                 <div class="block-news mb-3 mt-2">
-                    <h3>{{ $noticia->titulo }}</h3>
+                    <h3 class="d-block text-center">{{ $noticia->titulo }}</h3>
     
                     <div class="content-news">
-                    <p>{{ $noticia->body }}</p>
+                        <img src="{{ asset('img/starosa.svg') }}" class="img-resposive" width="150" height="150" alt="">
+                        <p>{{ $noticia->body }}</p>
                     </div>
                     <div>
-                    <small>{{ $noticia->created_at }}</small> <span>João Paulo</span> <a href="#" class="float-right btn btn-info">Ler
+                        <small>{{ $noticia->created_at }}</small> <span>João Paulo</span> <a href="#" class="float-right btn btn-info">Ler
                             Mais</a>
                     </div>
                 </div> 

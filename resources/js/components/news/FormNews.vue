@@ -110,8 +110,16 @@
                 };
                 this.pagination = pagination;
             },
+
             uploadPhoto (e) {
-                
+                console.log(e);
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                reader.onloadend = (file) => {
+                    // console.log(reader.result);
+                    this.form.photo = reader.result;
+                }
+                reader.readAsDataURL(file);
             }
         }
     }

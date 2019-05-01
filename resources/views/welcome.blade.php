@@ -150,7 +150,7 @@
                 <div class="content">
 
                     <div class="avisos-header">
-                        <a href="horarios.html" class="btn display-4">Movimentos na Paróquia</a>
+                        <a href="{{ route('movimentos') }}" class="btn display-4">Movimentos na Paróquia</a>
                     </div>
 
                 </div>

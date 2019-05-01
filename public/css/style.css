@@ -116,6 +116,11 @@ body {
    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
+.content-news {
+    display: flex;
+    flex-direction: row;
+}
+
 .block-intecoes{
     display: flex;
     background-color: #E9E8E8;

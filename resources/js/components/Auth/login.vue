@@ -52,10 +52,20 @@ export default {
               'username': this.username,
               'password': this.senha,
             }).then((res) => {
-               window.localStorage.setItem('access_token', res.data.access_token);
-               setTimeout(() => {
-                 this.$router.push('/master');
-               }, 5000);
+              if (res.data.access_token) {
+                window.localStorage.setItem('access_token', res.data.access_token);
+                if (window.localStorage.getItem('access_token')) {
+                    setTimeout(() => {
+                        this.$router.push('/master');
+                    }, 5000);
+                }
+              } else {
+                toast({
+                    type: 'warning',
+                    title: 'Erro ao validar dados, por favor tente novamente!'
+                });
+              }
+              
             }).catch((res) => {
                 toast({
                     type: 'error', 

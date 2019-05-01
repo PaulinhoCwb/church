@@ -84253,7 +84253,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -84354,10 +84354,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'username': this.username,
                 'password': this.senha
             }).then(function (res) {
-                window.localStorage.setItem('access_token', res.data.access_token);
-                setTimeout(function () {
-                    _this.$router.push('/master');
-                }, 5000);
+                if (res.data.access_token) {
+                    window.localStorage.setItem('access_token', res.data.access_token);
+                    if (window.localStorage.getItem('access_token')) {
+                        setTimeout(function () {
+                            _this.$router.push('/master');
+                        }, 5000);
+                    }
+                } else {
+                    toast({
+                        type: 'warning',
+                        title: 'Erro ao validar dados, por favor tente novamente!'
+                    });
+                }
             }).catch(function (res) {
                 toast({
                     type: 'error',
@@ -88819,7 +88828,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -88943,7 +88952,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             this.pagination = pagination;
         },
-        uploadPhoto: function uploadPhoto(e) {}
+        uploadPhoto: function uploadPhoto(e) {
+            var _this3 = this;
+
+            console.log(e);
+            var file = e.target.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function (file) {
+                // console.log(reader.result);
+                _this3.form.photo = reader.result;
+            };
+            reader.readAsDataURL(file);
+        }
     }
 });
 
