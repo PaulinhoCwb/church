@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class Event extends Model
 {
-    public $fillable = [
-        'tipo','body','titulo','user_id','photo'
+    protected $fillable = [
+        'event','description','day','hour','color','user_id'
     ];
 
     public function user()

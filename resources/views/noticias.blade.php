@@ -8,8 +8,8 @@
                     <h3 class="d-block text-center">{{ $noticia->titulo }}</h3>
     
                     <div class="content-news">
-                        <img src="{{ asset('img/starosa.svg') }}" class="img-resposive" width="150" height="150" alt="">
-                        <p>{{ $noticia->body }}</p>
+                        <img src="{{ asset('img/media/'.$noticia->photo) }}" class="img-resposive" width="150" height="150" alt="">
+                        <p class="ml-3">{{ $noticia->body }}</p>
                     </div>
                     <div>
                         <small>{{ $noticia->created_at }}</small> <span>João Paulo</span> <a href="#" class="float-right btn btn-info">Ler

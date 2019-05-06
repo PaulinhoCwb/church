@@ -19,17 +19,41 @@
                                     <td>Resumo</td>
                                     <td>Autor</td>
                                     <td>Data publicação</td>
+                                    <td></td>
                                 </tr>
                             </thead>
                             <tbody>
                               <tr v-for="noticia in news" :key="noticia.id">
                                   <td>{{ noticia.titulo }}</td>
-                                  <td>{{ noticia.body }}</td>
+                                  <td>{{ noticia.body | sliceName }}</td>
                                   <td>{{ noticia.user.name }}</td>
-                                  <td>{{ noticia.created_at.date}}</td>
+                                  <td>{{ noticia.created_at.date | dateTimeBR }}</td>
+                                  <td>
+                                        <button class="btn btn-outline-info btn-sm" @click="viewBody(noticia)">
+                                          <i class="fas fa-eye-slash"></i>
+                                        </button>
+                                    </td>
                               </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="noticia" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ noticia.titulo }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ noticia.body }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -42,7 +66,8 @@ export default {
     name: 'news',
     data () {
         return {
-            news: []
+            news: [],
+            noticia: {}
         }
     },
     methods: {
@@ -54,6 +79,10 @@ export default {
             }).catch((res) => {
 
             });
+        },
+        viewBody (noticia) {
+            this.noticia = noticia;
+            $('#noticia').modal('show'); 
         }
     },
     mounted () {

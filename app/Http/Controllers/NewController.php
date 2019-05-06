@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Response;
 use App\Http\Resources\News as NewsResource;
 
@@ -45,28 +44,22 @@ class NewController extends Controller
             'body' => 'required',
             'photo' => 'required'
         ]);
+        $data = $request->all();
+        if($request->photo){
+            $name = time().'.' . explode('/', explode(':', substr($request->photo, 0, strpos($request->photo, ';')))[1])[1];
+            \Image::make($request->photo)->resize(150,150, function ($constraint){
+                $constraint->aspectRatio();
+            })->save(public_path('img/media/').$name);
+            \Image::make($request->photo)->resize(700,200, function ($constraint){
+                $constraint->aspectRatio();
+            })->save(public_path('img/longa/').$name);
 
-        $file = $request->file('photo');
-
-        $fileName = $file->getClientOriginalName();
-
-        $imageMedia = Image::make($file->getRealPath())->resize(100,100, function ($constraint)
-        {
-            $constraint->aspectRatio();
-        })->save(public_path('img/media/').$fileName);
-        
-        $imageLong  = Image::make($file->getRealPath())->resize(700,200, function ($constraint)
-        {
-            $constraint->aspectRatio();
-        })->save(public_path('img/media/').$fileName);
-
+            $data['photo'] = $name;
+        }
 
         $user = Auth::guard('api')->user();
-        $data = $request->all();
 
-        $data['photo'] = $$fileName;
         $data['user_id'] = $user->id;
-        
         $news = News::create($data);
 
         return Response::json($news);

@@ -31195,3 +31195,7 @@ readers do not read off random characters that represent icons */
   padding: 0 !important;
 }
 
+.vc-compact {
+  width: 100% !important;
+}
+

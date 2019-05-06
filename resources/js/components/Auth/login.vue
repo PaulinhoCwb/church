@@ -73,6 +73,14 @@ export default {
                 });
             });
         },
+        verificaToken () {
+          if (window.localStorage.getItem('access_token')) {
+            this.$router.push('/master');
+          }
+        }
+    },
+    created () {
+      this.verificaToken();
     }
 }
 </script>

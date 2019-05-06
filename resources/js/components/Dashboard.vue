@@ -131,7 +131,11 @@
                 let vm = this;
                 pageUrl = pageUrl || 'persons';
 
-                axios.get(pageUrl)
+                axios.get(pageUrl,{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                })
                 .then(res => {
                     this.persons = res.data.data;
                     vm.makePagination(res.data.meta, res.data.links);
@@ -204,18 +208,21 @@
             }
         },
         mounted () {
-            this.getPersons();
-            this.getTotalPersons();
-            this.getTotalTithe();
-            // this.getBirthdays();
-            // this.getWeedingDay();
-            // this.getDataGraphic();
+            setTimeout(() => {
+                this.getPersons();
+                this.getTotalPersons();
+                this.getTotalTithe();
+            }, 3000);
             
         },
         created () { 
-            this.getPersons();
-            this.getTotalPersons();
-            this.getTotalTithe();
+            if (!window.localStorage.getItem('access_token')) {
+                window.localStorage.removeItem('access_token');
+                this.$router.push('/login');
+            }
+            // this.getPersons();
+            // this.getTotalPersons();
+            // this.getTotalTithe();
         }
     }
 </script>
