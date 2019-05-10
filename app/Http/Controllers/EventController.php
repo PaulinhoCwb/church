@@ -33,7 +33,7 @@ class EventController extends Controller
         $data = $request->all();
         $data['user_id'] = auth('api')->id();
         
-        $event = Event::create($data);
+        $event = $this->getJson(Event::create($data));
 
         return response()->json($event);
     }
@@ -70,5 +70,16 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function getJson(Event $event)
+    {
+        return [  
+            'title'       => $event->event,
+            'description' => $event->description,
+            'color'       => $event->color,
+            'start'       => $event->day,
+            'end'         => $event->day 
+        ];
     }
 }

@@ -23,6 +23,7 @@ Route::get('/catequese','DefaultController@catequese')->name('catequese');
 Route::post('/contact-us','DefaultController@contactUs')->name('contact-us');
 Route::post('/intencoes/save','DefaultController@intentionsSave')->name('save.intencoes');
 Route::view('/movimentos', 'movimentos')->name('movimentos');
+Route::view('/horarios','horarios')->name('horarios');
 Route::get('/invoice', function () {
   $data = \App\Intention::whereDate('data',now())->orderBy('type');
   $pdf = PDF::loadView('PDF/missas', ['intencoes' => $data]);

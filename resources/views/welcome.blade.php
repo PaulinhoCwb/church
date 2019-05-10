@@ -15,22 +15,22 @@
       <div class="carousel-item active">
         <img src="img/santa-ter.jpeg" height="500px" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            {{-- <h5>First slide label</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
           </div>
       </div>
       <div class="carousel-item">
         <img src="img/stateresinha.jpg" height="500px" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            {{-- <h5>First slide label</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
           </div>
       </div>
       <div class="carousel-item">
         <img src="img/santa-terinha-desenho (2).jpg" height="500px" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-            <h5 class="text-black">First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            {{-- <h5 class="text-black">First slide label</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
           </div>
       </div>
     </div>
@@ -173,7 +173,7 @@
 
                     <div class="avisos-header">
 
-                        <a href="horarios.html" class="btn display-4">Horários de Missas</a>
+                        <a href="{{ route('horarios') }}" class="btn display-4">Horários de Missas</a>
 
                     </div>
 
@@ -221,11 +221,11 @@
             @method('POST')
             <div class="form-group">
                 <label for="">Nome</label>
-                <input type="text" name="name" id="name" class="form-control">
+                <input type="text" name="name" autocomplete="off" id="name" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">E-mail</label>
-                <input type="text" name="email" id="email" class="form-control">
+                <input type="text" name="email" autocomplete="off" id="email" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">Mensagem</label>

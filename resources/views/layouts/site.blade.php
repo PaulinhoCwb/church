@@ -70,26 +70,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-
-                    <a class="nav-link" href="horarios.html">Horarios</a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="#">Localização</a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="#">Fale conosco</a>
-
-                </li>
-
             </ul>
-            <a href="/"  class="btn btn-dark float-right"><i class="fas fa-arrow-alt-circle-left"></i> Voltar</a>
+            <a href="/"  class="float-right text-white"><i class="fas fa-arrow-alt-circle-left fa-2x"></i></a>
         </div>
 
     </nav>

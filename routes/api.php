@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::post('login','AuthController@login')->name('login');
-Route::middleware('auth:api')->group(function () {
+// Route::middleware('auth:api')->group(function () {
      Route::apiResources([
           'persons'    => 'PersonController',
           'intentions' => 'IntentionController',
@@ -25,5 +25,5 @@ Route::middleware('auth:api')->group(function () {
      Route::get('tithe/total','TitheController@getTotalTithe');
      Route::get('total/person','PersonController@getTotal');
      Route::post('logout','AuthController@logout');
-});
+// });
 

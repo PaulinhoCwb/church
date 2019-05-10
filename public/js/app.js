@@ -89688,7 +89688,7 @@ exports = module.exports = __webpack_require__(2)(false);
 exports.i(__webpack_require__(263), "");
 
 // module
-exports.push([module.i, "\n\n", ""]);
+exports.push([module.i, "\n", ""]);
 
 // exports
 
@@ -89719,6 +89719,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fullcalendar_dist_locale_pt_br___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_fullcalendar_dist_locale_pt_br__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_color__ = __webpack_require__(267);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_color___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_color__);
+//
+//
+//
+//
 //
 //
 //
@@ -89825,7 +89829,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.form.post('events').then(function (res) {
-                _this2.events.push(res.data.data);
+                _this2.events.push(res.data);
+                console.log(res.data);
+
                 $('#event').modal('hide');
             }).catch(function (res) {
                 toast({});
@@ -89844,23 +89850,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         eventSelected: function eventSelected(event) {
             this.selected = event;
-            console.log(event);
         },
         eventCreated: function eventCreated() {
             for (var _len = arguments.length, test = Array(_len), _key = 0; _key < _len; _key++) {
                 test[_key] = arguments[_key];
             }
 
-            console.log("Teste" + test);
+            console.log(test);
         },
         setColor: function setColor(color) {
             this.form.color = color.hex;
+        },
+        renderEvent: function renderEvent() {
+            var evento = {
+                title: 'event3',
+                start: '2018-01-09T12:30:00',
+                allDay: false
+            };
+            this.$refs.calendar.$emit('render-event', evento);
         }
     },
     computed: {
         eventSources: function eventSources() {
             var self = this;
-            return [{
+            var eventos = [{
                 events: function events(start, end, timezone, callback) {
                     setTimeout(function () {
                         callback(self.events.filter(function () {
@@ -89869,6 +89882,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }, 1000);
                 }
             }];
+
+            console.log(eventos);
         }
     },
     mounted: function mounted() {
@@ -90340,7 +90355,11 @@ var render = function() {
             ]
           )
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.renderEvent } }, [
+        _vm._v("\n        Evento\n    ")
+      ])
     ],
     1
   )

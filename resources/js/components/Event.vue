@@ -1,7 +1,8 @@
 <template>
     <div>
         <!-- <full-calendar :config="config" :events="events" @day-click="dayClick" @event-selected="eventSelected" /> -->
-        <full-calendar ref="calendar" :config="config" :events="events" @event-created="eventCreated" @day-click="dayClick" @event-selected="eventSelected" />
+        <full-calendar ref="calendar" :config="config" :events="events" @event-created="eventCreated" @day-click="dayClick"
+        @event-selected="eventSelected"  />
         <form @submit.prevent="createEvent" action="POST">
             <div class="modal" id="event" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
@@ -50,6 +51,9 @@
                 </div>
             </div>
         </form>
+        <button @click="renderEvent">
+            Evento
+        </button>
     </div>
 </template>
 <script>
@@ -114,7 +118,9 @@
             },
             createEvent () {
                 this.form.post('events').then((res) => {
-                    this.events.push(res.data.data);
+                    this.events.push(res.data);
+                    console.log(res.data);
+                    
                     $('#event').modal('hide');
                 })
                 .catch((res) => {
@@ -136,25 +142,35 @@
             },
             eventSelected(event) {
                 this.selected = event;
-                console.log(event);
             },
             eventCreated(...test) {
-                console.log("Teste"+test);
+                console.log(test);
             },
             setColor(color) {
                 this.form.color = color.hex;
+            },
+            renderEvent(){
+                const evento = {
+                    title  : 'event3',
+                    start  : '2018-01-09T12:30:00',
+                    allDay : false,
+                };
+                this.$refs.calendar.$emit('render-event',evento)
             }
         },
         computed: {
             eventSources() {
                 const self = this;
-                return [{
+                const eventos = [{
                     events(start, end, timezone, callback) {
                         setTimeout(() => {
                             callback(self.events.filter(() => Math.random() > 0.5));
                         }, 1000);
                     },
                 }, ];
+
+                console.log(eventos);
+                
             },
         },
         mounted () {
@@ -165,5 +181,4 @@
 </script>
 <style>
     @import '~fullcalendar/dist/fullcalendar.css';
-
 </style>
