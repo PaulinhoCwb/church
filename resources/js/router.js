@@ -25,6 +25,7 @@ export default new VueRouter({
                 { path: '/intencoes', component: require('./components/intentions/Itentions.vue')},
                 { path: '/event', component: require('./components/Event.vue') },
                 { path: '/users', component: require('./components/Users/Users.vue') },
+                { path: '/form-users/:id', component: require('./components/Users/EditUser.vue'), name: 'update.user'},
                 { path: '/form-users', component: require('./components/Users/CreateUser.vue')},
             ] 
         },

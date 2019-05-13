@@ -21,10 +21,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr v-for="user in users" :key="user.id">
+                              <tr v-for="(user, index ) in users" :key="index">
                                   <td>{{ user.name }}</td>
                                   <td>{{ user.email }}</td>
                                   <td>{{ user.created_at }}</td>
+                                  <td>
+                                      <router-link :to="{name:'update.user',param}" class="btn btn-outline-primary btn-sm">
+                                          <i class="fas fa-pencil-alt"></i>
+                                      </router-link>
+                                      <a href="#" @click.prevent="deleteUser(user.id, index)" class="btn btn-outline-info btn-sm">
+                                          <i class="fas fa-trash-alt"></i>
+                                      </a>
+                                  </td>
                               </tr>
                             </tbody>
                         </table>
@@ -45,7 +53,11 @@ export default {
     },
     methods: {
         getUsers() {
-            axios.get('users')
+            axios.get('users',{
+                headers:{
+                    Authorization: 'Bearer '+window.localStorage.getItem('access_token')
+                }
+            })
             .then((res) => {
                 this.users = res.data.data;
             })

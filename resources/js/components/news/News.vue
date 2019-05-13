@@ -74,7 +74,11 @@ export default {
         getNews (pageUrl) {
             let vm = this;
             pageUrl = pageUrl || 'news';
-            axios.get(pageUrl).then((res) => {
+            axios.get(pageUrl,{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                 this.news = res.data.data;
             }).catch((res) => {
 
@@ -85,7 +89,7 @@ export default {
             $('#noticia').modal('show'); 
         }
     },
-    mounted () {
+    created () {
         this.getNews();
     }
 }

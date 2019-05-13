@@ -76,29 +76,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-if="persons">
-                                    
-                                </tr>
-                                <tr v-else v-for="(person, index) in persons" :key="index">
-                                    <td>{{ person.name }}</td>
-                                    <td>{{ person.dateofbirth | dateToBR }}</td>
-                                    <td>{{ person.cellphone }}</td>
-                                    <td>{{ person.tellphone }}</td>
-                                    <td>
-                                        <router-link :to="{name: 'profile' ,params:{id: person.id}}" class="btn btn-outline-info btn-sm">
-                                            <i class="fas fa-info-circle"></i>
-                                        </router-link>
-                                         <a @click="deletePerson(person.id, index)" class="btn btn-outline-secondary btn-sm">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                        <router-link :to="{name: 'edit.user' ,params:{id: person.id}}" class="btn btn-outline-danger btn-sm">
-                                            <i class="fas fa-pen"></i>
-                                        </router-link>
-                                        <router-link :to="{name: 'tithe-single', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
-                                            <i class="fas fa-money-bill-wave"></i>
-                                        </router-link>
-                                    </td>
-                                </tr>
+                                
+                        
+                                    <tr v-for="(person, index) in persons" :key="index">
+                                        <td>{{ person.name }}</td>
+                                        <td>{{ person.dateofbirth | dateToBR }}</td>
+                                        <td>{{ person.cellphone }}</td>
+                                        <td>{{ person.tellphone }}</td>
+                                        <template v-if="persons">
+                                        <td>
+                                            <router-link :to="{name: 'profile' ,params:{id: person.id}}" class="btn btn-outline-info btn-sm">
+                                                <i class="fas fa-info-circle"></i>
+                                            </router-link>
+                                             <a @click="deletePerson(person.id, index)" class="btn btn-outline-secondary btn-sm">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                            <router-link :to="{name: 'edit.user' ,params:{id: person.id}}" class="btn btn-outline-danger btn-sm">
+                                                <i class="fas fa-pen"></i>
+                                            </router-link>
+                                            <router-link :to="{name: 'tithe-single', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
+                                                <i class="fas fa-money-bill-wave"></i>
+                                            </router-link>
+                                        </td>
+                                        </template>
+                                    </tr>
+                                
                             </tbody>
                         </table>
                          <nav aria-label="Page navigation example">
@@ -223,11 +225,9 @@
             }
         },
         mounted () {
-            // setTimeout(() => {
-            //     this.getPersons();
-            //     this.getTotalPersons();
-            //     this.getTotalTithe();
-            // }, 3000);
+            this.getPersons();
+            this.getTotalPersons();
+            this.getTotalTithe();
             
         },
         created () { 
@@ -235,14 +235,7 @@
                 window.localStorage.removeItem('access_token');
                 this.$router.push('/login');
             }
-        
-            this.getPersons();
-            this.getTotalPersons();
-            this.getTotalTithe();
-        
-            // this.getPersons();
-            // this.getTotalPersons();
-            // this.getTotalTithe();
+
         },
         computed: {
             ParoquianosFilter () {

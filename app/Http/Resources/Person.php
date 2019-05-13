@@ -17,6 +17,7 @@ class Person extends JsonResource
     {
         // return parent::toArray($request);
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'dateofbirth' => $this->dateofbirth,
             'birthplace' => $this->birthplace,

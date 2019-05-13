@@ -62,7 +62,11 @@
         },
         methods: {
             createNews() {
-                this.form.post('news')
+                this.form.post('news',{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                })
                     .then((res) => {
                         if (res.data.id) {
                             this.form.reset();
@@ -89,7 +93,11 @@
 
                 pageUrl = pageUrl || 'news';
 
-                axios.get(pageUrl)
+                axios.get(pageUrl,{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                })
                     .then((res) => {
                         this.news = res.data.data;
                         vm.makePagination(res.data.meta, res.data.links)

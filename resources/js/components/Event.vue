@@ -51,9 +51,6 @@
                 </div>
             </div>
         </form>
-        <button @click="renderEvent">
-            Evento
-        </button>
     </div>
 </template>
 <script>
@@ -105,7 +102,11 @@
         },
         methods: {
             getEvents () {
-                axios.get('events')
+                axios.get('events',{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                })
                 .then((res) => {
                     this.events = res.data.data;
                 })
@@ -117,7 +118,11 @@
                 });
             },
             createEvent () {
-                this.form.post('events').then((res) => {
+                this.form.post('events',{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                     this.events.push(res.data);
                     console.log(res.data);
                     
@@ -173,7 +178,7 @@
                 
             },
         },
-        mounted () {
+        created () {
             this.getEvents();
         }
     };

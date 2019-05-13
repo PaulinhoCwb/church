@@ -63,7 +63,11 @@ export default {
     },
     methods: {
         getPersons(){
-            axios.get('persons').then((res) => {
+            axios.get('persons',{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                 console.log(res);
                 this.persons = res.data.data;
             }).catch((res) => {
@@ -88,7 +92,7 @@ export default {
             });
         }
     },
-    mounted () {
+    created () {
         this.getPersons();
     }
 }

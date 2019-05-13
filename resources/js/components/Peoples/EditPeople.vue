@@ -157,7 +157,7 @@ import {mask} from 'vue-the-mask'
                 });
             }
         },
-        mounted () {
+        created () {
             if (this.$route.params.id) {
                 axios.get('persons/'+this.$route.params.id)
                 .then( (res) => {

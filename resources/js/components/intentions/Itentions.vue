@@ -55,7 +55,11 @@ export default {
         getIntentions (pageUrl) {
             let vm = this;
             pageUrl = pageUrl || 'intentions';
-            axios.get(pageUrl).then((res) => {
+            axios.get(pageUrl,{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                 this.intentions = res.data.data
             }).catch();
         },
@@ -78,7 +82,11 @@ export default {
         },
 
         deleteIntention(id, index) {
-            axios.delete('')
+            axios.delete('',{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+            })
             .then((res)=> {
 
             })
@@ -87,7 +95,7 @@ export default {
             });
         }
     },
-    mounted () {
+    created () {
         this.getIntentions(); 
     }
 }

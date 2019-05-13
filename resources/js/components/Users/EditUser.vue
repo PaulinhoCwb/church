@@ -62,10 +62,10 @@ export default {
         }
     },
     methods: {
-        createUser () {
-            this.form.post('users',{
+        editUser () {
+            this.form.put('users/'+this.$route.params.id,{
                 headers: {
-                    Authorization: 'Bearer '+window.localStorage.getItem('access_token')
+                    Authorization: 'Bearer '+ window.localStorage.getItem('access_token')
                 }
             })
             .then((res) => {
@@ -81,7 +81,24 @@ export default {
                     title: 'Erro ao efetuar a operação'
                 });
             });
+        },
+        getUser () {
+            axios.get('users/'+this.$route.params.id,{
+                headers: {
+                    Authorization: 'Bearer '+window.localStorage.getItem('access_token')
+                }
+            })
+            .then( res => {
+                console.log(res);
+                this.form.fill(res.data.data);
+            })
+            .catch( res => {
+
+            });
         }
+    },
+    created () {
+        this.getUser();
     }
 }
 </script>
