@@ -60,6 +60,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Paroquianos</h3>
+                        <div class="card-tools">
+                            <input type="text" class="form-control" v-model="filterPersons" placeholder="Buscar Paroquianos">
+                        </div>
                     </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover">
@@ -73,7 +76,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(person, index) in persons" :key="index">
+                                <tr v-if="persons">
+                                    
+                                </tr>
+                                <tr v-else v-for="(person, index) in persons" :key="index">
                                     <td>{{ person.name }}</td>
                                     <td>{{ person.dateofbirth | dateToBR }}</td>
                                     <td>{{ person.cellphone }}</td>
@@ -85,9 +91,9 @@
                                          <a @click="deletePerson(person.id, index)" class="btn btn-outline-secondary btn-sm">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
-                                        <a class="btn btn-outline-danger btn-sm">
+                                        <router-link :to="{name: 'edit.user' ,params:{id: person.id}}" class="btn btn-outline-danger btn-sm">
                                             <i class="fas fa-pen"></i>
-                                        </a>
+                                        </router-link>
                                         <router-link :to="{name: 'tithe-single', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
                                             <i class="fas fa-money-bill-wave"></i>
                                         </router-link>
@@ -124,6 +130,7 @@
                 weeding: 0,
                 pagination: {},
                 dataCollection: null,
+                filterPersons: '',
             }
         },
         methods: {
@@ -145,7 +152,11 @@
             },
 
             getTotalPersons() {
-                axios.get('total/person').then((res) => {
+                axios.get('total/person',{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                     this.totalPerson = res.data; 
                 }).catch((res) => {
                     console.log(res);
@@ -153,7 +164,11 @@
             },
 
             getTotalTithe() {
-                axios.get('tithe/total').then((res) => {
+                axios.get('tithe/total',{
+                    headers: {
+                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                    }
+                }).then((res) => {
                     this.dizimo = res.data;
                 }).catch((res)=>{
                     console.log(res);
@@ -208,11 +223,11 @@
             }
         },
         mounted () {
-            setTimeout(() => {
-                this.getPersons();
-                this.getTotalPersons();
-                this.getTotalTithe();
-            }, 3000);
+            // setTimeout(() => {
+            //     this.getPersons();
+            //     this.getTotalPersons();
+            //     this.getTotalTithe();
+            // }, 3000);
             
         },
         created () { 
@@ -220,9 +235,21 @@
                 window.localStorage.removeItem('access_token');
                 this.$router.push('/login');
             }
+        
+            this.getPersons();
+            this.getTotalPersons();
+            this.getTotalTithe();
+        
             // this.getPersons();
             // this.getTotalPersons();
             // this.getTotalTithe();
+        },
+        computed: {
+            ParoquianosFilter () {
+                return _.filter(this.persons, item => {
+                    return item.name.indexOf(this.paroquianosFilter) >= 0
+                });
+            }
         }
     }
 </script>

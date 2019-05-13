@@ -13,6 +13,7 @@ export default new VueRouter({
             children: [
                 { path: '/', redirect: '/dashboard'},
                 { path: '/form', component: require('./components/FormCadastro.vue') },
+                { path: '/form/:id', component: require('./components/Peoples/EditPeople.vue'), name:'edit.user' },
                 { path: '/dependents/:id', component: require('./components/Dependents.vue')},
                 { path: '/profile/:id', component: require('./components/Profile.vue'), name: 'profile' },
                 { path: '/dashboard', component: require('./components/Dashboard.vue'), name: 'dashboard' },

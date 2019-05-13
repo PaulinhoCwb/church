@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
+use Laravel\Passport\Passport;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         //       print_r($query->bindings);
         //       $query->time;
         //   });
+        Passport::withCookieSerialization();
     }
 
     /**

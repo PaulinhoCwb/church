@@ -48,10 +48,10 @@ class NewController extends Controller
         if($request->photo){
             $name = time().'.' . explode('/', explode(':', substr($request->photo, 0, strpos($request->photo, ';')))[1])[1];
             \Image::make($request->photo)->resize(150,150, function ($constraint){
-                $constraint->aspectRatio();
+                // $constraint->aspectRatio();
             })->save(public_path('img/media/').$name);
             \Image::make($request->photo)->resize(700,200, function ($constraint){
-                $constraint->aspectRatio();
+                // $constraint->aspectRatio();
             })->save(public_path('img/longa/').$name);
 
             $data['photo'] = $name;
@@ -107,6 +107,10 @@ class NewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(News::destroy($id)) {
+            return response()->json(['deleted' => true]);
+        } else {
+            return response()->json(['deleted' => false]);
+        }
     }
 }

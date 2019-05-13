@@ -83,6 +83,12 @@
                                 </div>
                             </div>
                             <div class="form-row">
+                                <div class="form-group col-12">
+                                    <label for="">Observações</label>
+                                    <textarea name="observacao" id="observacao" cols="30" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="form-group col-md-6 col-xs-12">
                                     <label for="">Contato:</label>
                                     <input type="text" name="contato" id="contato" class="form-control">

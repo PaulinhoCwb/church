@@ -57,8 +57,9 @@ class PersonController extends Controller
      */
     public function show($id)
     {
-        $person = Person::with(['dependents'])->where(['id' => $id])->first();
-        return response()->json($person);
+        // $person = Person::with(['dependents'])->where(['id' => $id])->first();
+        // return response()->json($person);
+        return new PersonResource(Person::findOrFail($id));
     }
 
     /**
@@ -70,7 +71,15 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $person = Person::findOrfail($id);
+
+        if ($person->update($request->all())) {
+            return response()->json(['updated' => true]);
+        } else {
+            return response()->json(['updated' => false]);
+        }
         
+
     }
 
     /**

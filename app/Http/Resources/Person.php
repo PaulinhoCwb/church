@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\Dependents;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Person extends JsonResource
@@ -14,6 +15,19 @@ class Person extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'dateofbirth' => $this->dateofbirth,
+            'birthplace' => $this->birthplace,
+            'zipcode' => $this->zipcode,
+            'address' => $this->address,
+            'number' => $this->number,
+            'email' => $this->email,
+            'tellphone' => $this->tellphone,
+            'cellphone' => $this->cellphone,
+            'publicplace' => $this->publicplace,
+            'dependents' => new Dependents($this->dependents)
+        ];
     }
 }

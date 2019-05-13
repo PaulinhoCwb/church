@@ -29,6 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         //     $router->forAccessTokens();
         // });
         Passport::routes();
+        Passport::personalAccessClientId('1');
         //
     }
 }
