@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return new UserResource(User::findOrFail($id));
     }
 
     /**
@@ -82,6 +82,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        
+        $user = User::findOrFail($id);
+
+        if($user->destroy($id)){
+            return response()->json(['deleted' => true]);
+        } else {
+            return response()->json(['deleted' => false]);
+        }
     }
 }

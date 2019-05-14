@@ -19,11 +19,11 @@
                                     <td>Resumo</td>
                                     <td>Autor</td>
                                     <td>Data publicação</td>
-                                    <td></td>
+                                    <td>Ações</td>
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr v-for="noticia in news" :key="noticia.id">
+                              <tr v-for="(noticia, index) in news" :key="index">
                                   <td>{{ noticia.titulo }}</td>
                                   <td>{{ noticia.body | sliceName }}</td>
                                   <td>{{ noticia.user.name }}</td>
@@ -31,6 +31,12 @@
                                   <td>
                                         <button class="btn btn-outline-info btn-sm" @click="viewBody(noticia)">
                                           <i class="fas fa-eye-slash"></i>
+                                        </button>
+                                        <router-link class="btn btn-outline-secondary btn-sm" :to="{name: 'edit.news', params: {id: noticia.id}}">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </router-link>
+                                        <button class="btn btn-outline-danger btn-sm" @click="deleteNew(noticia.id,index)">
+                                          <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
                               </tr>
@@ -87,6 +93,33 @@ export default {
         viewBody (noticia) {
             this.noticia = noticia;
             $('#noticia').modal('show'); 
+        },
+        deleteNew (id, index){
+            axios.delete('news/'+id,{
+                headers:{
+                    Authorization: 'Bearer '+window.localStorage.getItem('access_token')
+                }
+            })
+            .then( res => {
+                if (res.data.deleted) {
+                    toast({
+                        type: "success",
+                        title: "Operação realizada com successo!!"
+                    });
+                    this.news.splice(index,1);
+                } else {
+                    toast({
+                        type: "error",
+                        title: "Erro ao excluir noticia"
+                    });
+                }
+            })
+            .catch( res => {
+                toast({
+                    type: "error",
+                    title: "Erro ao excluir noticia"
+                });
+            });
         }
     },
     created () {

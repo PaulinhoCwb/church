@@ -7,7 +7,7 @@
                         {{ title }}
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="createUser" method="post">
+                        <form @submit.prevent="editUser">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -69,11 +69,18 @@ export default {
                 }
             })
             .then((res) => {
-                this.form.reset();
-                 toast({
-                    type: 'success',
-                    title: 'Cadastro realizado com successo'
-                });
+               if (res.data.updated) {
+                    this.form.reset();
+                    toast({
+                        type: 'success',
+                        title: 'Cadastro realizado com successo'
+                    });
+               } else {
+                    toast({
+                        type: 'error',
+                        title: 'Erro ao efetuar a operação'
+                    });
+               }
             })
             .catch((res) => {
                 toast({
@@ -89,11 +96,13 @@ export default {
                 }
             })
             .then( res => {
-                console.log(res);
                 this.form.fill(res.data.data);
             })
             .catch( res => {
-
+                toast({
+                    type: "error",
+                    title: "Erro ao processar a operação!"
+                });
             });
         }
     },

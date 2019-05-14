@@ -46,7 +46,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        return new EventResource(Event::findOrFail($id));
     }
 
     /**
@@ -58,7 +58,12 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        if ($event->update($request->all())) {
+            return response()->json(['updated' => true]);
+        } else {
+            return response()->json(['updated' => false]);
+        }
     }
 
     /**

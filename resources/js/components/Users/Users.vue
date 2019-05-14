@@ -26,7 +26,7 @@
                                   <td>{{ user.email }}</td>
                                   <td>{{ user.created_at }}</td>
                                   <td>
-                                      <router-link :to="{name:'update.user',param}" class="btn btn-outline-primary btn-sm">
+                                      <router-link :to="{name:'update.user',params: {id: user.id}}" class="btn btn-outline-primary btn-sm">
                                           <i class="fas fa-pencil-alt"></i>
                                       </router-link>
                                       <a href="#" @click.prevent="deleteUser(user.id, index)" class="btn btn-outline-info btn-sm">
@@ -65,6 +65,34 @@ export default {
                 toast({
                     type: 'error',
                     title: 'Erro a carregar os dados.'
+                });
+            });
+        },
+        deleteUser(id, index) {
+            axios.delete('users/'+id,{
+                headers: {
+                    Authorization: 'Bearer '+ window.localStorage.getItem('access_token')
+                }
+            })
+            .then( res => {
+                if (res.data.deleted) {
+                    this.users.splice(index,1);
+                    toast({
+                        type: 'success',
+                        title: "Operação efetuada com successo"
+                    });
+                } else {
+                     toast({
+                        type: 'error',
+                        title: "Operação não pode ser efetuada!"
+                    });
+                }
+    
+            })
+            .catch( res => {
+                toast({
+                    type: 'error',
+                    title: "Operação não pode ser efetuada!"
                 });
             });
         }

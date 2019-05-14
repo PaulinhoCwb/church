@@ -20,7 +20,8 @@ class Event extends JsonResource
             'description' => $this->description,
             'color'       => $this->color,
             'start'       => $this->day,
-            'end'         => $this->day
+            'end'         => $this->day,
+            'id'          => $this->id,
         ];
     }
 }

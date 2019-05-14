@@ -59,8 +59,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Paroquianos</h3>
-                        <div class="card-tools">
+                        <h3 class="card-title d-sm-block">Paroquianos</h3>
+                        <div class="card-tools d-sm-block">
                             <input type="text" class="form-control" v-model="filterPersons" placeholder="Buscar Paroquianos">
                         </div>
                     </div>

@@ -71,7 +71,7 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $person = Person::findOrfail($id);
+        $person = Person::findOrFail($id);
 
         if ($person->update($request->all())) {
             return response()->json(['updated' => true]);

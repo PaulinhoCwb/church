@@ -1,8 +1,7 @@
 <template>
     <div>
-        <!-- <full-calendar :config="config" :events="events" @day-click="dayClick" @event-selected="eventSelected" /> -->
         <full-calendar ref="calendar" :config="config" :events="events" @event-created="eventCreated" @day-click="dayClick"
-        @event-selected="eventSelected"  />
+        @event-selected="eventSelected"/>
         <form @submit.prevent="createEvent" action="POST">
             <div class="modal" id="event" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
@@ -70,6 +69,19 @@
                     //     console.log(event);
                     //     this.selected = event;
                     // },
+                    // eventMouseover(event,el) {
+                    //     console.log(el);
+                        
+                    //    $('a.fc-day-grid-event').on('show.bs.popover', function(){
+                    //         alert('The popover is about to be shown.');
+                    //     });
+                    // },
+                    // eventRender (info,el) {
+                    //     console.log(el);
+                    //     // $(el).on('show.bs.popover', function(){
+                    //     //     alert('The popover is about to be shown.');
+                    //     // });
+                    // },
                     locale: 'pt-br',
                     defaultView: 'month'
                 },
@@ -124,13 +136,12 @@
                     }
                 }).then((res) => {
                     this.events.push(res.data);
-                    console.log(res.data);
-                    
                     $('#event').modal('hide');
                 })
                 .catch((res) => {
                     toast({
-
+                        type: "error",
+                        title: "Erro ao criar evento"
                     });
                 });
             },
@@ -146,7 +157,10 @@
                 this.selected = {};
             },
             eventSelected(event) {
-                this.selected = event;
+                // this.selected = event;
+                if (event.id) {
+                    this.$router.push({ name: 'event.view', params: { id: event.id } });
+                }
             },
             eventCreated(...test) {
                 console.log(test);
@@ -154,14 +168,7 @@
             setColor(color) {
                 this.form.color = color.hex;
             },
-            renderEvent(){
-                const evento = {
-                    title  : 'event3',
-                    start  : '2018-01-09T12:30:00',
-                    allDay : false,
-                };
-                this.$refs.calendar.$emit('render-event',evento)
-            }
+            
         },
         computed: {
             eventSources() {
@@ -173,9 +180,6 @@
                         }, 1000);
                     },
                 }, ];
-
-                console.log(eventos);
-                
             },
         },
         created () {

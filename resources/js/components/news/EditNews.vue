@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="row justify-content-center">
-            <p id="nada"></p>
+            <div class="col-12 pb-2">
+                <img :src="baseURL+form.photo" alt="" width="100%" height="150px">
+            </div>
             <div class="col-12">
                 <form @submit.prevent="createNews" method="POST">
                     <div class="form-row">
@@ -57,11 +59,12 @@
                     photo:""
                 }),
                 news: [],
-                pagination: {}
+                pagination: {},
+                baseURL: "https://santuariosantateresinha41.com.br/img/longa/",
             }
         },
         methods: {
-            createNews() {
+            editNews() {
                 this.form.post('news',{
                     headers: {
                          Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
@@ -88,39 +91,25 @@
                     });
             },
 
-            getNews(pageUrl) {
-                let vm = this;
-
-                pageUrl = pageUrl || 'news';
-
-                axios.get(pageUrl,{
+            getNew() {
+                axios.get('news/'+this.$route.params.id,{
                     headers: {
                          Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
                     }
                 })
-                    .then((res) => {
-                        this.news = res.data.data;
-                        vm.makePagination(res.data.meta, res.data.links)
-                    }).catch((res) => {
-                        toast({
-                            type: 'error',
-                            title: 'Operação não pode ser concluida'
-                        });
+                .then((res) => {
+                    console.log(res);
+                    
+                    this.form.fill(res.data.data);
+                }).catch((res) => {
+                    toast({
+                        type: 'error',
+                        title: 'Operação não pode ser concluida'
                     });
-            },
-
-            makePagination(meta, links) {
-                let pagination = {
-                    current_page: meta.current_page,
-                    last_page: meta.last_page,
-                    next_page_url: links.next,
-                    prev_page_url: links.prev
-                };
-                this.pagination = pagination;
+                });
             },
 
             uploadPhoto (e) {
-                console.log(e);
                 let file = e.target.files[0];
                 let reader = new FileReader();
                 reader.onloadend = (file) => {
@@ -129,6 +118,9 @@
                 }
                 reader.readAsDataURL(file);
             }
+        },
+        created () {
+            this.getNew();
         }
     }
 

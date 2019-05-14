@@ -21,16 +21,6 @@ class NewController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -50,7 +40,7 @@ class NewController extends Controller
             \Image::make($request->photo)->resize(150,150, function ($constraint){
                 // $constraint->aspectRatio();
             })->save(public_path('img/media/').$name);
-            \Image::make($request->photo)->resize(700,200, function ($constraint){
+            \Image::make($request->photo)->resize(700,150, function ($constraint){
                 // $constraint->aspectRatio();
             })->save(public_path('img/longa/').$name);
 
@@ -73,18 +63,7 @@ class NewController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return new NewsResource(News::findOrFail($id));
     }
 
     /**
