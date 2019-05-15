@@ -116,7 +116,7 @@
             getEvents () {
                 axios.get('events',{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {
@@ -132,7 +132,7 @@
             createEvent () {
                 this.form.post('events',{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                     this.events.push(res.data);

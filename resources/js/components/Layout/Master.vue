@@ -124,8 +124,8 @@
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Paroquia Nossa Senhora do Menino Jesus</h1>
+                        <div class="col-sm-12">
+                            <h1 class="m-0 text-dark">Santuario Santa Teresinha do Menino Jesus</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -165,13 +165,17 @@
         },
         methods: {
             logout () {
-                axios.post('logout')
+                axios.post('logout',{
+                    headers: {
+                        Authorization: "Bearer "+ window.sessionStorage.getItem('access_token')
+                    }
+                })
                 .then((res) => {
                     toast({
                         type: 'success',
                         title: 'Você está saindo do sistema'
                     });
-                    localStorage.removeItem('access_token');
+                    window.sessionStorage.removeItem('access_token');
                     this.$router.push('/');
                 }).catch((res) => {
                     toast({

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\News;
 use App\Intention;
-use App\Mail\ReceiveShipped;
 use Illuminate\Http\Request;
+use App\Mail\ReceiveShipped;
 use App\Mail\ContactUsShipped;
-use Illuminate\Support\Facades\Mail;
-use function GuzzleHttp\Promise\queue;
 
 class DefaultController extends Controller
 {
@@ -31,7 +30,7 @@ class DefaultController extends Controller
 
     public function catequese() 
     {
-        $catequese = News::where('tipo',3)->orderBy('id','ASC')->get();
+        $catequese = News::where('tipo',3)->orderBy([])->get();
         // dd($catequese);
         return view('catequese',['avisos' => $catequese]);
     }
@@ -75,5 +74,12 @@ class DefaultController extends Controller
         }
 
         return view('intencoes',['type'=> $type, 'message' => $message]);
+    }
+
+    public function list()
+    {
+        $data = \App\Intention::whereDate('data',now())->orderBy('type');
+        $pdf = PDF::loadView('PDF/missas', ['intencoes' => $data]);
+        return $pdf->download('missas.pdf'); 
     }
 }

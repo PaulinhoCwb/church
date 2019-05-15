@@ -6,20 +6,20 @@
             <div class="card-body">
                 <form  @submit.prevent="createTithe" @keydown="form.onKeydown($event)">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="form-grou">
                                 <label for="">Nome</label>
                                 <v-select v-model="form.people_id" label="name" :options="persons"></v-select>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="data">Data Pagamento</label>
                                 <input type="text" v-mask="'##/##/####'" v-model="form.paid_at" name="paid_at" class="form-control" :class="{ 'is-invalid': form.errors.has('paid_at') }">
                                 <has-error :form="form" field="paid_at"></has-error>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="">Valor</label>
                                 <money v-model="form.money_value" prefix="R$ " class="form-control" :class="{ 'is-invalid': form.errors.has('money_value') }"></money>
@@ -65,7 +65,7 @@ export default {
         getPersons(){
             axios.get('persons',{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                 console.log(res);

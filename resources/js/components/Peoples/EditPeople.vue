@@ -129,7 +129,7 @@ import {mask} from 'vue-the-mask'
             editPerson () {
                 this.form.put('persons/'+this.$route.params.id,{
                     headers:{
-                        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                        Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {

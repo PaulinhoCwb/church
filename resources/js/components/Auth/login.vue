@@ -53,11 +53,11 @@ export default {
               'password': this.senha,
             }).then((res) => {
               if (res.data.access_token) {
-                window.localStorage.setItem('access_token', res.data.access_token);
-                if (window.localStorage.getItem('access_token')) {
+                window.sessionStorage.setItem('access_token', res.data.access_token);
+                if (window.sessionStorage.getItem('access_token')) {
                     setTimeout(() => {
                         this.$router.push('/master');
-                    }, 5000);
+                    }, 3000);
                 }
               } else {
                 toast({
@@ -74,10 +74,10 @@ export default {
             });
         },
         verificaToken () {
-          if (window.localStorage.getItem('access_token')) {
+          if (window.sessionStorage.getItem('access_token')) {
             this.$router.push('/master');
           }
-        }
+        } 
     },
     created () {
       this.verificaToken();

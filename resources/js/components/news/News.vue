@@ -82,7 +82,7 @@ export default {
             pageUrl = pageUrl || 'news';
             axios.get(pageUrl,{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                 this.news = res.data.data;
@@ -97,7 +97,7 @@ export default {
         deleteNew (id, index){
             axios.delete('news/'+id,{
                 headers:{
-                    Authorization: 'Bearer '+window.localStorage.getItem('access_token')
+                    Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
                 }
             })
             .then( res => {

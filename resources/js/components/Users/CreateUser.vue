@@ -65,7 +65,7 @@ export default {
         createUser () {
             this.form.post('users',{
                 headers: {
-                    Authorization: 'Bearer '+window.localStorage.getItem('access_token')
+                    Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
                 }
             })
             .then((res) => {

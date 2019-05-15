@@ -81,7 +81,7 @@ export default {
                     name: this.form.name
                 },
                 headers:{
-                    Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
                 }
             }).then((res) => {
                 this.persons = res.data;

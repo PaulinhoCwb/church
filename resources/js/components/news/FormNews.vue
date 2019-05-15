@@ -64,7 +64,7 @@
             createNews() {
                 this.form.post('news',{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 })
                     .then((res) => {
@@ -95,7 +95,7 @@
 
                 axios.get(pageUrl,{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 })
                     .then((res) => {

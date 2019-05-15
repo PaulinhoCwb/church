@@ -55,7 +55,7 @@ export default {
         getUsers() {
             axios.get('users',{
                 headers:{
-                    Authorization: 'Bearer '+window.localStorage.getItem('access_token')
+                    Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
                 }
             })
             .then((res) => {
@@ -71,7 +71,7 @@ export default {
         deleteUser(id, index) {
             axios.delete('users/'+id,{
                 headers: {
-                    Authorization: 'Bearer '+ window.localStorage.getItem('access_token')
+                    Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                 }
             })
             .then( res => {

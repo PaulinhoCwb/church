@@ -65,7 +65,7 @@ export default {
         editUser () {
             this.form.put('users/'+this.$route.params.id,{
                 headers: {
-                    Authorization: 'Bearer '+ window.localStorage.getItem('access_token')
+                    Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                 }
             })
             .then((res) => {
@@ -92,7 +92,7 @@ export default {
         getUser () {
             axios.get('users/'+this.$route.params.id,{
                 headers: {
-                    Authorization: 'Bearer '+window.localStorage.getItem('access_token')
+                    Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
                 }
             })
             .then( res => {

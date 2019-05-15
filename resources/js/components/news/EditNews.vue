@@ -67,7 +67,7 @@
             editNews() {
                 this.form.post('news',{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 })
                     .then((res) => {
@@ -94,7 +94,7 @@
             getNew() {
                 axios.get('news/'+this.$route.params.id,{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {

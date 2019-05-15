@@ -46,7 +46,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        return new EventResource(Event::findOrFail($id));
+        $event = Event::with('user')->find($id);
+        return response()->json(['event' => $event]);
     }
 
     /**

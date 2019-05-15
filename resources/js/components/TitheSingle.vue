@@ -64,7 +64,7 @@ export default {
           getPerson(){
             axios.get('person/one/'+this.form.people_id,{
                     headers:{
-                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                 this.name = res.data.name;
@@ -76,7 +76,7 @@ export default {
         createTithe(){
             this.form.post('tithes',{
                     headers:{
-                        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                        Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                 if (res.data.id) {

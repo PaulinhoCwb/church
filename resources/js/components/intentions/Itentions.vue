@@ -23,10 +23,10 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(intention, index) in intentions" :key="index">
-                                    <td>{{ intention.data }}</td>
+                                    <td>{{ intention.data | dateToBR }}</td>
                                     <td>{{ intention.contato }}</td>
                                     <td>{{ (intention.intencao)? intention.intencao: "---"}}</td>
-                                    <td>{{ intention.data | dateToBR }} - {{ intention.hora }}</td>
+                                    <td>{{ intention.data | dateToBR }} <br/> {{ intention.hora | hourFormat }}</td>
                                     <td>{{ (intention.type == 1) ? "Missa" : "Ação de Graças / Pedidos" }}</td>
                                     <td>
                                         <button @click="deleteIntention(intention.id, index)" class="btn btn-outline-secondary btn-sm">
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 export default {
     name: "intencoes",
     data () {
@@ -57,7 +58,7 @@ export default {
             pageUrl = pageUrl || 'intentions';
             axios.get(pageUrl,{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                 this.intentions = res.data.data
@@ -84,7 +85,7 @@ export default {
         deleteIntention(id, index) {
             axios.delete('',{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
             })
             .then((res)=> {
@@ -97,6 +98,11 @@ export default {
     },
     created () {
         this.getIntentions(); 
+    },
+    filters: {
+        hourFormat: function (value) {
+            return moment(value,'HH:mm').format('HH:mm');
+        }
     }
 }
 </script>

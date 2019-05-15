@@ -5,8 +5,7 @@
             <div class="card card-widget">
               <div class="card-header">
                 <div class="user-block">
-                  <img class="img-circle" src="" alt="User Image">
-                  <span class="username">{{ event.name }}</span>
+                  <span class="username">{{ event.title }}</span>
                   <span class="description">Criado por - {{ event.id }}</span>
                 </div>
                 <!-- /.user-block -->
@@ -23,43 +22,16 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <!-- post text -->
-                <p>Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind
-                  texts. Separated they live in Bookmarksgrove right at</p>
-
-                <p>the coast of the Semantics, a large language ocean.
-                  A small river named Duden flows by their place and supplies
-                  it with the necessary regelialia. It is a paradisematic
-                  country, in which roasted parts of sentences fly into
-                  your mouth.</p>
-
-                <!-- Attachment -->
-                <div class="attachment-block clearfix">
-                  <img class="attachment-img" src="" alt="Attachment Image">
-
-                  <div class="attachment-pushed">
-                    <h4 class="attachment-heading"><a href="">Lorem ipsum text generator</a></h4>
-
-                    <div class="attachment-text">
-                      Description about the attachment can be placed here.
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry... <a href="#">more</a>
-                    </div>
-                    <!-- /.attachment-text -->
-                  </div>
-                  <!-- /.attachment-pushed -->
-                </div>
-                <!-- /.attachment-block -->
+                <p>{{ event.description }}</p>
 
                 <!-- Social sharing buttons -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i> Share</button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                <span class="float-right text-muted">45 likes - 2 comments</span>
+                <button type="button" @click="deleteEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-share"></i> Editar</button>
+                <button type="button" @click="UpdateEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-thumbs-o-up"></i> Excluir</button>
+                <span class="float-right text-muted">Inicio {{ event.start | dateToBR }} - Fim {{ event.end | dateToBR }}</span>
               </div>
               <!-- /.card-body -->
               <div class="card-footer card-comments">
                 <div class="card-comment">
-                  <!-- User image -->
-                  <img class="img-circle img-sm" src="" alt="User Image">
 
                   <div class="comment-text">
                     <span class="username">
@@ -71,33 +43,11 @@
                   </div>
                   <!-- /.comment-text -->
                 </div>
-                <!-- /.card-comment -->
-                <div class="card-comment">
-                  <!-- User image -->
-                  <img class="img-circle img-sm" src="" alt="User Image">
-
-                  <div class="comment-text">
-                    <span class="username">
-                      Nora Havisham
-                      <span class="text-muted float-right">8:03 PM Today</span>
-                    </span><!-- /.username -->
-                    The point of using Lorem Ipsum is that it has a more-or-less
-                    normal distribution of letters, as opposed to using
-                    'Content here, content here', making it look like readable English.
-                  </div>
-                  <!-- /.comment-text -->
-                </div>
-                <!-- /.card-comment -->
+               
               </div>
               <!-- /.card-footer -->
               <div class="card-footer">
-                <form action="#" method="post">
-                  <img class="img-fluid img-circle img-sm" src="" alt="Alt Text">
-                  <!-- .img-push is used to add margin to elements next to floating images -->
-                  <div class="img-push">
-                    <input type="text" class="form-control form-control-sm" placeholder="Press enter to post comment">
-                  </div>
-                </form>
+                
               </div>
               <!-- /.card-footer -->
             </div>
@@ -118,7 +68,7 @@ export default {
         getEvent () {
             axios.get('events/'+this.$route.params.id,{
                 headers: {
-                    Authorization: "Bearer "+ window.localStorage.getItem('access_token')
+                    Authorization: "Bearer "+ window.sessionStorage.getItem('access_token')
                 }
             })
             .then( res => {
@@ -131,7 +81,30 @@ export default {
                     title: "Evento não existe"
                 });
             });
+        },
+        deleteEvent (id) {
+          axios.delete('events/'+id,{
+            headers: {
+              Authorization: "Bearer "+ window.sessionStorage.getItem('access_token')
+            }
+          })
+          .then( res => {
+            if (res.data.deleted) {
+              toast({
+                type: "success",
+                title: "Operação realizada com successo."
+              });
+            } else {
+              toast({
+                type: "error",
+                title: "Operação não pode ser concluida!!!"
+              });
+            }
+          })
         }
+    },
+    created () {
+      this.getEvent();
     }
 }
 </script>

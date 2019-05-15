@@ -66,7 +66,7 @@
                     </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover">
-                            <thead>
+                            <thead> 
                                 <tr>
                                     <th scope="col">Nome</th>
                                     <th scope="col">Aniversario</th>
@@ -142,7 +142,7 @@
 
                 axios.get(pageUrl,{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then(res => {
@@ -156,7 +156,7 @@
             getTotalPersons() {
                 axios.get('total/person',{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                     this.totalPerson = res.data; 
@@ -168,7 +168,7 @@
             getTotalTithe() {
                 axios.get('tithe/total',{
                     headers: {
-                         Authorization: 'Bearer ' + window.localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                     this.dizimo = res.data;
@@ -192,7 +192,7 @@
             // getWeedingDay() {
             //     axios.get('weeding',{
             //         headers:{
-            //              Authorization: 'Bearer ' + localStorage.getItem('access_token')
+            //              Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
             //         }
             //     }).then((res)=>{
             //         this.weeding = res.data;
@@ -214,7 +214,7 @@
             deletePerson(id, index){
                 axios.delete('persons/'+id,{
                     headers:{
-                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                         Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
                     }
                 }).then((response) => {
                     console.log(response.data);
@@ -231,8 +231,8 @@
             
         },
         created () { 
-            if (!window.localStorage.getItem('access_token')) {
-                window.localStorage.removeItem('access_token');
+            if (!window.sessionStorage.getItem('access_token')) {
+                window.sessionStorage.removeItem('access_token');
                 this.$router.push('/login');
             }
 
