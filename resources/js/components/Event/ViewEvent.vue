@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <!-- Box Comment -->
             <div class="card card-widget">
               <div class="card-header">
                 <div class="user-block">
                   <img class="img-circle" src="" alt="User Image">
-                  <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                  <span class="description">Shared publicly - 7:30 PM Today</span>
+                  <span class="username">{{ event.name }}</span>
+                  <span class="description">Criado por - {{ event.id }}</span>
                 </div>
                 <!-- /.user-block -->
                 <div class="card-tools">
@@ -122,6 +122,7 @@ export default {
                 }
             })
             .then( res => {
+              console.log(res);
                 this.event = res.data.data;
             })
             .catch( res => {
