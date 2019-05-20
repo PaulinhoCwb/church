@@ -142,7 +142,7 @@
 
                 axios.get(pageUrl,{
                     headers: {
-                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
+                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then(res => {
@@ -156,7 +156,7 @@
             getTotalPersons() {
                 axios.get('total/person',{
                     headers: {
-                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
+                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                     this.totalPerson = res.data; 
@@ -168,7 +168,7 @@
             getTotalTithe() {
                 axios.get('tithe/total',{
                     headers: {
-                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
+                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                     this.dizimo = res.data;
@@ -213,8 +213,8 @@
 
             deletePerson(id, index){
                 axios.delete('persons/'+id,{
-                    headers:{
-                         Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
+                    headers: {
+                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 }).then((response) => {
                     console.log(response.data);

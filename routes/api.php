@@ -26,4 +26,3 @@ Route::middleware('auth:api')->group(function () {
      Route::get('total/person','PersonController@getTotal');
      Route::post('logout','AuthController@logout');
 });
-

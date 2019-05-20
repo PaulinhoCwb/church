@@ -75,11 +75,7 @@ import {mask} from 'vue-the-mask'
         },
         methods: {
             createDependent () {
-                this.form.post('dependents',{
-                    headers:{
-                         Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
-                    }
-                })
+                this.form.post('dependents')
                 .then((res) => {
                     if(res.data.id){
                         this.form.name = '';

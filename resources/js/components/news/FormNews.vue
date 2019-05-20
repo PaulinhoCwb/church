@@ -53,11 +53,11 @@
                     tipo: "",
                     titulo: "",
                     body: "",
-                    user_id: "",
                     photo:""
                 }),
                 news: [],
-                pagination: {}
+                pagination: {},
+                token: null
             }
         },
         methods: {
@@ -128,6 +128,12 @@
                     this.form.photo = reader.result;
                 }
                 reader.readAsDataURL(file);
+            }
+        },
+        created () {
+            if (window.sessionStorage.getItem('access_token')) {
+                console.log('TEM');
+                this.token = window.sessionStorage.getItem('access_token');
             }
         }
     }

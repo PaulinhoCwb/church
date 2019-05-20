@@ -166,8 +166,8 @@
         methods: {
             logout () {
                 axios.post('logout',{
-                     headers: {
-                         Authorization: 'Bearer ' + this.token
+                    headers: {
+                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {

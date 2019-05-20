@@ -127,11 +127,7 @@ import {mask} from 'vue-the-mask'
         },
         methods: {
             createPerson () {
-                this.form.post('persons',{
-                    headers:{
-                        Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
-                    }
-                })
+                this.form.post('persons')
                 .then((res) => {
                     this.id = res.data.id;
                     if(this.id){

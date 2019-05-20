@@ -74,11 +74,7 @@ export default {
         },
 
         createTithe(){
-            this.form.post('tithes',{
-                    headers:{
-                        Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
-                    }
-                }).then((res) => {
+            this.form.post('tithes').then((res) => {
                 if (res.data.id) {
                     toast({
                         type: 'success',

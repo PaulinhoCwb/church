@@ -80,9 +80,6 @@ export default {
                     month: this.form.month,
                     name: this.form.name
                 },
-                headers:{
-                    Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
-                }
             }).then((res) => {
                 this.persons = res.data;
                 if (this.persons) {

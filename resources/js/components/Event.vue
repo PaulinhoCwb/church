@@ -1,8 +1,8 @@
 <template>
     <div>
-        <full-calendar ref="calendar" :config="config" :events="events" @event-created="eventCreated" @day-click="dayClick"
+        <full-calendar ref="calendar" :config="config" :events="events" @day-click="dayClick"
         @event-selected="eventSelected"/>
-        <form @submit.prevent="createEvent" action="POST">
+        <form @submit.prevent="createEvent">
             <div class="modal" id="event" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -109,14 +109,14 @@
                 }),
                 colors: {
                     hex: '#000000'
-                }
+                },
             }
         },
         methods: {
             getEvents () {
                 axios.get('events',{
                     headers: {
-                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
+                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {
@@ -130,18 +130,18 @@
                 });
             },
             createEvent () {
-                this.form.post('events',{
+               axios.post('events',{
                     headers: {
-                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
+                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
-                }).then((res) => {
-                    this.events.push(res.data);
-                    $('#event').modal('hide');
+                })
+                .then((res) => {
+                    this.events = res.data.data;
                 })
                 .catch((res) => {
                     toast({
-                        type: "error",
-                        title: "Erro ao criar evento"
+                        type: 'error',
+                        title: 'Erro ao carregar dados'
                     });
                 });
             },
@@ -157,7 +157,6 @@
                 this.selected = {};
             },
             eventSelected(event) {
-                // this.selected = event;
                 if (event.id) {
                     this.$router.push({ name: 'event.view', params: { id: event.id } });
                 }

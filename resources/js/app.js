@@ -8,16 +8,14 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import { Form, HasError, AlertError } from 'vform';
 import router from './router.js';
 import FullCalendar from 'vue-full-calendar';
 import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
 import moment from 'moment';
 import vSelect from 'vue-select';
-// import store from "./Store/store";
-
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.sessionStorage.getItem('access_token');
+import { Form, HasError, AlertError } from 'vform';
+import store from "./store";
 
 window.Form = Form;
 window.swal = swal;
@@ -75,7 +73,7 @@ Vue.filter('sliceName', function (data) {
 
 const app = new Vue({
     el: '#app',
-    // store,
+    store,
     router,
     mounted () {
         //  [App.vue specific] When App.vue is finish loading finish the progress bar
