@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         //       print_r($query->bindings);
         //       $query->time;
         //   });
-        Passport::withCookieSerialization();
+        // Passport::withCookieSerialization();
     }
 
     /**

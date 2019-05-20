@@ -160,14 +160,14 @@
         name: 'master',
         data() {
             return {
-
+                token:""
             }
         },
         methods: {
             logout () {
                 axios.post('logout',{
-                    headers: {
-                        Authorization: "Bearer "+ window.sessionStorage.getItem('access_token')
+                     headers: {
+                         Authorization: 'Bearer ' + this.token
                     }
                 })
                 .then((res) => {
@@ -184,6 +184,11 @@
                     });
                 });
             }
+        },
+        created () {
+            if (window.sessionStorage.getItem('access_token')) {
+                this.token = window.sessionStorage.getItem('access_token');
+            } 
         }
     }
 

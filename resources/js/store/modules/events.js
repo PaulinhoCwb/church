@@ -5,15 +5,11 @@ const state = {
     }
 };
 
-const getters = {
-    getToken: state => {
-        return state.login.access_token;
-    }
-};
+const getters = {};
 
 const actions = {};
 
-const mutations = {};
+const mutations =  {};
 
 export default {
     state,

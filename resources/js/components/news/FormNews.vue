@@ -14,7 +14,7 @@
                         <div class="form-group col-12">
                             <label for="">Imagem</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" @change="uploadPhoto" name="photo" id="validatedCustomFile" required>
+                                <input type="file" class="custom-file-input" @change="uploadPhoto" name="photo" id="validatedCustomFile">
                                 <label class="custom-file-label" for="validatedCustomFile">Escolha uma foto...</label>
                                 <div class="invalid-feedback">Example invalid custom file feedback</div>
                             </div>

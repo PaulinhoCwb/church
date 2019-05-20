@@ -17,7 +17,7 @@ import moment from 'moment';
 import vSelect from 'vue-select';
 // import store from "./Store/store";
 
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem('access_token');
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.sessionStorage.getItem('access_token');
 
 window.Form = Form;
 window.swal = swal;

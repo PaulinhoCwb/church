@@ -57827,7 +57827,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(176);
-module.exports = __webpack_require__(349);
+module.exports = __webpack_require__(334);
 
 
 /***/ }),
@@ -57867,7 +57867,7 @@ window.Vue = __webpack_require__(32);
 
 // import store from "./Store/store";
 
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem('access_token');
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.sessionStorage.getItem('access_token');
 
 window.Form = __WEBPACK_IMPORTED_MODULE_0_vform__["Form"];
 window.swal = __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default.a;
@@ -84751,7 +84751,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'master',
     data: function data() {
-        return {};
+        return {
+            token: ""
+        };
     },
 
     methods: {
@@ -84760,7 +84762,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('logout', {
                 headers: {
-                    Authorization: "Bearer " + window.sessionStorage.getItem('access_token')
+                    Authorization: 'Bearer ' + this.token
                 }
             }).then(function (res) {
                 toast({
@@ -84775,6 +84777,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     title: 'Erro ao fazer logout'
                 });
             });
+        }
+    },
+    created: function created() {
+        if (window.sessionStorage.getItem('access_token')) {
+            this.token = window.sessionStorage.getItem('access_token');
         }
     }
 });
@@ -90103,8 +90110,7 @@ var render = function() {
                     attrs: {
                       type: "file",
                       name: "photo",
-                      id: "validatedCustomFile",
-                      required: ""
+                      id: "validatedCustomFile"
                     },
                     on: { change: _vm.uploadPhoto }
                   }),
@@ -99215,22 +99221,7 @@ o[t.label]=e,o)),t._v(" "),t.multiple?n("button",{staticClass:"close",attrs:{dis
 //# sourceMappingURL=vue-select.js.map
 
 /***/ }),
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */
+/* 334 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

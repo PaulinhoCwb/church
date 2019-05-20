@@ -32,7 +32,7 @@ class EventController extends Controller
         ]);
         $data = $request->all();
         $data['user_id'] = auth('api')->id();
-        
+        // return response()->json($data);
         $event = $this->getJson(Event::create($data));
 
         return response()->json($event);
