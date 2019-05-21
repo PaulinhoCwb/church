@@ -1,18 +1,27 @@
+import axios from 'axios'
 const state = {
-        access_token: null,
+        token: null,
         scopes: null
 };
 
 const getters = {
     getToken: state => {
-        return state.login.access_token;
+        return state.access_token;
     }
 };
 
 const actions = {
-    async fetchTodos ({ commit }) {
-        const response = await axios.get('https://santuariosantateresinha41.com.br/api/login');
-        commit('setToken', response.data.access_token);
+    logIn ({ commit }, payload) {
+        return new Promise((resolve,reject) => {
+            axios.post('https://santuariosantateresinha41.com.br/api/login',{
+                payload
+            }).then( response => {
+                commit('setToken', response.data.access_token);
+                resolve(response);
+            }).catch( response => {
+                reject(response);
+            });
+        });
     }
 };
 

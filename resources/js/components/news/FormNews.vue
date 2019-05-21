@@ -7,7 +7,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="">Titulo da Noticia</label>
-                            <input type="text" v-model="form.titulo" class="form-control" name="titulo" id="titulo">
+                            <input type="text" v-model="noticia.titulo" class="form-control" name="titulo" id="titulo">
                         </div>
                     </div>
                     <div class="form-row">
@@ -23,7 +23,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="">Categoria</label>
-                            <select v-model="form.tipo" class="form-control" name="tipo" id="tipo">
+                            <select v-model="noticia.tipo" class="form-control" name="tipo" id="tipo">
                                 <option value="3">Catequese</option>
                                 <option value="2">Avisos Paroquiais</option>
                                 <option value="1">Noticias comunidade</option>
@@ -33,7 +33,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="">Descrição</label>
-                            <textarea name="body" v-model="form.body" id="body" cols="30" rows="10"
+                            <textarea name="body" v-model="noticia.body" id="body" cols="30" rows="10"
                                 class="form-control"></textarea>
                         </div>
                     </div>
@@ -45,16 +45,17 @@
 </template>
 
 <script>
+
     export default {
         name: 'news',
         data() {
             return {
-                form: new Form({
+                noticia: {
                     tipo: "",
                     titulo: "",
                     body: "",
                     photo:""
-                }),
+                },
                 news: [],
                 pagination: {},
                 token: null
@@ -62,12 +63,12 @@
         },
         methods: {
             createNews() {
-                this.form.post('news',{
+                axios.post('news',this.new,{
                     headers: {
-                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
+                        'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 })
-                    .then((res) => {
+                .then((res) => {
                         if (res.data.id) {
                             this.form.reset();
                             toast({
@@ -88,52 +89,15 @@
                     });
             },
 
-            getNews(pageUrl) {
-                let vm = this;
-
-                pageUrl = pageUrl || 'news';
-
-                axios.get(pageUrl,{
-                    headers: {
-                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
-                    }
-                })
-                    .then((res) => {
-                        this.news = res.data.data;
-                        vm.makePagination(res.data.meta, res.data.links)
-                    }).catch((res) => {
-                        toast({
-                            type: 'error',
-                            title: 'Operação não pode ser concluida'
-                        });
-                    });
-            },
-
-            makePagination(meta, links) {
-                let pagination = {
-                    current_page: meta.current_page,
-                    last_page: meta.last_page,
-                    next_page_url: links.next,
-                    prev_page_url: links.prev
-                };
-                this.pagination = pagination;
-            },
-
             uploadPhoto (e) {
                 console.log(e);
                 let file = e.target.files[0];
                 let reader = new FileReader();
                 reader.onloadend = (file) => {
                     // console.log(reader.result);
-                    this.form.photo = reader.result;
+                    this.noticia.photo = reader.result;
                 }
                 reader.readAsDataURL(file);
-            }
-        },
-        created () {
-            if (window.sessionStorage.getItem('access_token')) {
-                console.log('TEM');
-                this.token = window.sessionStorage.getItem('access_token');
             }
         }
     }

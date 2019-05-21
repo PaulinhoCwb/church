@@ -75,7 +75,11 @@ import {mask} from 'vue-the-mask'
         },
         methods: {
             createDependent () {
-                this.form.post('dependents')
+                axios.post('dependents',this.dependents,{
+                    headers: {
+                        'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
+                    }
+                })
                 .then((res) => {
                     if(res.data.id){
                         this.form.name = '';

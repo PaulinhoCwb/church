@@ -32,7 +32,6 @@ class NewController extends Controller
             'tipo' => 'required',
             'titulo' => 'required',
             'body' => 'required',
-            'photo' => 'required'
         ]);
         $data = $request->all();
         if($request->photo){

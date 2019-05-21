@@ -142,7 +142,7 @@
 
                 axios.get(pageUrl,{
                     headers: {
-                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
+                        'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then(res => {
@@ -155,7 +155,7 @@
 
             getTotalPersons() {
                 axios.get('total/person',{
-                    headers: {
+                    'headers': {
                         Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
@@ -168,7 +168,7 @@
             getTotalTithe() {
                 axios.get('tithe/total',{
                     headers: {
-                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
+                        'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
                     this.dizimo = res.data;
