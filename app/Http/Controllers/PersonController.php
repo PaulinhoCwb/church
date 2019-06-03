@@ -71,9 +71,23 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'dateofbirth' => 'required',
+            'zipcode' => 'required',
+            'address' => 'required',
+            'number' => 'required',
+            'email' => 'required',
+            'cellphone' => 'required',
+        ]);
         $person = Person::findOrFail($id);
 
-        if ($person->update($request->all())) {
+        $data = $request->all();
+
+        $data['dateofbirth'] = dateToMySQL($request->dateofbirth);
+        $data['zipcode'] = str_replace('-','',$request->zipcode);
+
+        if ($person->update($data)) {
             return response()->json(['updated' => true]);
         } else {
             return response()->json(['updated' => false]);
@@ -95,21 +109,6 @@ class PersonController extends Controller
         } else {
             return response()->json(['deleted' => false]);
         }
-    }
-
-    public function getCep(Request $request)
-    {
-        $cep = $request->get('zipcode');
-        $endPoint = "https://viacep.com.br/ws/".$cep."/json/";
-        
-        $client = new Client();
-        $res = $client->request('GET', $endPoint,
-            [
-                'verify' => false
-            ]
-        );
-        $data = json_decode($res->getBody());
-        return Response::json($data);
     }
 
     public function getTotal()
@@ -135,5 +134,11 @@ class PersonController extends Controller
         $res = DB::select($sql,[$month]);
         $persons = count($res);
         return Response::json($persons);
+    }
+
+    public function getWeeding () {
+
+
+        return response()->json($weending);
     }
 }

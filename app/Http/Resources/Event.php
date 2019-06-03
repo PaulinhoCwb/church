@@ -22,6 +22,7 @@ class Event extends JsonResource
             'start'       => $this->day,
             'end'         => $this->day,
             'id'          => $this->id,
+            'textColor'   => '#FFF'
         ];
     }
 }

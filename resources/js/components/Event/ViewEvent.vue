@@ -6,7 +6,7 @@
               <div class="card-header">
                 <div class="user-block">
                   <span class="username">{{ event.title }}</span>
-                  <span class="description">Criado por - {{ event.id }}</span>
+                  <span class="description">Criado por - {{ event.user.name }}</span>
                 </div>
                 <!-- /.user-block -->
                 <div class="card-tools">
@@ -26,30 +26,10 @@
 
                 <!-- Social sharing buttons -->
                 <button type="button" @click="deleteEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-share"></i> Editar</button>
-                <button type="button" @click="UpdateEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-thumbs-o-up"></i> Excluir</button>
-                <span class="float-right text-muted">Inicio {{ event.start | dateToBR }} - Fim {{ event.end | dateToBR }}</span>
+                <button type="button" @click="UpdateEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i> Excluir</button>
+                <span class="float-right text-muted">Inicio {{ event.hour | hourToBR }}</span>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer card-comments">
-                <div class="card-comment">
-
-                  <div class="comment-text">
-                    <span class="username">
-                      Maria Gonzales
-                      <span class="text-muted float-right">8:03 PM Today</span>
-                    </span><!-- /.username -->
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
-                  </div>
-                  <!-- /.comment-text -->
-                </div>
-               
-              </div>
-              <!-- /.card-footer -->
-              <div class="card-footer">
-                
-              </div>
-              <!-- /.card-footer -->
             </div>
             <!-- /.card -->
           </div>
@@ -57,6 +37,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
     name: "ViewEvent",
     data () {
@@ -72,8 +53,7 @@ export default {
                 }
             })
             .then( res => {
-              console.log(res);
-                this.event = res.data.data;
+                this.event = res.data;
             })
             .catch( res => {
                 toast({
@@ -105,6 +85,11 @@ export default {
     },
     created () {
       this.getEvent();
+    },
+    filters:{
+        hourToBR (data) {
+            return moment(data,'HH:mm:ss').format('HH:mm');
+        }
     }
 }
 </script>

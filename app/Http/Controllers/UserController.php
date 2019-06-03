@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use App\Http\Resources\User as UserResource;
 
@@ -63,7 +64,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         if ($request->has('password')) {
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
         }
 
         if ($user->save()) {

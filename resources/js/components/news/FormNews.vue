@@ -63,7 +63,7 @@
         },
         methods: {
             createNews() {
-                axios.post('news',this.new,{
+                axios.post('news',this.noticia,{
                     headers: {
                         'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }

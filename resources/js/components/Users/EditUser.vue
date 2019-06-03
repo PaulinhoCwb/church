@@ -12,8 +12,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="">Nome</label>
-                                        <input type="text" v-model="form.name" name="name" autocomplete="off" class="form-control" :class="{'is-invalid': form.errors.has('name')}">
-                                        <has-error :form="form" field="name"></has-error>
+                                        <input type="text" v-model="user.name" name="name" autocomplete="off" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -21,8 +20,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="">Email</label>
-                                        <input type="text" v-model="form.email" name="email" autocomplete="off" class="form-control" :class="{'is-invalid': form.errors.has('email')}">
-                                        <has-error :form="form" field="email"></has-error>
+                                        <input type="text" v-model="user.email" name="email" autocomplete="off" class="form-control" >
                                     </div>
                                 </div>
                             </div>
@@ -30,14 +28,13 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="">Password</label>
-                                        <input type="password" v-model="form.password" name="password" autocomplete="off" class="form-control" :class="{'is-invalid': form.errors.has('password')}">
-                                        <has-error :form="form" field="password"></has-error>
+                                        <input type="password" v-model="user.password" name="password" autocomplete="off" class="form-control" >
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <button class="btn btn-dark float-right" :disabled="form.busy" type="submit">Salvar</button>
+                                    <button class="btn btn-dark float-right" type="submit">Salvar</button>
                                 </div>
                             </div>
                         </form>
@@ -50,27 +47,27 @@
 
 <script>
 export default {
-    name: 'createUser',
+    name: 'editUser',
     data () {
         return {
-            form: new Form ({
+            user: {
                 name: "",
                 email: "",
                 password: ""
-            }),
-            title: "Cadastro de Usuarios"
+            },
+            title: "Edição de Usuarios"
         }
     },
     methods: {
         editUser () {
-            this.form.put('users/'+this.$route.params.id,{
+            axios.put('users/'+this.$route.params.id,this.user,{
                 headers: {
                     Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                 }
             })
             .then((res) => {
                if (res.data.updated) {
-                    this.form.reset();
+                this.limpaForm();
                     toast({
                         type: 'success',
                         title: 'Cadastro realizado com successo'
@@ -96,7 +93,10 @@ export default {
                 }
             })
             .then( res => {
-                this.form.fill(res.data.data);
+                this.fillForm(res.data.data);
+                // this.user.name = res.data.data.name;
+                // this.user.email = res.data.data.email;
+                console.log(this.user);
             })
             .catch( res => {
                 toast({
@@ -104,6 +104,16 @@ export default {
                     title: "Erro ao processar a operação!"
                 });
             });
+        },
+        limpaForm () {
+            for (const field in this.user) {
+                this.user[field] = "";
+            }
+        },
+        fillForm (data) { 
+            for(const field in data) {
+                this.user[field] = data[field];
+            }
         }
     },
     created () {

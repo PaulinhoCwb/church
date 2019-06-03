@@ -35,7 +35,7 @@
               <span class="info-box-icon bg-danger-gradient"><i class="fas fa-birthday-cake"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Aniversariates do mês</span>
+                <span class="info-box-text">Aniversariantes do mês</span>
                 <span class="info-box-text">{{ birthdays }}</span>
               </div>
               <!-- /.info-box-content -->
@@ -47,7 +47,7 @@
               <span class="info-box-icon bg-warning-gradient"><i class="fas fa-birthday-cake"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Casamentos do mês</span>
+                <span class="info-box-text">Aniversarios Casamentos do mês</span>
                 <span class="info-box-number">{{ weeding }}</span>
               </div>
               <!-- /.info-box-content -->
@@ -78,7 +78,7 @@
                             <tbody>
                                 
                         
-                                    <tr v-for="(person, index) in persons" :key="index">
+                                    <tr v-for="(person, index) in ParoquianosFilter" :key="index">
                                         <td>{{ person.name }}</td>
                                         <td>{{ person.dateofbirth | dateToBR }}</td>
                                         <td>{{ person.cellphone }}</td>
@@ -177,22 +177,26 @@
                 });
             },
 
-            // getBirthdays() {
-            //     axios.get('person/birthdays').then((res) => {
-            //         if (res) {
-            //             this.birthdays = res.data;
-            //         } else {
-            //             this.birthdays = 0;
-            //         }
-            //     }).catch((res) => {
-
-            //     });
-            // },
+            getBirthdays() {
+                axios.get('birthdays',{
+                    headers: {
+                        'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
+                    }
+                }).then((res) => {
+                    if (res) {
+                        this.birthdays = res.data;
+                    } else {
+                        this.birthdays = 0;
+                    }
+                }).catch((res) =>  {
+                                
+                });
+            },
 
             // getWeedingDay() {
             //     axios.get('weeding',{
             //         headers:{
-            //              Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
+            //              Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
             //         }
             //     }).then((res)=>{
             //         this.weeding = res.data;
@@ -217,7 +221,6 @@
                         Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 }).then((response) => {
-                    console.log(response.data);
                     this.persons.splice(index, 1);
                 }).catch((response) => {
 
@@ -228,7 +231,7 @@
             this.getPersons();
             this.getTotalPersons();
             this.getTotalTithe();
-            
+            this.getBirthdays();
         },
         created () { 
             if (!window.sessionStorage.getItem('access_token')) {
@@ -240,7 +243,7 @@
         computed: {
             ParoquianosFilter () {
                 return _.filter(this.persons, item => {
-                    return item.name.indexOf(this.paroquianosFilter) >= 0
+                    return item.name.indexOf(this.filterPersons) >= 0;
                 });
             }
         }

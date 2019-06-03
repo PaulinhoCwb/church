@@ -14,10 +14,8 @@ import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
 import moment from 'moment';
 import vSelect from 'vue-select';
-import { Form, HasError, AlertError } from 'vform';
 import store from "./store";
 
-window.Form = Form;
 window.swal = swal;
 
 const toast = swal.mixin({
@@ -28,8 +26,6 @@ const toast = swal.mixin({
 });
 window.toast = toast;
 
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
 Vue.component('v-select',vSelect);
 
 Vue.use(FullCalendar);
@@ -48,28 +44,6 @@ Vue.filter('dateTimeBR', function (date) {
 Vue.filter('sliceName', function (data) {
   return data.slice(0,17);
 });
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-// Vue.component('navbar-component', require('./components/Profile.vue'));
-// Vue.component('menu-component', require('./components/Dashboard.vue'));
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
-
-
-// Vue.component(
-//   'passport-clients',
-//   require('./components/passport/Clients.vue').default
-// );
-
-// Vue.component(
-//   'passport-authorized-clients',
-//   require('./components/passport/AuthorizedClients.vue').default
-// );
-
-// Vue.component(
-//   'passport-personal-access-tokens',
-//   require('./components/passport/PersonalAccessTokens.vue').default
-// );
 
 const app = new Vue({
     el: '#app',

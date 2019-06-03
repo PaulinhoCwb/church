@@ -16,26 +16,21 @@
                             <div class="form-row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" v-model="form.event"
+                                        <input type="text" class="form-control" v-model="event.event"
                                             placeholder="Titulo do Evento" name="evento" id="evento">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="description" v-model="form.description" class="form-control"
+                                        <textarea name="description" v-model="event.description" class="form-control"
                                             placeholder="Descrição do evento" id="description" cols="30"
                                             rows="10"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" v-model="form.hour" name="hora"
-                                            id="hora">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <compact :value="colors" @input="setColor" :palette="paleta"></compact>
+                                        <input type="text"  v-mask="'##:##'" class="form-control" v-model="event.hour" name="hora"
+                                            id="hora" placeholder="Horario de inicio do evento">
                                     </div>
                                 </div>
                             </div>
@@ -55,12 +50,10 @@
 <script>
     import moment from 'moment';
     import 'fullcalendar/dist/locale/pt-br'
-    import { Compact } from 'vue-color'
+    import {mask} from 'vue-the-mask'
     export default {
         name: 'event',
-        components: {
-            Compact
-        },
+        directives: {mask},
         data() {
             return {
                 events: [],
@@ -86,29 +79,12 @@
                     defaultView: 'month'
                 },
                 selected: {},
-                paleta: [
-                    '#3B9C00',
-                    '#A80000',
-                    '#B79891',
-                    '#292E49',
-                    '#BBD2C5',
-                    '#86fde8',
-                    '#FFE000',
-                    '#00416A',
-                    '#E4E5E6',
-                    '#5433FF',
-                    '#20BDFF',
-                    '#334d50',
-                ],
-                form: new Form({
+                event:{
                     event: "",
                     description: "",
                     day: "",
                     hour: "",
-                    color: ""
-                }),
-                colors: {
-                    hex: '#000000'
+                    color: "#000000"
                 },
             }
         },
@@ -130,13 +106,15 @@
                 });
             },
             createEvent () {
-               axios.post('events',{
+               axios.post('events',this.event,{
                     headers: {
                         Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {
-                    this.events = res.data.data;
+                    this.events.push(res.data);
+                    this.limpaForm();
+                    $('#event').modal('hide');
                 })
                 .catch((res) => {
                     toast({
@@ -146,7 +124,7 @@
                 });
             },
             dayClick(date,jsEvent, view){
-                this.form.day = date.format();
+                this.event.day = date.format();
                 $('#event').modal('show');
             },
             refreshEvents() {
@@ -164,9 +142,11 @@
             eventCreated(...test) {
                 console.log(test);
             },
-            setColor(color) {
-                this.form.color = color.hex;
-            },
+            limpaForm () {
+                for (const field in this.event) {
+                    this.event[field] = "";
+                }
+            }
             
         },
         computed: {

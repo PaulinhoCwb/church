@@ -10,7 +10,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="">Nome:</label>
-                                    <input autocomplete="off" type="text" v-model="form.name" name="name" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
+                                    <input autocomplete="off" type="text" v-model="people.name" name="name" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -18,8 +18,7 @@
                             <div class="col-md-4 col-sm-12">
                                 <div class="form group">
                                     <label for="">Data Nascimento</label>
-                                    <input v-mask="'##/##/####'" autocomplete="off" type="text" v-model="people.dateofbirth" class="form-control" name="dateofbirth"
-                                    :class="{ 'is-invalid': people.errors.has('dateofbirth') }">
+                                    <input v-mask="'##/##/####'" autocomplete="off" type="text" v-model="people.dateofbirth" class="form-control" name="dateofbirth">
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
@@ -31,9 +30,7 @@
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="">CEP</label>
-                                    <input v-mask="'#####-###'" autocomplete="off" @blur="getZipCode" type="text" v-model="people.zipcode" class="form-control" name="zipCode"
-                                    :class="{ 'is-invalid': people.errors.has('zipcode') }">
-                                    <has-error :form="form" field="zipcode"></has-error>
+                                    <input v-mask="'#####-###'" autocomplete="off" @blur="getZipCode" type="text" v-model="people.zipcode" class="form-control" name="zipCode">
                                 </div>
                             </div>
                         </div>
@@ -41,17 +38,13 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Endereço</label>
-                                    <input autocomplete="off" type="text" v-model="people.address" class="form-control" name="address"
-                                    :class="{ 'is-invalid': people.errors.has('address') }" >
-                                    <has-error :form="form" field="address"></has-error>
+                                    <input autocomplete="off" type="text" v-model="people.address" class="form-control" name="address">
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Numero</label>
-                                    <input autocomplete="off" v-model="people.number" type="text" class="form-control" name="number"
-                                    :class="{ 'is-invalid': people.errors.has('number') }">
-                                    <has-error :form="form" field="number"></has-error>
+                                    <input autocomplete="off" v-model="people.number" type="text" class="form-control" name="number">
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
@@ -66,9 +59,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="">E-mail</label>
-                                    <input autocomplete="off" v-model="people.email" type="text" class="form-control" name="email"
-                                    :class="{ 'is-invalid': form.errors.has('email') }">
-                                    <has-error :form="form" field="email"></has-error>
+                                    <input autocomplete="off" v-model="people.email" type="text" class="form-control" name="email">
                                 </div>
                             </div>
                         </div>
@@ -76,21 +67,25 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Telefone residencial</label>
-                                    <input autocomplete="off" v-mask="'(##) ####-####'" type="text" v-model="people.tellphone" name="tellphone" class="form-control">
+                                    <input autocomplete="off" v-mask="'(41) ####-####'" type="text" v-model="people.tellphone" name="tellphone" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Celular</label>
-                                    <input v-mask="['(##) ####-####', '(##) #####-####']" autocomplete="off" type="text" class="form-control" v-model="people.cellphone" name="cellPhone"
-                                    :class="{ 'is-invalid': people.errors.has('cellphone') }">
-                                    <has-error :form="people" field="cellphone"></has-error>
+                                    <input v-mask="['(41) ####-####', '(41) #####-####']" autocomplete="off" type="text" class="form-control" v-model="people.cellphone" name="cellPhone">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <label for="">Celular 2</label>
+                                    <input v-mask="['(41) ####-####', '(41) #####-####']" autocomplete="off" type="text" class="form-control" v-model="people.cellphone" name="cellPhone">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <button class="btn btn-dark float-right" :disabled="form.busy" type="submit">Salvar</button>
+                                <button class="btn btn-dark float-right" type="submit">Salvar</button>
                             </div>
                         </div>
                     </form>
@@ -137,7 +132,6 @@ import {mask} from 'vue-the-mask'
                             type: 'success',
                             title: 'Cadastro realizado com successo'
                         });
-                        this.form.reset();
                         this.$router.push(`/dependents/${this.id}`);
                     } else {
                         toast({
@@ -147,7 +141,6 @@ import {mask} from 'vue-the-mask'
                     }
                 });
             },
-
             getZipCode () {
              
                 axios.post('cep',{
@@ -155,6 +148,11 @@ import {mask} from 'vue-the-mask'
                 }).then(res => {
                     this.form.address = res.data.logradouro;
                 });
+            },
+            limpaForm () {
+                for (const field in this.people) {
+                    this.people[field] = "";
+                }
             }
         }
     }

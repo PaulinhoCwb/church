@@ -10,8 +10,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="">Nome:</label>
-                                    <input autocomplete="off" type="text" v-model="form.name" name="name" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
-                                    <has-error :form="form" field="name"></has-error>
+                                    <input autocomplete="off" type="text" v-model="people.name" name="name" class="form-control" >
                                 </div>
                             </div>
                         </div>
@@ -19,23 +18,21 @@
                             <div class="col-md-4 col-sm-12">
                                 <div class="form group">
                                     <label for="">Data Nascimento</label>
-                                    <input v-mask="'##/##/####'" autocomplete="off" type="text" v-model="form.dateofbirth" class="form-control" name="dateofbirth"
-                                    :class="{ 'is-invalid': form.errors.has('dateofbirth') }">
-                                    <has-error :form="form" field="dateofbirth"></has-error>
+                                    <input v-mask="'##/##/####'" autocomplete="off" type="text" v-model="people.dateofbirth" class="form-control" name="dateofbirth"
+                                    >
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Local de Nascimento</label>
-                                    <input autocomplete="off" type="text" name="birthplace" v-model="form.birthplace" class="form-control">
+                                    <input autocomplete="off" type="text" name="birthplace" v-model="people.birthplace" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="">CEP</label>
-                                    <input v-mask="'#####-###'" autocomplete="off" @blur="getZipCode" type="text" v-model="form.zipcode" class="form-control" name="zipCode"
-                                    :class="{ 'is-invalid': form.errors.has('zipcode') }">
-                                    <has-error :form="form" field="zipcode"></has-error>
+                                    <input v-mask="'#####-###'" autocomplete="off" type="text" v-model="people.zipcode" class="form-control" name="zipCode"
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -43,23 +40,21 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Endereço</label>
-                                    <input autocomplete="off" type="text" v-model="form.address" class="form-control" name="address"
-                                    :class="{ 'is-invalid': form.errors.has('address') }" >
-                                    <has-error :form="form" field="address"></has-error>
+                                    <input autocomplete="off" type="text" v-model="people.address" class="form-control" name="address"
+                                    >
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Numero</label>
-                                    <input autocomplete="off" v-model="form.number" type="text" class="form-control" name="number"
-                                    :class="{ 'is-invalid': form.errors.has('number') }">
-                                    <has-error :form="form" field="number"></has-error>
+                                    <input autocomplete="off" v-model="people.number" type="text" class="form-control" name="number"
+                                    >
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Logradouro</label>
-                                    <input autocomplete="off" type="text" v-model="form.publicplace" class="form-control" name="publicplace">
+                                    <input autocomplete="off" type="text" v-model="people.publicplace" class="form-control" name="publicplace">
                                     
                                 </div>
                             </div>
@@ -68,9 +63,8 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="">E-mail</label>
-                                    <input autocomplete="off" v-model="form.email" type="text" class="form-control" name="email"
-                                    :class="{ 'is-invalid': form.errors.has('email') }">
-                                    <has-error :form="form" field="email"></has-error>
+                                    <input autocomplete="off" v-model="people.email" type="text" class="form-control" name="email"
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -78,21 +72,20 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Telefone residencial</label>
-                                    <input autocomplete="off" v-mask="'(##) ####-###'" type="text" v-model="form.tellphone" name="tellphone" class="form-control">
+                                    <input autocomplete="off" v-mask="'(41) ####-####'" type="text" v-model="people.tellphone" name="tellphone" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Celular</label>
-                                    <input v-mask="['(##) ####-####', '(##) #####-####']" autocomplete="off" type="text" class="form-control" v-model="form.cellphone" name="cellPhone"
-                                    :class="{ 'is-invalid': form.errors.has('cellphone') }">
-                                    <has-error :form="form" field="cellphone"></has-error>
+                                    <input v-mask="['(41) ####-####', '(##) #####-####']" autocomplete="off" type="text" class="form-control" v-model="people.cellphone" name="cellPhone"
+                                    >
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <button class="btn btn-dark float-right" :disabled="form.busy" type="submit">Salvar</button>
+                                <button class="btn btn-dark float-right" type="submit">Salvar</button>
                             </div>
                         </div>
                     </form>
@@ -104,13 +97,14 @@
 
 <script>
 import {mask} from 'vue-the-mask'
+import moment from 'moment'
     export default {
         name: 'editPeople',
         directives: {mask},
         data() {
             return {
                 title: "Edição de paroquianos",
-                form: new Form({
+                people:{
                     name: '',
                     dateofbirth: '',
                     birthplace: '',
@@ -121,24 +115,31 @@ import {mask} from 'vue-the-mask'
                     tellphone:'',
                     cellphone:'',
                     publicplace:''
-                }),
+                },
                 id: ''
             }
         },
         methods: {
             editPerson () {
-                this.form.put('persons/'+this.$route.params.id,{
+                axios.put('persons/'+this.$route.params.id,this.people,{
                     headers:{
-                        Authorization: 'Bearer ' + sessionStorage.getItem('access_token')
+                        Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {
-                   
-                    toast({
-                        type: 'success',
-                        title: 'Atualização realizado com successo'
-                    });
-                    this.form.reset();
+                    if (updated == true) {
+                        this.limpaForm();
+                        toast({
+                            type: 'success',
+                            title: 'Atualização realizado com successo!'
+                        });
+                    } else {
+                        toast({
+                            type: 'error',
+                            title: 'Atualização não pode ser realizada!'
+                        });
+                    }
+
                 })
                 .catch( res => {
                      toast({
@@ -147,36 +148,43 @@ import {mask} from 'vue-the-mask'
                         });
                 });
             },
-
-            getZipCode () {
-             
-                axios.post('cep',{
-                    zipcode: this.form.zipcode
-                }).then(res => {
-                    this.form.address = res.data.logradouro;
-                });
+            dateToBR (date) {
+               return moment(date).format('DD/MM/YYYY');
+            },
+            limpaForm () {
+                for (const field in this.event) {
+                    this.event[field] = "";
+                }
             }
+
         },
         created () {
             if (this.$route.params.id) {
-                axios.get('persons/'+this.$route.params.id)
+                axios.get('persons/'+this.$route.params.id,{
+                    headers: {
+                        Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
+                    }
+                })
                 .then( (res) => {
-                   console.log(res.data.data.name);
-                   
-                    this.form.name = res.data.data.name;
-                    this.form.dateofbirth = res.data.data.dateofbirth;
-                    this.form.birthplace = res.data.data.birthplace;
-                    this.form.zipcode = res.data.data.zipcode;
-                    this.form.address = res.data.data.address;
-                    this.form.number = res.data.data.number;
-                    this.form.email = res.data.data.email;
-                    this.form.tellphone = res.data.data.tellphone;
-                    this.form.cellphone = res.data.data.cellphone;
-                    this.form.publicplace = res.data.data.publicplace;
+                    this.people.name = res.data.data.name;
+                    this.people.dateofbirth = this.dateToBR(res.data.data.dateofbirth);
+                    this.people.birthplace = res.data.data.birthplace;
+                    this.people.zipcode = res.data.data.zipcode;
+                    this.people.address = res.data.data.address;
+                    this.people.number = res.data.data.number;
+                    this.people.email = res.data.data.email;
+                    this.people.tellphone = res.data.data.tellphone;
+                    this.people.cellphone = res.data.data.cellphone;
+                    this.people.publicplace = res.data.data.publicplace;
                 })
                 .catch(res => {
 
                 });
+            }
+        },
+        filters: {
+            dateToBR (date) {
+               return moment(date).format('DD/MM/YYYY');
             }
         }
     }

@@ -4,32 +4,30 @@
         <div class="card card-default">
             <div class="card-header">{{ title }}</div>
             <div class="card-body">
-                <form  @submit.prevent="createTithe" @keydown="form.onKeydown($event)">
+                <form  @submit.prevent="createTithe">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="form-grou">
                                 <label for="">Nome</label>
-                                <v-select v-model="form.people_id" label="name" :options="persons"></v-select>
+                                <v-select v-model="tithe.people_id" label="name" :options="persons"></v-select>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="data">Data Pagamento</label>
-                                <input type="text" v-mask="'##/##/####'" v-model="form.paid_at" name="paid_at" class="form-control" :class="{ 'is-invalid': form.errors.has('paid_at') }">
-                                <has-error :form="form" field="paid_at"></has-error>
+                                <input type="text" v-mask="'##/##/####'" v-model="tithe.paid_at" name="paid_at" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label for="">Valor</label>
-                                <money v-model="form.money_value" prefix="R$ " class="form-control" :class="{ 'is-invalid': form.errors.has('money_value') }"></money>
-                                <has-error :form="form" field="money_value"></has-error>
+                                <money v-model="tithe.money_value" prefix="R$ " class="form-control"></money>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" :disabled="form.busy" class="btn btn-dark float-right">Salvar</button>
+                            <button type="submit" class="btn btn-dark float-right">Salvar</button>
                         </div>
                     </div>
                 </form>
@@ -41,7 +39,6 @@
 </template>
 
 <script>
-// import Autocomplete from 'vuejs-auto-complete'
 import {mask} from 'vue-the-mask';
 import {Money} from 'v-money';
 export default {
@@ -53,25 +50,32 @@ export default {
     data () {
         return {
             persons: [],
-            form: new Form({
+            tithe:{
                 people_id: '',
                 money_value: '',
                 paid_at: ''
-            }),
+            },
             title: 'Dizimo'
         }
     },
     methods: {
         getPersons(){
-            axios.get('persons').then((res) => {
-                console.log(res);
+            axios.get('persons',{
+                headers: {
+                    Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
+                }
+            }).then((res) => {
                 this.persons = res.data.data;
             }).catch((res) => {
                  
             });
         },
         createTithe() {
-            this.form.post('tithes').then((res) => {
+            axios.post('tithes',this.tithe,{
+                headers: {
+                    Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
+                }
+            }).then((res) => {
                 if (res.data.id) {
                     toast({
                         type: 'success',

@@ -25,3 +25,6 @@ Route::post('/intencoes/save','DefaultController@intentionsSave')->name('save.in
 Route::view('/movimentos', 'movimentos')->name('movimentos');
 Route::view('/horarios','horarios')->name('horarios');
 Route::get('/invoice', 'DefaultController@list');
+Route::get('{path}',function () {
+  return view('login');
+})->where( 'path', '([A-z\d-/_.]+)?' );
