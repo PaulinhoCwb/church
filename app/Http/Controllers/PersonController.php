@@ -137,8 +137,13 @@ class PersonController extends Controller
     }
 
     public function getWeeding () {
-
-
         return response()->json($weending);
+    }
+
+    public function personBirthddays()
+    {
+        $persons = Person::whereMonth('dateofbirth',now()->format('m'))->get();
+
+        return PersonResource::collection($persons);
     }
 }

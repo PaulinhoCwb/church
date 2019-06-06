@@ -17,6 +17,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
   return view('login');
 });
+
 Route::get('/intencoes','DefaultController@intentions')->name('intencoes');
 Route::get('/news','DefaultController@news')->name('news');
 Route::get('/catequese','DefaultController@catequese')->name('catequese');

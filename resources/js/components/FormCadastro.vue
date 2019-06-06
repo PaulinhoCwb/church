@@ -79,7 +79,7 @@
                             <div class="col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <label for="">Celular 2</label>
-                                    <input v-mask="['(41) ####-####', '(41) #####-####']" autocomplete="off" type="text" class="form-control" v-model="people.cellphone" name="cellPhone">
+                                    <input v-mask="['(41) ####-####', '(41) #####-####']" autocomplete="off" type="text" class="form-control" v-model="people.cellphone2" name="cellPhone">
                                 </div>
                             </div>
                         </div>
@@ -113,9 +113,9 @@ import {mask} from 'vue-the-mask'
                     email:'',
                     tellphone:'',
                     cellphone:'',
+                    cellphone2:'',
                     publicplace:''
                 },
-                id: ''
             }
         },
         methods: {
@@ -126,19 +126,20 @@ import {mask} from 'vue-the-mask'
                     }
                 })
                 .then((res) => {
-                    this.id = res.data.id;
-                    if(this.id){
+                    // this.id = res.data.id;
+                    // if(this.id){
                         toast({
                             type: 'success',
                             title: 'Cadastro realizado com successo'
                         });
-                        this.$router.push(`/dependents/${this.id}`);
-                    } else {
-                        toast({
-                            type: 'error',
-                            title: 'Operação não pode ser concluida'
-                        });
-                    }
+                        this.limpaForm();
+                        this.$router.push(`/dependents/${res.data.id}`);
+                    // } else {
+                    //     toast({
+                    //         type: 'error',
+                    //         title: 'Operação não pode ser concluida'
+                    //     });
+                    // }
                 });
             },
             getZipCode () {

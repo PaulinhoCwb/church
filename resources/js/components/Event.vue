@@ -2,49 +2,6 @@
     <div>
         <full-calendar ref="calendar" :config="config" :events="events" @day-click="dayClick"
         @event-selected="eventSelected"/>
-        <form @submit.prevent="createEvent">
-            <div class="modal" id="event" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Cadastro de Eventos</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" v-model="event.event"
-                                            placeholder="Titulo do Evento" name="evento" id="evento">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea name="description" v-model="event.description" class="form-control"
-                                            placeholder="Descrição do evento" id="description" cols="30"
-                                            rows="10"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input type="text"  v-mask="'##:##'" class="form-control" v-model="event.hour" name="hora"
-                                            id="hora" placeholder="Horario de inicio do evento">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary">Salvar</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </form>
     </div>
 </template>
 <script>
@@ -79,13 +36,6 @@
                     defaultView: 'month'
                 },
                 selected: {},
-                event:{
-                    event: "",
-                    description: "",
-                    day: "",
-                    hour: "",
-                    color: "#000000"
-                },
             }
         },
         methods: {
@@ -105,27 +55,10 @@
                     });
                 });
             },
-            createEvent () {
-               axios.post('events',this.event,{
-                    headers: {
-                        Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
-                    }
-                })
-                .then((res) => {
-                    this.events.push(res.data);
-                    this.limpaForm();
-                    $('#event').modal('hide');
-                })
-                .catch((res) => {
-                    toast({
-                        type: 'error',
-                        title: 'Erro ao carregar dados'
-                    });
-                });
-            },
+           
             dayClick(date,jsEvent, view){
                 this.event.day = date.format();
-                $('#event').modal('show');
+                this.$router.push(`/event/create/${this.event.day}`);
             },
             refreshEvents() {
                 this.$refs.calendar.$emit('refetch-events');

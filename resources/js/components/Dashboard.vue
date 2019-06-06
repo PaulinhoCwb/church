@@ -36,7 +36,9 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Aniversariantes do mês</span>
-                <span class="info-box-text">{{ birthdays }}</span>
+                <span class="info-box-text"><router-link class="text-decoration-none" to="/birthday">
+                    {{ birthdays }}
+                </router-link></span>
               </div>
               <!-- /.info-box-content -->
             </div>

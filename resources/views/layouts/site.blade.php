@@ -90,7 +90,8 @@
 
                         <div class="py-4">
 
-                            <h1 class="h3">Santuario Santa Teresinha do Menino Jesus</h1>
+                            <h1 class="h3">Santuário Santa Teresinha do Menino
+                                Jesus e da Sagrada Face</h1>
 
                             <p>Copyright © 2019</p>
 

@@ -127,7 +127,7 @@
 
                     <div class="avisos-header">
 
-                        <a href="{{ route('intencoes') }}" class="btn display-4">Inteções de Missas</a>
+                        <a href="{{ route('intencoes') }}" class="btn display-4">Intenções de Missas</a>
 
                     </div>
 
