@@ -3,10 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="card card-default">
+                    <div class="card-header">
+                        <div class="card-title">Cadastro de Avisos Paroquiais</div>
+                    </div>
                     <div class="card-body">
-                        <div class="card-header">
-                            Cadastro Avisos/lembretes Catequese
-                        </div>
                         <form @submit.prevent="createNews" method="POST">
                             <div class="form-row">
                                 <div class="form-group col-12">
@@ -46,7 +46,7 @@ export default {
     data () {
         return {
              noticia: {
-                    tipo: 3,
+                    tipo: 2,
                     titulo: "",
                     body: "",
                     photo:""

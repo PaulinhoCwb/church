@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card card-default"> 
-                <div class="card-header">{{ title }} {{ id }}</div>
+                <div class="card-header">{{ title }}</div>
 
                 <div class="card-body">
                     <form @submit.prevent="createPerson" method="POST">
@@ -30,7 +30,7 @@
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="">CEP</label>
-                                    <input v-mask="'#####-###'" autocomplete="off" @blur="getZipCode" type="text" v-model="people.zipcode" class="form-control" name="zipCode">
+                                    <input v-mask="'#####-###'" autocomplete="off" type="text" v-model="people.zipcode" class="form-control" name="zipCode">
                                 </div>
                             </div>
                         </div>
@@ -126,28 +126,14 @@ import {mask} from 'vue-the-mask'
                     }
                 })
                 .then((res) => {
-                    // this.id = res.data.id;
-                    // if(this.id){
+                    let idPerson = res.data.id;
+                    console.log(res.data);
                         toast({
                             type: 'success',
                             title: 'Cadastro realizado com successo'
                         });
-                        this.limpaForm();
-                        this.$router.push(`/dependents/${res.data.id}`);
-                    // } else {
-                    //     toast({
-                    //         type: 'error',
-                    //         title: 'Operação não pode ser concluida'
-                    //     });
-                    // }
-                });
-            },
-            getZipCode () {
-             
-                axios.post('cep',{
-                    zipcode: this.form.zipcode
-                }).then(res => {
-                    this.form.address = res.data.logradouro;
+
+                        this.$router.push(`/dependents/${idPerson}`);
                 });
             },
             limpaForm () {

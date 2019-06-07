@@ -17,7 +17,7 @@ class NewController extends Controller
      */
     public function index()
     {
-        return NewsResource::collection(News::paginate(10));
+        return NewsResource::collection(News::where('tipo',1)->paginate(10));
     }
 
     /**
@@ -90,5 +90,15 @@ class NewController extends Controller
         } else {
             return response()->json(['deleted' => false]);
         }
+    }
+
+    public function getAvisos()
+    {
+        return NewsResource::collection(News::where('tipo',2));
+    }
+
+    public function getCatequese()
+    {
+        return NewsResource::collection(News::where('tipo',3));
     }
 }

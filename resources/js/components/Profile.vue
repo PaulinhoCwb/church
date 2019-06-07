@@ -103,10 +103,23 @@
         },
         methods: {
             getProfile () {
-                axios.get('persons/'+this.idPerson).then((res) => {
+                axios.get('persons/'+this.idPerson,{
+                    headers: {
+                        Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
+                    }
+                })
+                .then((res) => {
+                    console.log(res);
+                    
                     this.name = res.data.name;
                     this.totalDependets = res.data.dependents;
                     this.cadastradoAt = res.data.created_at;
+                })
+                .catch((res) => {
+                    toast({
+                        type: 'error',
+                        title: 'Erro de conexão com o servidor!'
+                    });
                 });
             },
 

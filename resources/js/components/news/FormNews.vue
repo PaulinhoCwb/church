@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="row justify-content-center">
-            <p id="nada"></p>
             <div class="col-12">
                 <form @submit.prevent="createNews" method="POST">
                     <div class="form-row">
@@ -20,16 +19,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-12">
-                            <label for="">Categoria</label>
-                            <select v-model="noticia.tipo" class="form-control" name="tipo" id="tipo">
-                                <option value="3">Catequese</option>
-                                <option value="2">Avisos Paroquiais</option>
-                                <option value="1">Noticias comunidade</option>
-                            </select>
-                        </div>
-                    </div>
+                   
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="">Descrição</label>
@@ -51,7 +41,7 @@
         data() {
             return {
                 noticia: {
-                    tipo: "",
+                    tipo: 1,
                     titulo: "",
                     body: "",
                     photo:""

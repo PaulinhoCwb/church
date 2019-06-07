@@ -30,8 +30,10 @@ export default new VueRouter({
                 { path: '/form-users', component: require('./components/Users/CreateUser.vue')},
                 { path: '/event/view/:id', component: require('./components/Event/ViewEvent.vue'), name: 'event.view'},
                 { path: '/birthday', component: require('./components/Peoples/Birthdays.vue'), name: 'birthday'},
-                { path: '/catequese', component: require('./components/Catequese/FormCatequese.vue'), name: 'catequese'},
+                { path: '/catequese/create', component: require('./components/Catequese/FormCatequese.vue'), name: 'catequese'},
                 { path: '/event/create/:date', component: require('./components/Event/EventForm.vue'), name: 'event.create'},
+                { path: '/event/edit/:id', component: require('./components/Event/EditEvent.vue'), name: 'event.edit'},
+                { path: '/avisos', component: require('./components/Avisos/Avisos.vue'), name: 'avisos'},
             ] 
         },
       ],
