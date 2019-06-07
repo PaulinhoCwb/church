@@ -57,8 +57,8 @@
             },
            
             dayClick(date,jsEvent, view){
-                this.event.day = date.format();
-                this.$router.push(`/event/create/${this.event.day}`);
+                let day = date.format();
+                this.$router.push(`/event/create/${day}`);
             },
             refreshEvents() {
                 this.$refs.calendar.$emit('refetch-events');
@@ -75,11 +75,6 @@
             eventCreated(...test) {
                 console.log(test);
             },
-            limpaForm () {
-                for (const field in this.event) {
-                    this.event[field] = "";
-                }
-            }
             
         },
         computed: {

@@ -146,4 +146,9 @@ class PersonController extends Controller
 
         return PersonResource::collection($persons);
     }
+
+    public function getAll()
+    {
+        return PersonResource::collection(Person::all());
+    }
 }

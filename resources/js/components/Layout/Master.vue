@@ -113,9 +113,17 @@
                         </li>
                           <li class="nav-item">
                             <router-link to="/catequese" class="nav-link">
-                                <i class="nav-icon fas fa-users text-white"></i>
+                                <i class="nav-icon fas fa-home text-white"></i>
                                 <p>
                                     Catequese
+                                </p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link to="/catequese" class="nav-link">
+                                <i class="nav-icon fas fa-church text-white"></i>
+                                <p>
+                                    Avisos Paroquiais
                                 </p>
                             </router-link>
                         </li>

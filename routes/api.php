@@ -28,4 +28,5 @@ Route::middleware('auth:api')->group(function () {
      Route::get('weeding','PersonController@getWeeding');
      Route::post('logout','AuthController@logout');
      Route::get('birthdaysPersons','PersonController@personBirthddays');
+     Route::get('person/all','PersonController@getAll');
 });

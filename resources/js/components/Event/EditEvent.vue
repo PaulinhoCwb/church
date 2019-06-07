@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card card-default">
-                <div class="card-header"> {{ title }} - {{ this.$route.params.date | dateToBR}} </div>
+                <div class="card-header"> {{ title }} - {{ event.day }} </div>
                 <div class="card-body">
                     <form @submit.prevent="createEvent">
                         <div class="form-row">
@@ -25,6 +25,11 @@
                                         name="hora" id="hora" placeholder="Horario de inicio do evento">
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input type="text" v-model="event.day" class="form-control">
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                     </form>
@@ -35,16 +40,13 @@
 </template>
 
 <script>
-import {mask} from 'vue-the-mask'
     export default {
-        name: "EventForm", 
-        directives: {mask},
         data () {
             return {
                 event:{
                     event: "",
                     description: "",
-                    day: this.$route.params.date,
+                    day: this.$router.params.date,
                     hour: "",
                     color: "#000000"
                 },
@@ -52,23 +54,21 @@ import {mask} from 'vue-the-mask'
             }
         },
         methods: {
-             createEvent () {
+             EditEvent () {
                axios.post('events',this.event,{
                     headers: {
                         Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {
-                    toast({
-                        type: "success",
-                        title: "Evento Cadastrado com sucesso!!!"
-                    });
-                   this.$router.push('/event');
+                    
+                    this.limpaForm();
+                   
                 })
                 .catch((res) => {
                     toast({
                         type: 'error',
-                        title: 'Erro ao cadastrar evento!'
+                        title: 'Erro ao carregar dados'
                     });
                 });
             },

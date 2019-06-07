@@ -36,7 +36,56 @@
 
 <script>
 export default {
+    name: "FormCatequese",
+    data () {
+        return {
+             noticia: {
+                    tipo: "",
+                    titulo: "",
+                    body: "",
+                    photo:""
+                },
+        }
+    },
+    methods: {
+         createNews() {
+                axios.post('news',this.noticia,{
+                    headers: {
+                        'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
+                    }
+                })
+                .then((res) => {
+                        if (res.data.id) {
+                            this.form.reset();
+                            toast({
+                                type: 'success',
+                                title: 'Cadastro realizado com successo'
+                            });
+                        } else {
+                            toast({
+                                type: 'error',
+                                title: 'Operação não pode ser concluida'
+                            });
+                        }
+                    }).catch((res) => {
+                        toast({
+                            type: 'error',
+                            title: 'Operação não pode ser concluida'
+                        });
+                    });
+            },
 
+            uploadPhoto (e) {
+                console.log(e);
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                reader.onloadend = (file) => {
+                    // console.log(reader.result);
+                    this.noticia.photo = reader.result;
+                }
+                reader.readAsDataURL(file);
+            }
+    }
 }
 </script>
 

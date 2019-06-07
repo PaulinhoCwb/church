@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         getPersons(){
-            axios.get('persons',{
+            axios.get('person/all',{
                 headers: {
                     Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
                 }
