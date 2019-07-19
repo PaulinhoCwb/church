@@ -3,10 +3,12 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="card card-default">
-                    <div class="card-body">
-                        <div class="card-header">
+                    <div class="card-header">
+                        <h3 class="card-title">
                             Cadastro Avisos/lembretes Catequese
-                        </div>
+                        </h3>
+                    </div>
+                    <div class="card-body">
                         <form @submit.prevent="createNews" method="POST">
                             <div class="form-row">
                                 <div class="form-group col-12">
@@ -61,18 +63,11 @@ export default {
                     }
                 })
                 .then((res) => {
-                        if (res.data.id) {
-                            this.form.reset();
                             toast({
                                 type: 'success',
                                 title: 'Cadastro realizado com successo'
                             });
-                        } else {
-                            toast({
-                                type: 'error',
-                                title: 'Operação não pode ser concluida'
-                            });
-                        }
+                            this.limpaForm();
                     }).catch((res) => {
                         toast({
                             type: 'error',
@@ -90,6 +85,11 @@ export default {
                     this.noticia.photo = reader.result;
                 }
                 reader.readAsDataURL(file);
+            },
+            limpaForm(){
+                for (const field in this.noticia) {
+                    this.noticia[field] = "";
+                }
             }
     }
 }

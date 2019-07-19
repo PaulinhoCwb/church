@@ -12,13 +12,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="nome">Nome:</label>
-                                        <input type="text" v-model="form.name" name="form.nome" id="nome" class="form-control">
+                                        <input type="text" v-model="q.name" name="form.nome" id="nome" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="mes">Mês</label>
-                                        <select name="form.month" v-model="form.month" id="mes" class="form-control">
+                                        <select name="form.month" v-model="q.month" id="mes" class="form-control">
                                             <option value="">----------</option>
                                             <option value="1">Janeiro</option>
                                             <option value="2">Fevereiro</option>
@@ -50,7 +50,7 @@
             <person  v-for="person in persons" :key="person.id" 
             :data-nascimento="person.dateofbirth | dateToBR"
             v-show="show"
-            :nome="person.name | sliceName"></person>
+            :nome="person.name"></person>
         </div>
     </div>
 </template>
@@ -65,10 +65,10 @@ export default {
     data () {
         return {
             title: 'Pesquisas',
-            form: new Form({
+            q: {
                 month: '',
                 name: '',
-            }),
+            },
             persons: [],
             show: false,
         }
@@ -77,9 +77,12 @@ export default {
         search(){
             axios.get('search',{
                 params: {
-                    month: this.form.month,
-                    name: this.form.name
+                    month: this.q.month,
+                    name: this.q.name
                 },
+                headers: {
+                    Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
+                }
             }).then((res) => {
                 this.persons = res.data;
                 if (this.persons) {

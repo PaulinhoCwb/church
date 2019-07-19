@@ -10,7 +10,7 @@
  
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Santuario Santa Teresinha do Menino Jesus</title>
+    <title>Santuario Santa Teresinha do Menino Jesus da Sagrada Face</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
         crossorigin="anonymous">
@@ -27,7 +27,7 @@
         function GetMap()
         {
             map = new Microsoft.Maps.Map('#myMap', {zoom:15});
-            var pin = createFontPushpin(new Microsoft.Maps.Location(-25.4444127,-49.2886561), '\uf041', 'FontAwesome', 30, 'black');
+            var pin = createFontPushpin(new Microsoft.Maps.Location(-25.4425874,-49.2831808), '\uf041', 'FontAwesome', 30, 'black');
             map.entities.push(pin);
         }
       
@@ -48,7 +48,7 @@
             ctx.fillText(text, 0, 0);
             return new Microsoft.Maps.Pushpin(location, {
                 icon: c.toDataURL(),
-                anchor: new Microsoft.Maps.Point(c.width / 2, c.height / 2) //Align center of pushpin with location.
+                anchor: new Microsoft.Maps.Point(c.width / 2, c.height / 3) //Align center of pushpin with location.
             });
         }
         </script>
@@ -78,7 +78,7 @@
 
     <!-- /carousel  -->
     <!-- Formulario de inteções -->
-    <div class="wrapper">
+    <div class="wrapper"> 
         @yield('content')
 
         <footer id="main-footer">
@@ -91,7 +91,7 @@
                         <div class="py-4">
 
                             <h1 class="h3">Santuário Santa Teresinha do Menino
-                                Jesus e da Sagrada Face</h1>
+                                Jesus da Sagrada Face</h1>
 
                             <p>Copyright © 2019</p>
 

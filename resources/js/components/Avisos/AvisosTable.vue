@@ -1,15 +1,16 @@
 <template>
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <div class="card card-default">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Avisos Catequese
-                    </h3>
-                    <div class="card-tools">
-                        <router-link class="btn btn-outline-primary btn-sm" to="/catequese/create">Cadastrar Aviso Catequese</router-link>
+    <div>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Noticias
+                        </h3>
+                        <div class="card-tools">
+                             <router-link class="btn btn-outline-primary btn-sm" to="/avisos/create">Cadastrar Aviso Paroquial</router-link>
+                        </div>
                     </div>
-                </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table">
                             <thead>
@@ -42,6 +43,25 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="noticia" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ noticia.titulo }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ noticia.body }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -49,30 +69,32 @@
 
 <script>
 export default {
-    name: 'Catequese',
+    name: 'news',
     data () {
         return {
-            news: []
+            news: [],
+            noticia: {}
         }
     },
     methods: {
-        getCatequese () {
-            axios.get('/catequese',{
-                headers: {
-                    Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
-                }
-            })
-            .then( response => {
-                this.news = response.data.data;
-            })
-            .catch(response => {
-                toast({
-                    type: "error",
-                    title: "Erro no servidor!!"
-                });
+        getAvisos (pageUrl) {
+            let vm = this;
+            pageUrl = pageUrl || '/avisos';
+            axios.get(pageUrl,{
+                    headers: {
+                         Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
+                    }
+                }).then((res) => {
+                this.news = res.data.data;
+            }).catch((res) => {
+
             });
         },
-         deleteNew (id, index){
+        viewBody (noticia) {
+            this.noticia = noticia;
+            $('#noticia').modal('show'); 
+        },
+        deleteNew (id, index){
             axios.delete('news/'+id,{
                 headers:{
                     Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
@@ -101,7 +123,7 @@ export default {
         }
     },
     mounted () {
-        this.getCatequese();
+        this.getAvisos();
     }
 }
 </script>

@@ -94,11 +94,11 @@ class NewController extends Controller
 
     public function getAvisos()
     {
-        return NewsResource::collection(News::where('tipo',2));
+        return NewsResource::collection(News::where('tipo',2)->paginate(10));
     }
 
     public function getCatequese()
     {
-        return NewsResource::collection(News::where('tipo',3));
+        return NewsResource::collection(News::where('tipo',3)->paginate(10));
     }
 }

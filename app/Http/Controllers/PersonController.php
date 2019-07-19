@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Person;
 use Carbon\Carbon;
-use GuzzleHttp\Client;
+use App\Dependent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use App\Http\Resources\Person as PersonResource;
+use App\Http\Resources\Dependent as DependentResource;
 
 class PersonController extends Controller
 {
@@ -19,8 +20,7 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $persons = Person::paginate(10);
-        return PersonResource::collection($persons);
+        return response()->json(Person::with('father')->paginate(10));
     }
 
     /**
@@ -92,8 +92,6 @@ class PersonController extends Controller
         } else {
             return response()->json(['updated' => false]);
         }
-        
-
     }
 
     /**
@@ -114,8 +112,23 @@ class PersonController extends Controller
     public function getTotal()
     {
         $personTotal = Person::all()->count();
+        $marriageTotal = Dependent::whereMonth('weddingdata',now()->format('m'))->count();
 
-        return Response::json($personTotal);
+        $month = date('m');
+        $sql = "SELECT name, dateofbirth FROM ";
+        $sql .= "(SELECT name,dateofbirth FROM people UNION SELECT name, dateofbirth FROM dependents) AS PESSOAS";
+        $sql .= " WHERE MONTH(dateofbirth) = ?";
+        
+        $res = DB::select($sql,[$month]);
+        $persons = count($res);
+
+        return Response::json(
+            [
+                'totalPerson' => $personTotal,
+                'totalMarriage' => $marriageTotal,
+                'totalBirthday' => $persons
+            ]
+        );
     }
 
     public function getOnePerson($id)
@@ -124,7 +137,12 @@ class PersonController extends Controller
         return Response::json($person);
     }
 
-    public function getBirthdays()
+    public function getWeeding () {
+        $casal = Dependent::with(['people'])->whereMonth('weddingdata',now()->format('m'))->get();
+        return response()->json($casal);
+    }
+
+    public function personBirthddays()
     {
         $month = date('m');
         $sql = "SELECT name, dateofbirth FROM ";
@@ -132,23 +150,18 @@ class PersonController extends Controller
         $sql .= " WHERE MONTH(dateofbirth) = ?";
         
         $res = DB::select($sql,[$month]);
-        $persons = count($res);
-        return Response::json($persons);
+        return response()->json($res);
     }
 
-    public function getWeeding () {
-        return response()->json($weending);
-    }
-
-    public function personBirthddays()
-    {
-        $persons = Person::whereMonth('dateofbirth',now()->format('m'))->get();
-
-        return PersonResource::collection($persons);
-    }
-
-    public function getAll()
+    public function getTodos()
     {
         return PersonResource::collection(Person::all());
+    }
+
+    public function test()
+    {
+        $person = Person::with('father')->get();
+        return response()->json(Person::with('father')->paginate(10));
+        // return response()->json($person);
     }
 }

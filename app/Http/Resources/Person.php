@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\Dependents;
+use App\Http\Resources\Dependent;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Person extends JsonResource
@@ -28,7 +28,7 @@ class Person extends JsonResource
             'tellphone' => $this->tellphone,
             'cellphone' => $this->cellphone,
             'publicplace' => $this->publicplace,
-            'dependents' => new Dependents($this->dependents)
+            'dependents' => new Dependent($this->dependents)
         ];
     }
 }

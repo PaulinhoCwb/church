@@ -30,7 +30,7 @@ class DefaultController extends Controller
 
     public function catequese() 
     {
-        $catequese = News::where('tipo',3)->orderBy([])->get();
+        $catequese = News::where('tipo',3)->get();
         // dd($catequese);
         return view('catequese',['avisos' => $catequese]);
     }
@@ -42,7 +42,7 @@ class DefaultController extends Controller
 
     public function contactUs(Request $request)
     {
-        \Mail::to('joaopaulocap10@gmail.com')->queue(new ContactUsShipped($request->nome,$request->mensagem));
+        \Mail::to('parstateresinhactba@gmail.com')->queue(new ContactUsShipped($request->nome,$request->mensagem));
         \Mail::to($request->email)->queue(new ReceiveShipped($request->nome)); 
          
         if (\Mail::failures()) {
@@ -53,9 +53,11 @@ class DefaultController extends Controller
         
     }
 
-    public function massRequest() 
+    public function avisos() 
     {
-        
+        $catequese = News::where('tipo',2)->get();
+        // dd($catequese);
+        return view('avisos',['avisos' => $catequese]);
     }
 
     public function intentionsSave(Request $request)
@@ -78,8 +80,13 @@ class DefaultController extends Controller
 
     public function list()
     {
-        $data = \App\Intention::whereDate('data',now())->orderBy('type');
-        $pdf = PDF::loadView('PDF/missas', ['intencoes' => $data]);
+        $missas = \App\Intention::where('type','=',1)->whereDate('data','>=',now())->orderBy('type','ASC')->orderBy('falecimento','ASC')->get();
+        $intencoes = \App\Intention::where('type','=',2)->whereDate('data','>=',now())->get();
+        
+        $pdf = PDF::loadView('PDF/missas', [
+            'intencoes' => $intencoes,
+            'missas'    => $missas
+        ]);
         return $pdf->download('missas.pdf'); 
     }
 }

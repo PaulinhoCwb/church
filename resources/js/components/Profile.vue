@@ -48,7 +48,7 @@
                     <!-- /.widget-user -->
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-12">
             <div class="card card-info collapsed-card">
               <div class="card-header">
                 <h3 class="card-title">Dependentes</h3>
@@ -109,11 +109,9 @@
                     }
                 })
                 .then((res) => {
-                    console.log(res);
-                    
                     this.name = res.data.name;
-                    this.totalDependets = res.data.dependents;
-                    this.cadastradoAt = res.data.created_at;
+                    this.totalDependets = res.data.data.dependents;
+                    this.cadastradoAt = res.data.data.created_at;
                 })
                 .catch((res) => {
                     toast({
@@ -135,7 +133,7 @@
         },
         mounted() {
             this.getProfile();
-            this.getTithes();
+            // this.getTithes();
         }
     }
 

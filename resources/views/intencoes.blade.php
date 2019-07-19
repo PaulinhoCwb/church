@@ -19,7 +19,7 @@
           </div>
             @endif
         <div class="row">
-            <div class="col-md-8 col-xs-12">
+            <div class="col-md-12 col-xs-12">
                 <div class="text-center">
                     <h1>Pedidos de intenções</h1>
                 </div>
@@ -137,67 +137,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-xs-12">
-                <div class="card-avisos">
-
-                    <div class="icone" style="background-color:yellow;">
-
-                        <i class="fas fa-church fa-3x"></i>
-
-                    </div>
-
-                    <div class="content">
-
-                        <div class="avisos-header">
-
-                            <a href="intencoes.html" class="btn display-4">Inteções de Missas</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="card-avisos">
-
-                    <div class="icone" style="background-color:yellow;">
-
-                        <i class="fas fa-church fa-3x"></i>
-
-                    </div>
-
-                    <div class="content">
-
-                        <div class="avisos-header">
-
-                            <a href="intencoes.html" class="btn display-4">Inteções de Missas</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="card-avisos">
-
-                        <div class="icone" style="background-color:yellow;">
-    
-                            <i class="fas fa-church fa-3x"></i>
-    
-                        </div>
-    
-                        <div class="content">
-    
-                            <div class="avisos-header">
-    
-                                <a href="intencoes.html" class="btn display-4">Inteções de Missas</a>
-    
-                            </div>
-    
-                        </div>
-    
-                    </div>
-            </div>
-        </div>
-        <div class="border-divider mt-2"></div>
+        </div> =
     </div>
     <!-- /Formulario de inteções -->
 @endsection

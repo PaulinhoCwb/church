@@ -16,7 +16,7 @@
                     <h5 class="mb-1">Sábados</h5>
                     <small><i class="fas fa-clock fa-2x"></i></small>
                 </div>
-                <p class="mb-1">07:3015:00 Horas.</p>
+                <p class="mb-1">07:30 e 15:00 Horas.</p>
             </a>
             <a href="#" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
@@ -37,7 +37,7 @@
     <div class="col-12 py-3">
         <blockquote class="blockquote text-center">
             <p class="mb-0">"Para mim a oração é um pulsar de coração, é um simples olhar voltado para o Pai, é um grito de gratidão e de amor, tanto na provação como no auge da alegria".</p>
-            <div class="blockquote-footer">Santa Teresinha <cite title="Source Title">Menino Jesus</cite></div>
+            <div class="blockquote-footer">Santa Teresinha <cite title="Source Title">do Menino Jesus e da Sagrada Face</cite></div>
           </blockquote>
     </div>
 </div>

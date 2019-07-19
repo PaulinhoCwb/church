@@ -34,24 +34,47 @@
             </div>
         </div>
         <div class="jumbotron">
-                <h1>Pedidos de missas / Inteções - ação de graças</h1> 
-              </div>
-            @foreach ($intencoes as $intencao)
+            <h1>Missas</h1>
+        </div>
+            @foreach ($missas as $missa)
                 <div class="row">
                     <div class="col-xs-12">
-                            <div class="alert @if ($intencao->type == 1)
-                                alert-danger
-                            @else
-                                alert-success
-                            @endif">
-                                    <strong>{{ $intencao->contato }}!</strong><br>
-                                    <p>{{ $intencao->intencao }}</p>.
-                            </div>
+                        <strong>Missa em memória de {{ $missa->nome }}! 
+                        @if ($missa->falecimento == 1)
+                            7º dia de falecimento
+                        @elseif($missa->falecimento == 2)
+                            30º dia de falecimento
+                        @elseif($missa->falecimento == 3)
+                            1 ano de falecimento
+                        @else
+                            Sem data
+                        @endif
+                        </strong><br>
+                        <p class="text-muted"><strong>Pedido Por:</strong> {{ $missa->contato }}</p>
+                        <p class="text-muted"><strong>Para a missa das:</strong> {{ date("d/m/Y",strtotime($missa->data))}} - {{ $missa->hora }}</p> 
                     </div>
                 </div>
+                <hr>
             @endforeach
-        
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        <div class="jumbotron">
+            <h1>Intenções - ação de graças</h1> 
+        </div>
+        @foreach ($intencoes as $intencao)
+            <div class="row">
+                <div class="col-xs-12">
+                    <strong>{{ $intencao->contato }} Gostaria de agradeçer!</strong><br>
+                    <p>{{ $intencao->intencao }}</p>
+                    <p class="text-muted"><strong>Para a missa das:</strong>  {{ $intencao->data}} - {{ $intencao->hora }}</p> 
+                </div>
+            </div>
+            <hr>
+        @endforeach
     </div>
 
 </body>

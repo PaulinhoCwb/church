@@ -25,7 +25,10 @@ Route::post('/contact-us','DefaultController@contactUs')->name('contact-us');
 Route::post('/intencoes/save','DefaultController@intentionsSave')->name('save.intencoes');
 Route::view('/movimentos', 'movimentos')->name('movimentos');
 Route::view('/horarios','horarios')->name('horarios');
+Route::get('/avisos','DefaultController@avisos')->name('avisos');
 Route::get('/invoice', 'DefaultController@list');
+Route::get('/casamento', 'PersonController@getWeeding');
+Route::get('/test', 'PersonController@test');
 Route::get('{path}',function () {
   return view('login');
 })->where( 'path', '([A-z\d-/_.]+)?' );

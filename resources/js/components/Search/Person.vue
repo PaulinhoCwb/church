@@ -2,7 +2,7 @@
     <div class="col-md-4 mt-2">
       <div class="small-box bg-info">
               <div class="inner">
-                <h5>{{ nome }}</h5>
+                <h5 class="text-wrap">{{ nome }}</h5>
 
                 <p>{{ dataNascimento }}</p>
               </div>

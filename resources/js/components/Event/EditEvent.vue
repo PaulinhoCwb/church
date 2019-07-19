@@ -4,7 +4,7 @@
             <div class="card card-default">
                 <div class="card-header"> {{ title }} - {{ event.day }} </div>
                 <div class="card-body">
-                    <form @submit.prevent="createEvent">
+                    <form @submit.prevent="EditEvent">
                         <div class="form-row">
                             <div class="col-12">
                                 <div class="form-group">
@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input type="text" v-model="event.day" class="form-control">
+                                    <input type="text"  v-mask="'##/##/####'" v-model="event.day" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -40,22 +40,26 @@
 </template>
 
 <script>
+import moment from 'moment'
+import {mask} from 'vue-the-mask'
     export default {
+        name: "EventEdit", 
+        directives: {mask},
         data () {
             return {
                 event:{
                     event: "",
                     description: "",
-                    day: this.$router.params.date,
+                    day: "",
                     hour: "",
-                    color: "#000000"
+                    color: ""
                 },
-                title: "Cadastro de Eventos"
+                title: "Edição de Eventos"
             }
         },
         methods: {
              EditEvent () {
-               axios.post('events',this.event,{
+               axios.put('events/'+this.$route.params.id,this.event,{
                     headers: {
                         Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
@@ -72,6 +76,30 @@
                     });
                 });
             },
+            getEvent () {
+                let id = this.$route.params.id;
+                axios.get(`events/${id}`,{
+                    headers: {
+                        Authorization: 'Bearer '+window.sessionStorage.getItem('access_token')
+                    }
+                })
+                .then(response => {
+                    this.event = response.data;
+                    this.event.day = this.dateToBR(response.data.day); 
+                })
+                .catch(response => {
+                    toast({
+                        type: 'error',
+                        title: 'Erro no servidor'
+                    });
+                });
+            },
+            dateToBR (value) {
+                return moment(value).format('DD/MM/YYYY');
+            }
+        },
+        mounted () {
+            this.getEvent();
         }
     }
 

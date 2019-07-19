@@ -40,8 +40,16 @@ class DependentController extends Controller
             'name' => 'required',
             'type' => 'required',
         ]);
-
+        
         $data = $request->all();
+        
+        if($request->type == 'E'){
+            $data['spouse_id'] = auth('api')->user()->id;
+        }
+
+        if ($request->type == 'F') {
+            $data['father_id'] = auth('api')->user()->id;
+        }
 
         if ($request->dateofbirth) {
             $data['dateofbirth'] = dateToMySQL($request->dateofbirth); 
@@ -50,7 +58,16 @@ class DependentController extends Controller
             $data['weddingdata'] = dateToMySQL($request->weddingdata); 
         }
 
-        $dependent = Dependent::create($data);
+        $person = Person::find($request->people_id);
+        $data['zipcode'] = $person->zipcode;
+        $data['address'] = $person->address;
+        $data['number'] = $person->number;
+        $data['email'] = $person->email;
+        $data['tellphone'] = $person->tellphone;
+        $data['cellphone'] = $person->tellphone;
+        $data['publicplace'] = $person->tellphone;
+
+        $dependent = Person::create($data);
         return Response::json($dependent);
     }
 

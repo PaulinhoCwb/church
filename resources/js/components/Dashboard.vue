@@ -8,7 +8,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Paroquianos Cadastrados</span>
-                <span class="info-box-number">{{ totalPerson }}</span>
+                <span class="info-box-number">{{ values.totalPerson }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -37,7 +37,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Aniversariantes do mês</span>
                 <span class="info-box-text"><router-link class="text-decoration-none" to="/birthday">
-                    {{ birthdays }}
+                    {{ values.totalBirthday }}
                 </router-link></span>
               </div>
               <!-- /.info-box-content -->
@@ -50,7 +50,11 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Aniversarios Casamentos do mês</span>
-                <span class="info-box-number">{{ weeding }}</span>
+                <span class="info-box-number">
+                     <router-link class="text-decoration-none" to="/marriage">
+                         {{ values.totalMarriage }}
+                    </router-link>
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -86,7 +90,7 @@
                                         <td>{{ person.cellphone }}</td>
                                         <td>{{ person.tellphone }}</td>
                                         <template v-if="persons">
-                                        <td>
+                                            <td>
                                             <router-link :to="{name: 'profile' ,params:{id: person.id}}" class="btn btn-outline-info btn-sm">
                                                 <i class="fas fa-info-circle"></i>
                                             </router-link>
@@ -99,10 +103,9 @@
                                             <router-link :to="{name: 'tithe-single', params:{id: person.id}}" class="btn btn-outline-success btn-sm">
                                                 <i class="fas fa-money-bill-wave"></i>
                                             </router-link>
-                                        </td>
+                                            </td>
                                         </template>
                                     </tr>
-                                
                             </tbody>
                         </table>
                          <nav aria-label="Page navigation example">
@@ -130,8 +133,7 @@
                 persons: [],
                 totalPerson: '',
                 dizimo: 0,
-                birthdays: 0,
-                weeding: 0,
+                values: {},
                 pagination: {},
                 dataCollection: null,
                 filterPersons: '',
@@ -149,7 +151,7 @@
                 })
                 .then(res => {
                     this.persons = res.data.data;
-                    vm.makePagination(res.data.meta, res.data.links);
+                    vm.makePagination(res.data);
                 }).catch((res) => {
 
                 });
@@ -161,7 +163,7 @@
                         Authorization: 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 }).then((res) => {
-                    this.totalPerson = res.data; 
+                    this.values = res.data; 
                 }).catch((res) => {
                     console.log(res);
                 });
@@ -179,40 +181,12 @@
                 });
             },
 
-            getBirthdays() {
-                axios.get('birthdays',{
-                    headers: {
-                        'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
-                    }
-                }).then((res) => {
-                    if (res) {
-                        this.birthdays = res.data;
-                    } else {
-                        this.birthdays = 0;
-                    }
-                }).catch((res) =>  {
-                                
-                });
-            },
-
-            // getWeedingDay() {
-            //     axios.get('weeding',{
-            //         headers:{
-            //              Authorization: 'Bearer ' + window.sessionStorage.getItem('access_token')
-            //         }
-            //     }).then((res)=>{
-            //         this.weeding = res.data;
-            //     }).catch((res)=>{
-            //         console.log();
-            //     });
-            // },
-
-            makePagination(meta, links) {
+            makePagination(meta) {
                 let pagination = {
                     current_page: meta.current_page,
                     last_page: meta.last_page,
-                    next_page_url: links.next,
-                    prev_page_url: links.prev
+                    next_page_url: meta.next_page_url,
+                    prev_page_url: meta.prev_page_url
                 };
                 this.pagination = pagination;
             },
@@ -233,7 +207,7 @@
             this.getPersons();
             this.getTotalPersons();
             this.getTotalTithe();
-            this.getBirthdays();
+            // this.getBirthdays();
         },
         created () { 
             if (!window.sessionStorage.getItem('access_token')) {

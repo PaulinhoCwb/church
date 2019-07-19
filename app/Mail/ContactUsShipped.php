@@ -31,6 +31,6 @@ class ContactUsShipped extends Mailable
      */
     public function build()
     {
-        return $this->subject('Contato')->view('mails.teste');
+        return $this->subject('Contato')->view('mails.contact');
     }
 }

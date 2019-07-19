@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Mouse+Memoirs&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 * {
     box-sizing: border-box;
 }
@@ -157,6 +159,14 @@ footer {
     flex-direction: column;
     padding: 20px;
     border-bottom: 2px dashed #ccc;
+}
+
+.warning-list h2.title {
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+.warning-list .content-warning p {
+    font-family: 'Raleway', sans-serif;
 }
 
 .bootstrap-timepicker-widget table td a i {

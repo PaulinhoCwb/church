@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dependent extends Model
 {
     public $fillable = [
-        'name','dateofbirth','weddingdata','people_id','type',''
+        'name','dateofbirth','weddingdata','people_id','type',
     ];
     
     public function people()

@@ -23,15 +23,18 @@ Route::middleware('auth:api')->group(function () {
           'events'     => 'EventController'
       ]);
      Route::get('/catequese','NewController@getCatequese');
+     Route::get('/avisos','NewController@getAvisos');
      Route::get('tithe/total','TitheController@getTotalTithe');
      /**
-      * Person Controller
+      * Person Controller 
       */
      Route::get('total/person','PersonController@getTotal');
-     Route::get('birthdays','PersonController@getBirthdays');
      Route::get('weeding','PersonController@getWeeding');
      Route::get('birthdaysPersons','PersonController@personBirthddays');
-     
+     Route::get('person/all','PersonController@getTodos');
+     /**
+      * Search
+      */
+     Route::get('search','SearchController@search');
      Route::post('logout','AuthController@logout');
-     Route::get('person/all','PersonController@getAll');
 });

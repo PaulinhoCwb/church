@@ -27,7 +27,7 @@
             <a href="index3.html" class="brand-link text-center">
                 <!-- <img src="" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8"> -->
-                <span class="brand-text font-weight-light">Santuario</span>
+                <span class="brand-text font-weight-light">Santuário</span>
             </a>
 
             <!-- Sidebar -->
@@ -38,7 +38,7 @@
                         <!-- <img src="" class="img-circle elevation-2" alt="User Image"> -->
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Santa Teresinha do Menino Jesus</a>
+                        <a href="#" class="d-block">Santa Teresinha do Menino Jesus da Sagrada Face </a>
                     </div>
                 </div>
 
@@ -51,13 +51,13 @@
                             <router-link to="/dashboard" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt text-blue"></i>
                                 <p>
-                                    Dashboard
+                                    Painel Principal
                                 </p>
                             </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link to="/form" class="nav-link">
-                                <i class="nav-icon fas fa-pen-nib"></i>
+                                <i class="nav-icon fas fa-pen-nib text-cadastro"></i>
                                 <p>
                                     Cadastro
                                 </p>
@@ -105,23 +105,23 @@
                         </li>
                         <li class="nav-item">
                             <router-link to="/users" class="nav-link">
-                                <i class="nav-icon fas fa-users text-white"></i>
+                                <i class="nav-icon fas fa-users text-users"></i>
                                 <p>
                                     Usuarios
                                 </p>
                             </router-link>
                         </li>
                           <li class="nav-item">
-                            <router-link to="/catequese" class="nav-link">
-                                <i class="nav-icon fas fa-home text-white"></i>
+                            <router-link to="/catequese/index" class="nav-link">
+                                <i class="nav-icon fas fa-home text-catequese"></i>
                                 <p>
                                     Catequese
                                 </p>
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link to="/catequese" class="nav-link">
-                                <i class="nav-icon fas fa-church text-white"></i>
+                            <router-link to="/avisos" class="nav-link">
+                                <i class="nav-icon fas fa-church text-avisos"></i>
                                 <p>
                                     Avisos Paroquiais
                                 </p>
@@ -141,7 +141,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                            <h1 class="m-0 text-dark">Santuario Santa Teresinha do Menino Jesus</h1>
+                            <h1 class="m-0 text-dark">Santuário Santa Teresinha do Menino Jesus da Sagrada Face</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->

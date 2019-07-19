@@ -56,7 +56,7 @@
                 </div>
                 <div class="content">
                     <div class="avisos-header">
-                        <a href="#" class="btn display-4">Avisos Paroquiais</a>
+                        <a href="{{ route('avisos') }}" class="btn display-4">Avisos Paroquiais</a>
                     </div>
                 </div>
             </div>
@@ -207,7 +207,7 @@
 
         <div class="d-block text-muted mt-3">
             <i class="fas fa-phone" style="width: 30px;height: 30px; border-radius: 35px;background-color: #51d466 !important; line-height: 30px;color: white; text-align: center;"></i>
-                (41) 3333-3333
+                (41) 9 9722-2527
         </div>
         <div class="d-block text-muted mt-3">
             <i class="fas fa-envelope" style="width: 30px;height: 30px; border-radius: 35px;background-color: #32c8de !important; line-height: 30px;color: white; text-align: center;"></i>

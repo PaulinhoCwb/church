@@ -19,10 +19,30 @@ $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 $verde: #028330;
-
+$marrom: #8B4513;
+$laranja: #FF7F00;
+$azul: #436EEE;
+$vermelho: #FF3030;
+$cinza: #828282;
+$preto: #1C1C1C;
 .text-cash {
     color: $verde;
 }
 .text-blue {
     color: $blue;
+}
+.text-cadastro {
+    color: $marrom !important;
+}
+.text-users {
+    color: $preto !important;
+}
+.text-catequese {
+    color: $laranja !important;
+}
+.text-avisos {
+    color: $vermelho !important;
+}
+.text-noticias {
+    color: $cinza;
 }

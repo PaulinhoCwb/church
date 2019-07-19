@@ -4,10 +4,12 @@
             <!-- Box Comment -->
             <div class="card card-widget">
               <div class="card-header">
-                <div class="user-block">
-                  <span class="username">{{ event.title }}</span>
-                  <span class="description">Criado por - {{ event.user.name }}</span>
-                </div>
+                <template v-if="event.user.name">
+                  <div class="user-block">
+                    <span class="username">{{ event.title }}</span>
+                    <span class="description">Criado por - {{ event.user.name }}</span>
+                  </div>
+                </template>
                 <!-- /.user-block -->
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Mark as read">
@@ -25,8 +27,8 @@
                 <p>{{ event.description }}</p>
 
                 <!-- Social sharing buttons -->
-                <button type="button" @click="deleteEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-share"></i> Editar</button>
-                <button type="button" @click="UpdateEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i> Excluir</button>
+                <button type="button" @click="updateEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-share"></i> Editar</button>
+                <button type="button" @click="deleteEvent(event.id)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i> Excluir</button>
                 <span class="float-right text-muted">Inicio {{ event.hour | hourToBR }}</span>
               </div>
               <!-- /.card-body -->
@@ -74,6 +76,7 @@ export default {
                 type: "success",
                 title: "Operação realizada com successo."
               });
+              this.$router.push('/event');
             } else {
               toast({
                 type: "error",
@@ -81,9 +84,12 @@ export default {
               });
             }
           })
+        },
+        updateEvent (id) {
+          this.$router.push(`/event/edit/${id}`);
         }
     },
-    created () {
+    mounted () {
       this.getEvent();
     },
     filters:{

@@ -60,10 +60,12 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $event = Event::findOrFail($id);
-        if ($event->update($request->all())) {
-            return response()->json(['updated' => true]);
+        $data = $request->all();
+        $data['day'] = dateToMySQL($request->day);
+        if ($event->update($data)) {
+            return response()->json(['updated' => true],200);
         } else {
-            return response()->json(['updated' => false]);
+            return response()->json(['updated' => false],401);
         }
     }
 

@@ -14130,6 +14130,26 @@ a.text-muted:hover {
   color: #3490dc;
 }
 
+.text-cadastro {
+  color: #8B4513 !important;
+}
+
+.text-users {
+  color: #1C1C1C !important;
+}
+
+.text-catequese {
+  color: #FF7F00 !important;
+}
+
+.text-avisos {
+  color: #FF3030 !important;
+}
+
+.text-noticias {
+  color: #828282;
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors

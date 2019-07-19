@@ -9,7 +9,7 @@ class Person extends Model
     public $fillable = [
         'name','dateofbirth','birthplace','zipcode',
         'address','number','email','tellphone','cellphone',
-        'publicplace',
+        'publicplace','father_id'
     ];
     
     public function dependents()
@@ -20,5 +20,14 @@ class Person extends Model
     public function tithes()
     {
         return $this->hasMany('App\Tithe','people_id');
+    }
+
+    public function father()
+    {
+        return $this->belongsTo('App\Person','father_id');
+    }
+
+    public function son() {
+        return $this->hasMany('App\Person','father_id');
     }
 }

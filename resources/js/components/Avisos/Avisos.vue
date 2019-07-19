@@ -7,10 +7,10 @@
                         <div class="card-title">Cadastro de Avisos Paroquiais</div>
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="createNews" method="POST">
+                        <form @submit.prevent="createAvisos" method="POST">
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <label for="">Aviso catequese</label>
+                                    <label for="">Aviso Paroquial</label>
                                     <input type="text" v-model="noticia.titulo" class="form-control" name="titulo" id="titulo">
                                 </div>
                             </div>
@@ -54,44 +54,43 @@ export default {
         }
     },
     methods: {
-         createNews() {
+        createAvisos() {
                 axios.post('news',this.noticia,{
                     headers: {
                         'Authorization': 'Bearer '+ window.sessionStorage.getItem('access_token')
                     }
                 })
                 .then((res) => {
-                        if (res.data.id) {
-                            this.form.reset();
-                            toast({
-                                type: 'success',
-                                title: 'Cadastro realizado com successo'
-                            });
-                        } else {
-                            toast({
-                                type: 'error',
-                                title: 'Operação não pode ser concluida'
-                            });
-                        }
-                    }).catch((res) => {
-                        toast({
-                            type: 'error',
-                            title: 'Operação não pode ser concluida'
-                        });
+                    toast({
+                        type: 'success',
+                        title: 'Cadastro realizado com successo'
                     });
-            },
+                    this.limpaForm();
+                }).catch((res) => {
+                    toast({
+                        type: 'error',
+                        title: 'Operação não pode ser concluida'
+                    });
+                });
+        },
 
-            uploadPhoto (e) {
-                console.log(e);
-                let file = e.target.files[0];
-                let reader = new FileReader();
-                reader.onloadend = (file) => {
-                    // console.log(reader.result);
-                    this.noticia.photo = reader.result;
-                }
-                reader.readAsDataURL(file);
+        uploadPhoto (e) {
+            console.log(e);
+            let file = e.target.files[0];
+            let reader = new FileReader();
+            reader.onloadend = (file) => {
+                // console.log(reader.result);
+                this.noticia.photo = reader.result;
             }
-    }
+            reader.readAsDataURL(file);
+        },
+        limpaForm(){
+            for (const field in this.noticia) {
+                this.noticia[field] = "";
+            }
+        }
+    },
+    
 }
 </script>
 
